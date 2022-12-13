@@ -24,11 +24,13 @@ To achieve all these goals, peasants must self-organise to survive. This can be 
 
 \subsection{Rules, Attributes \& Artifacts}\label{sec:rules}
 
-The objective of the game is for an \Gls{agent} to win, individually, by escaping the pit with as many `hit-points' and `health points' as possible, whilst also ensuring that enough of your fellow players survive to start the revolution upon esape. 
+The objective of the game is for an Agent to win, individually, by escaping the pit with as many `hit-points' and `health points' as possible, whilst also ensuring that enough of your fellow players survive to start the revolution upon esape. 
 For each level within the pit, combat consists of a number of fight rounds which continue until either; the enemy is defeated, or the agents turned into chutney. Within each round, Agents can either; attack, defend, or cower. The first action deals damage to the enemy, the second absorbs damage from the enemy, and the final option skips the round whilst regenerating health and stamina.
 Agents will be granted multiple opportunities within fight rounds and pit levels to self-organise. These self-organisational tasks could involve the allocation of \gls{loot} dropped by a vanquished foe. This perticular example occurs at the end of each fight, before advancing to the next level of the pit. Expansion and explination of each of the task will be introduced later in this report. 
 
 Before listing the rules of the games, it is important to give a simple overview of the Agent and enemy attributes as well as the equipment that can be used within the game.  \\
+
+\subsubsection{Attributes \& Equipment}
 
 All Agents within the game have the following attributes:
 
@@ -58,15 +60,16 @@ Equipment is divided into two sections, weapons and potions. Each weapon is of a
 Swords are used by Agents who attack, and shields are used by Agents who defend. In both cases, their potential would be the conbination of both base and bonus attribute values, giving the Total Attack (/Defend). Potions are consumed by Agents to regenerate their attributes, specifically $HP$ and $ST$. Again, there is a specific value assigned to each new potion. 
 
 \begin{itemize}
-    \item Health Potion ($P_hp$)
-    \item Stamina Potion ($P_st$)
+    \item Health Potion ($P_{hp}$)
+    \item Stamina Potion ($P_{st}$)
 \end{itemize}
 
-The value mechanisms for all these variables will be outlined in Section~\ref{sec:maths}. 
+The value mechanisms for all these variables will be outlined in Section.ADD_MATHS_SECTION_NUMBER. \\
 
+\subsubsection{Rules}
 Now that the basic game variables have been defined, the standard rules of the game can be listed. 
 
-\begin{itemize}
+\begin{enumerate}
     \item Agents may communicate before each combat round to decide actions
     \item Agents may communicate after defeating an enemy to allocate equipment gained (Common Resource Pool). 
     \item Actions include: Attack, Defend, Cower
@@ -82,7 +85,7 @@ Now that the basic game variables have been defined, the standard rules of the g
     \item Agents cannot hold more than one piece of equipment in each slot (i.e. 1 shield and 1 sword). They can store extra equipment in their inventory
     \item Cowers are still eligible for common resource pool.  
     \item All agents start with equal $ST/HP$. 
-\end{itemize}
+\end{enumerate}
 
 % Agent / Enemy Attributes and variables 
 % specifications and Rules
