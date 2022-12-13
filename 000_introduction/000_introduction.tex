@@ -28,7 +28,7 @@ The objective of the game is for an Agent to win, individually, by escaping the 
 For each level within the pit, combat consists of a number of fight rounds which continue until either; the enemy is defeated, or the agents turned into chutney. Within each round, Agents can either; attack, defend, or cower. The first action deals damage to the enemy, the second absorbs damage from the enemy, and the final option skips the round whilst regenerating health and stamina.
 Agents will be granted multiple opportunities within fight rounds and pit levels to self-organise. These self-organisational tasks could involve the allocation of loot dropped by a vanquished foe. This perticular example occurs at the end of each fight, before advancing to the next level of the pit. Expansion and explination of each of the task will be introduced later in this report. 
 
-Before listing the rules of the games, it is important to give a simple overview of the Agent and enemy attributes as well as the equipment that can be used within the game.  \\
+Before listing the rules of the games, it is important to give a simple overview of the Agent and enemy attributes as well as the equipment that can be used within the game.  
 
 \subsubsection{Attributes \& Equipment}
 
@@ -64,35 +64,43 @@ Swords are used by Agents who attack, and shields are used by Agents who defend.
     \item Stamina Potion ($P_{st}$)
 \end{itemize}
 
-The value mechanisms for all these variables will be outlined in Section.ADD_MATHS_SECTION_NUMBER. \\
+The value mechanisms for all these variables will be outlined in Section. ADD\_MATHS\_SECTION\_NUMBER. 
 
 \subsubsection{Rules}
 Now that the basic game variables have been defined, the standard rules of the game can be listed. 
 
 \begin{enumerate}
-    \item Agents may communicate before each combat round to decide actions
-    \item Agents may communicate after defeating an enemy to allocate equipment gained (Common Resource Pool). 
-    \item Actions include: Attack, Defend, Cower
-    \item If a agent cowers -$>$ $HP$ is increased
-    \item An agent can only fight if $ST \geq TotalAttack$, or $ST \geq TotalDefense$.
-    \item If nobody fights all agents receive the damage dealt
-    \item For players who fight (attack/defend) equally share the damage dealt
-    \item If $\sum_{i} TotalAttack > X_{remaining}$ at the end of a round, then the enemy is defeated, 
-    \item If the dealt damage if higher than an agents health, then the agent dies
-    \item If $HP_{POOL} > X$ players pass pit level without having to fight
-    \item If at the end of a combat round $N<M$, the game ends 
-    \item The agents can consume `potions' to replenish $ST/HP$ points.
-    \item Agents cannot hold more than one piece of equipment in each slot (i.e. 1 shield and 1 sword). They can store extra equipment in their inventory
-    \item Cowers are still eligible for common resource pool.  
-    \item All agents start with equal $ST/HP$. 
+    \item All agents start with equal $ST$, $HP$
+    \item An enemy dies if $\sum_{i} (A_b_i + A_s_i) > X_{remaining}$ at the end of a round
+    \item Damage dealt to agents who fight = $\gamma Y - \sum_{i} (D_b_i + D_s_i)$ 
+    \item An agent dies if $\frac{\gamma Y - \sum_{i} (D_b_i + D_s_i)}{N} > HP$
+    \item To attack: $ST \geq (A_b + A_s)$
+    \item To defend: $ST \geq (D_b + D_s)$
+    \item If an agent attacks, $ST -= (A_b + A_s)$
+    \item If an agent defends, $ST -= (D_b + D_s)$
+    \item If an agent cowers, $HP += HP_c$, $ST += ST_c$
+    \item If all agents cower, all recieve damage $\gamma Y$
+    \item If, at the end of a round, $N<M$, the game ends 
+
+    \item Agent can hold extra equipment in their inventory
+    \item Agents can donate $HP$ to the $HP_{pool}$ at the end of each level
+    \item If $HP_{pool} > X$, agents pass level without fighting
+
+    \item Before each round, agents may communicate to decide fight actions and Chairs may issue sanctions to those to defected from the group strategy (if they wish)
+    \item At the end of each level, agents may communicate to allocate the common resource pool, elect new governments, trade equipment and resolve any disputes.
+
+
 \end{enumerate}
 
 % Agent / Enemy Attributes and variables 
 % specifications and Rules
 % standard rules
 
-Besides these standard rules, there were a number of additions that were made. 
-% more nuanced rules and the reasons for these rules
+Besides these standard rules, there were a number of additions that were made. To add new dimentions to the game's social ascept, agents only have access to granulated views of their fellow agents $HP$ and $ST$ attributes. This addition creates a high degree of uncertainty in agent calcualtions and inferences which could create interesting outcomes or large changes in group fight decisions. An agents inventory will be private, allowing agents to hoard equipment without others knowing. This too allows a higher range of agent strategies and introductes more oportunities for selfishness and exploitation. 
+
+Fight decision strategies are proposed for the whole group and chosen once a majority has been achieved. Deviation from this aggreed strategy can result in sanctions, determined by the Chair. Sanctions can include being forced to fight for a set number of rounds with zero fight attributes. Potential chairs must run for office on a number of policies and are chosen by plurality during governance elections. Finally, an disputes are resolved by the Chairs individual ideals or by the games determination of group utility. All of these decisions attempt to add the concepts of institutionalised power and social choice theory to the game. The specific mechanisms of collective actions and governance will be further detailed in Section. GAME\_DESIGN.
+
+% more nuanced rules and the reasons for these rules 
 
 
 \subsection{Team Structure}\label{sec:team struct}
