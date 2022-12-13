@@ -1,1 +1,104 @@
 \chapter{Introduction}\label{introduction}
+
+\section{Introduction}\label{sec:intro}
+
+% short introdcution to the module and the objectives/goals of the SOMAS cohort. 
+% Some background on Self-Organising Multi-Agent System and its facets
+% Ostrom Principals 
+% Institutionalised power
+% Game theory and strategic interaction 
+% Social Choice Theory 
+% alternative Dispute Resolution 
+% Computational Justice
+% Knowledge Agreggation 
+% Sanctions and Dissent 
+
+
+\subsection{Story Line}\label{sec:story line}
+
+% story line
+For the implemented game, the following story-line was created: A rag-tag group of rebel peasants find themsevles at the bottom of a deep and dark pit. To escape to freedom, the peasants must battle through each rising level of the pit, slaying a number of perilous beasts on their way. With each enemy slayed at the blood soaked hands of the proletarian, they gain access to new and improved weaponry to fight on and never surrender. Once free, the peasants can continue their struggle against the totalitarian dictatorships of the western world, until, in God's good time, the New World, with all its power and might, steps forth to the rescue and the liberation of the old.  
+
+To achieve all these goals, peasants must self-organise to survive. This can be done by electing governors, conducting collective risk analysis, assigning common pool resources and performing alternative dispute resolution using institutionalised power. All of these aspects, revolve around the understanding of social choice theory and knowledge agreggation. 
+
+
+\subsection{Rules, Attributes \& Artifacts}\label{sec:rules}
+
+The objective of the game is for an \Gls{agent} to win, individually, by escaping the pit with as many `hit-points' and `health points' as possible, whilst also ensuring that enough of your fellow players survive to start the revolution upon esape. 
+For each level within the pit, combat consists of a number of fight rounds which continue until either; the enemy is defeated, or the agents turned into chutney. Within each round, Agents can either; attack, defend, or cower. The first action deals damage to the enemy, the second absorbs damage from the enemy, and the final option skips the round whilst regenerating health and stamina.
+Agents will be granted multiple opportunities within fight rounds and pit levels to self-organise. These self-organisational tasks could involve the allocation of \gls{loot} dropped by a vanquished foe. This perticular example occurs at the end of each fight, before advancing to the next level of the pit. Expansion and explination of each of the task will be introduced later in this report. 
+
+Before listing the rules of the games, it is important to give a simple overview of the Agent and enemy attributes as well as the equipment that can be used within the game.  \\
+
+All Agents within the game have the following attributes:
+
+\begin{itemize} 
+    \item Health Points ($HP$)
+    \item Stamina Points ($ST$)
+    \item Attack Base ($A_s$)
+    \item Attack Bonus ($A_b$)
+    \item Defense Base ($D_s$)
+    \item Defense Bonus ($D_b$)
+\end{itemize}
+
+Attack and defense bonuses represent the value of the equipment that is currently being used by the agent. The base values are native to all agents and remain contant, the minimum fight potential of an agent. For the enemy's attributes:
+
+\begin{itemize}
+    \item Resilience ($X$)
+    \item Damage ($Y$)
+\end{itemize}
+
+Equipment is divided into two sections, weapons and potions. Each weapon is of a specific hit value and can be equiped by an Agent to increase their damage (or shield) potential. There are only two weapon choices:
+
+\begin{itemize}
+    \item Sword ($A_b$)
+    \item Shield ($D_b$)
+\end{itemize}
+
+Swords are used by Agents who attack, and shields are used by Agents who defend. In both cases, their potential would be the conbination of both base and bonus attribute values, giving the Total Attack (/Defend). Potions are consumed by Agents to regenerate their attributes, specifically $HP$ and $ST$. Again, there is a specific value assigned to each new potion. 
+
+\begin{itemize}
+    \item Health Potion ($P_hp$)
+    \item Stamina Potion ($P_st$)
+\end{itemize}
+
+The value mechanisms for all these variables will be outlined in Section~\ref{sec:maths}. 
+
+Now that the basic game variables have been defined, the standard rules of the game can be listed. 
+
+\begin{itemize}
+    \item Agents may communicate before each combat round to decide actions
+    \item Agents may communicate after defeating an enemy to allocate equipment gained (Common Resource Pool). 
+    \item Actions include: Attack, Defend, Cower
+    \item If a agent cowers -$>$ $HP$ is increased
+    \item An agent can only fight if $ST \geq TotalAttack$, or $ST \geq TotalDefense$.
+    \item If nobody fights all agents receive the damage dealt
+    \item For players who fight (attack/defend) equally share the damage dealt
+    \item If $\sum_{i} TotalAttack > X_{remaining}$ at the end of a round, then the enemy is defeated, 
+    \item If the dealt damage if higher than an agents health, then the agent dies
+    \item If $HP_{POOL} > X$ players pass pit level without having to fight
+    \item If at the end of a combat round $N<M$, the game ends 
+    \item The agents can consume `potions' to replenish $ST/HP$ points.
+    \item Agents cannot hold more than one piece of equipment in each slot (i.e. 1 shield and 1 sword). They can store extra equipment in their inventory
+    \item Cowers are still eligible for common resource pool.  
+    \item All agents start with equal $ST/HP$. 
+\end{itemize}
+
+% Agent / Enemy Attributes and variables 
+% specifications and Rules
+% standard rules
+
+Besides these standard rules, there were a number of additions that were made. 
+% more nuanced rules and the reasons for these rules
+
+
+\subsection{Team Structure}\label{sec:team struct}
+
+%% input the strucutre of each team
+% how does the flow of each team work 
+%% input each team and who is in each team 
+
+\subsection{Report Structure}\label{sec:report struct}
+
+% the overall structure of the report
+% 
