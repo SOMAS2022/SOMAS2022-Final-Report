@@ -13,6 +13,8 @@
 % Knowledge Agreggation 
 % Sanctions and Dissent 
 
+% outline of the report 
+This report will present the definition of the game and design considerations that took place and the main objectives. The breakdown of the teams that were created, their members, responsibilities and work flows will be detiailed before presenting the implementations required to complete our objectives. Next the game design, DevOps and infrastructure work will be detailed to provide a thourough understanding of the game and its dynamics before agent teams present their strategies, algorithms and implementations. Experiemntal design results will procede a discussion on the implications of these results with respect to self-organising multi-agent systems. Finally there will be a short conclusion and reccomendations for future work will be outlined. 
 
 \subsection{Story Line}\label{sec:story line}
 
@@ -64,7 +66,7 @@ Swords are used by Agents who attack, and shields are used by Agents who defend.
     \item Stamina Potion ($P_{st}$)
 \end{itemize}
 
-The value mechanisms for all these variables will be outlined in Section. ADD\_MATHS\_SECTION\_NUMBER. 
+The value mechanisms for all these variables will be outlined in Section. ADD MATHS SECTION NUMBER. 
 
 \subsubsection{Rules}
 Now that the basic game variables have been defined, the standard rules of the game can be listed. 
@@ -72,8 +74,8 @@ Now that the basic game variables have been defined, the standard rules of the g
 \begin{enumerate}
     \item All agents start with equal $ST$, $HP$
     \item An enemy dies if $\sum_{i} (A_b_i + A_s_i) > X_{remaining}$ at the end of a round
-    \item Damage dealt to agents who fight = $\gamma Y - \sum_{i} (D_b_i + D_s_i)$ 
-    \item An agent dies if $\frac{\gamma Y - \sum_{i} (D_b_i + D_s_i)}{N} > HP$
+    \item Damage dealt to agents who fight = $\gamma Y - \sum_{i} (D_bi + D_si)$ 
+    \item An agent dies if $\frac{\gamma Y - \sum_{i} (D_bi + D_si)}{N} > HP$
     \item To attack: $ST \geq (A_b + A_s)$
     \item To defend: $ST \geq (D_b + D_s)$
     \item If an agent attacks, $ST -= (A_b + A_s)$
@@ -98,18 +100,82 @@ Now that the basic game variables have been defined, the standard rules of the g
 
 Besides these standard rules, there were a number of additions that were made. To add new dimentions to the game's social ascept, agents only have access to granulated views of their fellow agents $HP$ and $ST$ attributes. This addition creates a high degree of uncertainty in agent calcualtions and inferences which could create interesting outcomes or large changes in group fight decisions. An agents inventory will be private, allowing agents to hoard equipment without others knowing. This too allows a higher range of agent strategies and introductes more oportunities for selfishness and exploitation. 
 
-Fight decision strategies are proposed for the whole group and chosen once a majority has been achieved. Deviation from this aggreed strategy can result in sanctions, determined by the Chair. Sanctions can include being forced to fight for a set number of rounds with zero fight attributes. Potential chairs must run for office on a number of policies and are chosen by plurality during governance elections. Finally, an disputes are resolved by the Chairs individual ideals or by the games determination of group utility. All of these decisions attempt to add the concepts of institutionalised power and social choice theory to the game. The specific mechanisms of collective actions and governance will be further detailed in Section. GAME\_DESIGN.
+Fight decision strategies are proposed for the whole group and chosen once a majority has been achieved. Deviation from this aggreed strategy can result in sanctions, determined by the Chair. Sanctions can include being forced to fight for a set number of rounds with zero fight attributes. Potential chairs must run for office on a number of policies and are chosen by plurality during governance elections. Finally, an disputes are resolved by the Chairs individual ideals or by the games determination of group utility. All of these decisions attempt to add the concepts of institutionalised power and social choice theory to the game. The specific mechanisms of collective actions and governance will be further detailed in Section.GAME DESIGN.
 
 % more nuanced rules and the reasons for these rules 
 
+\subsection{Aims \& Objectives}\label{sec:aims}
+
+The overarching objective of this project was to test the self-organisational skills of independent agents when placed into a survival, multi-agent environment. We desired to examine the creation and degredation of relationships between agents based on differing ideolegies and whether those relationships are based on facets such as; trust, expertice, community contribution or social capital. Another aim was to explore the different types of governments that would be formed by these agents to determine which governance strategy produced the best results, and which caused the most unrest. Further exploration of the range and severity of sanctions placed upon disobedient agents within an unhappy community would complement the evaluation of a Chairs effectivness to rule. Finally, we attempted to witness the effect of scaling the number of agents within the game on the groups ability to escape the pit and do so as a community. 
+
+For individual agent teams, the objective was to escape the pit whilst achieving the highest utility to the community and the highest utility to the self. When analysis the result of any experimental design, we aim to propose the best agent strategies and the most effective impementation to acheive this strategy, with respect to implementation algorithms. 
+
+An anxially aim was to assess the effectiveness of our own self-organisation when attempting to achieve these goals. To outline areas of short falling or efficieny and suggest possible improvements that would have led to more efficient work-flows and agents that could defeat more difficult versions of the game. 
+
+As a final objective, we wanted to develop a metric capable of quantifying an agents utility to the group and therefore define a `winner' of the game. 
+% enter the aims of the game 
+% to test the self-organisational skills of multiple independently designed agents within the game
+% to experiemnt with the group of agents and see weather they form relationships based on trust, expertise and community contribution 
+% to test the effectiveness of any governments established by the agents, the levels of defections from the group strategy and the severity of any sanctions that are applied. 
+% finally to see if scaling the number of agents influences the effectiveness of said governments and the communities progression through the game. 
+
+% finally to attempt to indentify a winner of the game. The definition of the `winner' will be explored in Section.GAMEDESIGN. 
+
 
 \subsection{Team Structure}\label{sec:team struct}
+
+To accomplish the goals that have been defined in the previous sub-section, we self-organised into 6 `Agent Teams'. Each team is reponsible for implementing their own agent, with their own ideologies and intuitions of how social interactions, coupled with knowledge aggregation, can be utilised to obtain high levels of game proficiency. They will also be in charge of documenting their progress and ultimatley writing a report detailing their implementation strategy and experimental design results. Finally, teams must provide code reviews for other teams to maintain consistency of standards and practices. The agent teams, and their members, are defined in \Cref{fig:agentteams}. Team leaders impose some hierachey, and will represent the teams opinions on group decisions as well as updating people on their progress. Overall group decisions will then be decised via concensus of the team leaders. 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics{000_introduction/images/agentteams.png}
+    \caption{Breakdown of the agent teams, their team leaders and members}
+    \label{fig:agentteams}
+\end{figure}
+    
+Besides agent teans, there are a number of other sub-teams that are required to complete the project. All of these sub-teams will also be responsible for their output documentation, report section writing and providing regular updates to the group. 
+The first is the infrastructure team, and will have the following responsibilities;
+
+\begin{itemize}
+    \item Game flow implementation
+    \item Agent to server interface
+    \item Agent communcication standardisation
+    \item Front end implementation
+\end{itemize}
+
+A major responsibility of this team is the documentation of thier functions and methods so that agent teams can easily integrate their agent ideologies within the game. Their work will be exploared in detail in Section.INFRA
+
+The next sub-team is Game Design, who have the following responsibilties;
+
+\begin{itemize}
+    \item Game variables alogrithmic definitions
+    \item Game Machanism definitions 
+\end{itemize}
+
+Finally the Development and Operations sub-team was in charge of;
+
+\begin{itemize}
+    \item Maintaining version control \& work-flow
+    \item Git actions
+    \item Unit tests to ensure code integrity
+    \item Deployment tools and scripts
+\end{itemize}
+
+Each one of these sub-teams was created by agent teams donating 1-2 of their members to each, the breakdown of each team is shown in \Cref{fig:subteams}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics{000_introduction/images/subteams.png}
+    \caption{Breakdown of the sub-teams, their team leaders and members}
+    \label{fig:subteams}
+\end{figure}
 
 %% input the strucutre of each team
 % how does the flow of each team work 
 %% input each team and who is in each team 
 
-\subsection{Report Structure}\label{sec:report struct}
+Finally, the overall project was led by Buster Blackledge who was responsible for coordination. This structure was used in order to allow everyone to be involved in agent design, whilst allowing all agent teams to have direct access to at least a single member of the infrastructure team. 
 
-% the overall structure of the report
-% 
+As for the decision process. Team leader meetings would discuss design considerations, where each leader represents the opinions of their team members, and make decisions after a consensus had been reached. 
+
+
