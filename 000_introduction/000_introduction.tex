@@ -73,14 +73,14 @@ Swords are used by Agents who attack, and shields are used by Agents who defend.
     \item Stamina Potion ($P_{st}$)
 \end{itemize}
 
-The value mechanisms for all these variables will be outlined in \Cref{sec: maths}. 
+The value mechanisms for all these variables will be outlined in Section \ref{sec: maths}. 
 
 \subsubsection{Rules}
 Now that the basic game variables have been defined, the standard rules of the game can be listed. 
 
 \begin{enumerate}
     \item All agents start with equal $ST$, $HP$
-    \item An enemy dies if $\sum_{i} (A_b_i + A_s_i) > X_{remaining}$ at the end of a round
+    \item An enemy dies if $\sum_{i} (A_bi + A_si) > X_{remaining}$ at the end of a round
     \item Damage dealt to agents who fight = $\gamma Y - \sum_{i} (D_bi + D_si)$ 
     \item An agent dies if $\frac{\gamma Y - \sum_{i} (D_bi + D_si)}{N} > HP$
     \item To attack: $ST \geq (A_b + A_s)$
@@ -107,7 +107,7 @@ Now that the basic game variables have been defined, the standard rules of the g
 
 Besides these standard rules, there were a number of additions that were made. To add new dimentions to the game's social aspect, agents only have access to granulated views of their fellow agents $HP$ and $ST$ attributes. This addition creates a high degree of uncertainty in agent calcualtions and inferences which could create interesting outcomes or large changes in group action decisions. An agents inventory will be private, allowing agents to hoard equipment without others knowing. This too allows a higher range of agent strategies and introductes more oportunities for selfishness and exploitation. 
 
-Fight decision strategies are proposed for the whole group and chosen once a majority has been achieved. Deviation from this aggreed strategy can result in sanctions, characterised by trade embargos due to a defector being publicly labeled as such. Potential chairs must run for office on a number of policies and are chosen by plurality during governance elections. Finally, an disputes are resolved by the Chairs individual ideals or by the games determination of group utility. All of these decisions attempt to add the concepts of institutionalised power and social choice theory to the game. The specific mechanisms of collective actions and governance will be further detailed in \Cref{sec: game design}. 
+Fight decision strategies are proposed for the whole group and chosen once a majority has been achieved. Deviation from this aggreed strategy can result in sanctions, characterised by trade embargos due to a defector being publicly labeled as such. Potential chairs must run for office on a number of policies and are chosen by plurality during governance elections. Finally, an disputes are resolved by the Chairs individual ideals or by the games determination of group utility. All of these decisions attempt to add the concepts of institutionalised power and social choice theory to the game. The specific mechanisms of collective actions and governance will be further detailed in Section \ref{sec: game design}. 
 
 % more nuanced rules and the reasons for these rules 
 
@@ -131,7 +131,7 @@ As a final objective, we wanted to develop a metric capable of quantifying an ag
 
 \subsection{Team Structure}\label{sec:team struct}
 
-To accomplish the goals that have been defined in the previous sub-section, we self-organised into 6 `Agent Teams'. Each team is responsible for implementing their own agent, with their own ideologies and intuitions of how social interactions, coupled with knowledge aggregation, can be utilised to obtain high levels of game proficiency. They will also be in charge of documenting their progress and ultimatley writing a report detailing their implementation strategy and experimental design results. Finally, teams must provide code reviews for other teams to maintain consistency of standards and practices. The agent teams, and their members, are defined in \Cref{fig:agentteams}. Team leaders impose some hierachey, and will represent the teams opinions on group decisions as well as updating people on their progress. Overall group decisions will then be decided via concensus of the team leaders. 
+To accomplish the goals that have been defined in the previous sub-section, we self-organised into 6 `Agent Teams'. Each team is responsible for implementing their own agent, with their own ideologies and intuitions of how social interactions, coupled with knowledge aggregation, can be utilised to obtain high levels of game proficiency. They will also be in charge of documenting their progress and ultimatley writing a report detailing their implementation strategy and experimental design results. Finally, teams must provide code reviews for other teams to maintain consistency of standards and practices. The agent teams, and their members, are defined in Figure \ref{fig:agentteams}. Team leaders impose some hierachey, and will represent the teams opinions on group decisions as well as updating people on their progress. Overall group decisions will then be decided via concensus of the team leaders. 
 
 \begin{figure}[htb]
     \centering
@@ -168,7 +168,7 @@ Finally the Development and Operations sub-team was in charge of;
     \item Deployment tools and scripts
 \end{itemize}
 
-Each one of these sub-teams were created by agent teams donating 1-2 of their members to each, the breakdown of each team is shown in \Cref{fig:subteams}.
+Each one of these sub-teams were created by agent teams donating 1-2 of their members to each, the breakdown of each team is shown in Figure \ref{fig:subteams}.
 
 \begin{figure}[htb]
     \centering
