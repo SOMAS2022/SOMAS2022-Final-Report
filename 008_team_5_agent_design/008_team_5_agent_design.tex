@@ -121,6 +121,30 @@ And agent deaths are determined by the number of agents with health points lower
 
 
 \section{Fight Logic}
+The fighting stage could be viewed as a Markov decision process, where from the current state, an agent could have certain probability to transit into another state (new or same), by performing one of the three fighting actions, Attack / Defend / Cower.
+\\\\
+The state space $S$ is designed based on level of health, stamina, attack, defence of an agent. 
+
+\noindent
+\begin{table}[!h]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\begin{tabular}[c]{@{}l@{}}Health \\ (to init health)\end{tabular}                      & \begin{tabular}[c]{@{}l@{}}Stamina \\ (to init stamina)\end{tabular}                    & \begin{tabular}[c]{@{}l@{}}Attack \\ (to observable agents)\end{tabular}          & \begin{tabular}[c]{@{}l@{}}Defence \\ (to observable agents)\end{tabular}         \\ \hline
+\textit{\begin{tabular}[c]{@{}l@{}}Low\\ hp \textless 30\%\end{tabular}}                & \textit{\begin{tabular}[c]{@{}l@{}}Low\\ ap \textless 30\%\end{tabular}}                & \textit{\begin{tabular}[c]{@{}l@{}}Weakee\\ AT \textless 25\%\end{tabular}}       & \textit{\begin{tabular}[c]{@{}l@{}}Weakee\\ SH \textless 25\%\end{tabular}}       \\ \hline
+\textit{\begin{tabular}[c]{@{}l@{}}Mid\\ 30\% \textless hp \textless 60\%\end{tabular}} & \textit{\begin{tabular}[c]{@{}l@{}}Mid\\ 30\% \textless ap \textless 60\%\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Ordina\\ 25\% \textless AT \textless 75\%\end{tabular} & \begin{tabular}[c]{@{}l@{}}Ordina\\ 25\% \textless SH \textless 75\%\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}High\\ 60\% \textless hp\end{tabular}                        & \begin{tabular}[c]{@{}l@{}}High\\ 60\% \textless ap\end{tabular}                        & \begin{tabular}[c]{@{}l@{}}Master\\ 75\% \textless AT\end{tabular}                & \begin{tabular}[c]{@{}l@{}}Master\\ 75\% \textless SH\end{tabular}                \\ \hline
+\end{tabular}
+\end{table}
+\\
+So in total there's 81 different states. The attack / defence intervals are separated assuming normal distribution, so extremes are less common and are valuable to treat differently.
+\\\\
+In terms of decision, our agent utilise the Q learning algorithm, where each agent keeps a map of Q values and the action taken from last state, these Q values are updated throughout the game according to feedback (reward) on the action taken at certain state.
+\\\\
+Updates rule:
+\\\\
+$Q(S,A) \leftarrow Q(S,A) + \alpha(R(S,A) + \gamma \max\limits_{A^+} Q(S^+,A^+) - Q(S,A))$
+\\\\
+The Q value for a state-action association pair represents how much an agent favour a specific action at a given state. So the strategy for an agent is to follow the highest Q value most of time, but allow some random deviation from that to explore the unknowns.
 
 
 
