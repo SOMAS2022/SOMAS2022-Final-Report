@@ -23,10 +23,7 @@
 
 We don’t want to exclude one’s excellence in one field due to short comes in an irrelevant fields.
 Here we have agents’ algorithm for their fight strategy and the algorithm for their leader duties’ functionality potentially written differently. 
-Hence, we establish two different trusts, which can decouple an agent’s strategy quality and leadership goodness, 
-This does not mean the trusts are completely independent, 
-There are still common factors for both of the trusts.
-The irrelevant features are excluded from one to another.¬
+Hence, we establish two different trusts, which can decouple an agent’s strategy quality and leadership goodness. This does not mean the trusts are completely independent, there are still common factors for both of the trusts.The irrelevant features are excluded from one to another.
 
 The agent uses these trusts to summaries features from the left-hand side and contributes to the decision-making of the right-hand side. 
 
@@ -37,14 +34,14 @@ The boundaries for the trust scores are both at 0.2 and 0.8 and initial scores a
 \newpage
 %\includegraphics[scale=1]{008_team_5_agent_design/images/Information2Trusts.png}
 
-\begin{SCfigure}[0.5][h]
+\begin{figure}[htb]
     \caption{Details of updating trusts regarding different information that can be collected.}
-    \includegraphics[width=0.63\textwidth]{008_team_5_agent_design/images/Information2Trusts.png}
+    \includegraphics[width=0.60\textwidth]{008_team_5_agent_design/images/Information2Trusts.png}
     \label{fig:Information2Trusts}
-\end{SCfigure}
+\end{figure}
 \clearpage
 
-\begin{figure}
+\begin{figure}[htb]
     \centering
     \includegraphics[scale=0.5]{008_team_5_agent_design/images/Interaction.png}
     \caption{Other agents' personality impact on our agent's interaction behaviour}
@@ -90,9 +87,12 @@ The boundaries for the trust scores are both at 0.2 and 0.8 and initial scores a
 \noindent 
 
 \noindent Once priority is decided, all agents are ranked with respect to health points from high to low. A comparison of the agent's attack and shield value will determine their fight decision, this is done iteratively starting with the agent ranked first. We define total attack as the sum of agent attack values with an attack fight decision, and total shield as the sum of agent shield values with a defend fight decision. Agent's that attack will have 0 shield and agents defending has 0 attack. The first iteration will include only the first agent, such that if the fight decision is attack the total attack would equal to the agent's attack value and shield would be 0. The second iteration will include the first and second ranked agents, this is shown with the figure below:
-\begin{center}
-    \includegraphics[width=1\textwidth]{Rank all Agents by hp}
-\end{center}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1\textwidth]{008_team_5_agent_design/images/Rank-all-Agents-by-hp.png}
+    \caption{Agents are ranked based on thier health points}
+    \label{rankagents}
+\end{figure}
 
 
 \noindent Using number of fighting agents, total attack and total shield, the algorithm will determine the estimated damage taken by all agents and expected number of agent deaths. Dividing monster resilience by total attack, we can solve for the number of fighting rounds required to defeat the monster. 
@@ -106,9 +106,13 @@ Using $D_R$ we can obtain the damage received by an individual agent to pass the
 And agent deaths are determined by the number of agents with health points lower than $D_P$
 
 \noindent To ensure total attack and total shield values are not skewed, each agent's attack values were scaled 5 times with factors between 0.5 and 2 when determining their fight decision. Continuing our figure example, we can see below in figure how individual agent fight decisions can change.
-\begin{center}
-    \includegraphics[width=1\textwidth]{scaled attack}
-\end{center}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1\textwidth]{008_team_5_agent_design/images/scaled-attack.PNG}
+    \caption{Agent attack values are scaled by 50\%}
+    \label{scaledattack}
+\end{figure}
+
 \noindent The scaling factors will give a more comprehensive view for different agent fight decision combinations, hence increasing our likelihood of finding a fight solution that is truly optimal. If all agents are alive, there could be up to 100 iterations for each of the 5 scaled attacks. But by performing each iteration in parallel, we can reduce the execution time and ensure time constraints are met.
 
 \noindent If the number of fighting agents exceeds the calculated number of deaths for the iteration, the level is passed. From the iterations that meet this criterion, the one which optimizes for least damage or least deaths are chosen with regards to our predetermined priority. The algorithm will finally return a fight decision map reflecting our best fight solution for the current level. 
@@ -122,11 +126,12 @@ And agent deaths are determined by the number of agents with health points lower
 
 \section{Fight Logic}
 The fighting stage could be viewed as a Markov decision process, where from the current state, an agent could have certain probability to transit into another state (new or same), by performing one of the three fighting actions, Attack / Defend / Cower.
-\\\\
+
 The state space $S$ is designed based on level of health, stamina, attack, defence of an agent. 
 
 \noindent
-\begin{table}[!h]
+
+\begin{table}[!ht]
 \begin{tabular}{|l|l|l|l|}
 \hline
 \begin{tabular}[c]{@{}l@{}}Health \\ (to init health)\end{tabular}                      & \begin{tabular}[c]{@{}l@{}}Stamina \\ (to init stamina)\end{tabular}                    & \begin{tabular}[c]{@{}l@{}}Attack \\ (to observable agents)\end{tabular}          & \begin{tabular}[c]{@{}l@{}}Defence \\ (to observable agents)\end{tabular}         \\ \hline
@@ -135,15 +140,15 @@ The state space $S$ is designed based on level of health, stamina, attack, defen
 \begin{tabular}[c]{@{}l@{}}High\\ 60\% \textless hp\end{tabular}                        & \begin{tabular}[c]{@{}l@{}}High\\ 60\% \textless ap\end{tabular}                        & \begin{tabular}[c]{@{}l@{}}Master\\ 75\% \textless AT\end{tabular}                & \begin{tabular}[c]{@{}l@{}}Master\\ 75\% \textless SH\end{tabular}                \\ \hline
 \end{tabular}
 \end{table}
-\\
+
 So in total there's 81 different states. The attack / defence intervals are separated assuming normal distribution, so extremes are less common and are valuable to treat differently.
-\\\\
+
 In terms of decision, our agent utilise the Q learning algorithm, where each agent keeps a map of Q values and the action taken from last state, these Q values are updated throughout the game according to feedback (reward) on the action taken at certain state.
-\\\\
+
 Updates rule:
-\\\\
+
 $Q(S,A) \leftarrow Q(S,A) + \alpha(R(S,A) + \gamma \max\limits_{A^+} Q(S^+,A^+) - Q(S,A))$
-\\\\
+
 The Q value for a state-action association pair represents how much an agent favour a specific action at a given state. So the strategy for an agent is to follow the highest Q value most of time, but allow some random deviation from that to explore the unknowns.
 
 
