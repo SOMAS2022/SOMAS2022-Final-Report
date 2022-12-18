@@ -1217,15 +1217,22 @@ Because of the scarcity, it is not always the best weapon that the agent is aski
 \section{Experimental Design}
 
 % Theory vs Practise
+One of the foundational elements of a Self-Organising Multi-Agent System are the interactions between the agents as well as the limitations that an environment might impose. When designing our agents strategy on paper there were some aspects that had do be fine-tuned in an experimental approach such as the scalability of our strategy as the game progressed as well as some threshold definitions.
+
+% Infinite Fight Loop All defend mode: Modified Fight Decision Strategy to fight more.
+A particular example that we noticed during the experiments within a homogenous environment consisting of our Teams agents was the herd effect: Although our agents efficiently aligned after a certain amount of rounds, given our Utilitarianism Preference nature, the agents ended up defending alltogether that eventually ended with them being slaughtered by the perilous beast. In order to overcome this local minima that we've found and improve our agents performance, we tweaked our internal Fight Decision thresholds as well as modifying our strategy to be more aggresive at the beginning of the game, as seen in Algorithm 8 \ref{fig:algo8}.
 
 % Modifications to thresholds through experiments with our Agents and the Random Agent \ref{fig:algo8}.
 
-% Infinite Fight Loop All defend mode: Modified Fight Decision Strategy to fight more.
-
-% Environment with only our agents (after 20 runs) : Lvl 18.4
-% Environment with Team 3 Agents and Random Agents (after 20 runs) : Lvl 28.2
+% Exper
+In order to provide some fair resutls, for all the experiments we've considered the total number of agents playing the game to be the same (100) as well as all the other game attributes (60 levels).
+\begin{itemize}
+    \item Environment with only our Agents (100), Mean Level: 18.4 (after 20 runs)
+    \item Environment with Team 3 Agents (50) and Random Agents (50), Mean Level: 28.8 (after 20 runs)
+\end{itemize}
 
 % Our agents outlasted the Random Agent but still lost.
+From the experiments we've run on the heterogenous environment consisting of our Teams' agent as well as the Random Agent we can conclude that although the mean level that we reached improved when interacting with others and we've managed to outlast the Random Agent, we still ended up losing the game.
 
 \section{Evaluation \& Future Work}
 
