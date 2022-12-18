@@ -44,124 +44,124 @@ To obtain an aggregate utility, both, chair and resource utilities are weighted 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 1
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo1.png}
-    \label{fig:algo1}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo1.png}
+%     \label{fig:algo1}
+% \end{figure}
 
 
-% \begin{algorithm}
-% \caption{Resource utility}
-% \begin{algorithmic} 
-% \Require $agent\_id, resource\_utility$
-% \Ensure $resource\_utility\_output[0-15]$
-% \If{Initial State}
-% \State $resource\_utility \leftarrow 7$
-% \EndIf
-% \If{Trade Rejected}
-% \If{$resource\_utility \geq 12$}
-% \State $resource\_utility \leftarrow resource\_utility-1$
-% \EndIf
-% \If{$ 7 \leq resource\_utility < 12$}
-% \State $resource\_utility \leftarrow resource\_utility-2$
-% \Else
-% \State $resource\_utility \leftarrow resource\_utility-3$
-% \EndIf
-% \EndIf
-% \If{Trade Accepted}
-% \State $resource\_utility \leftarrow resource\_utility+3$
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}[htb]
+\caption{Resource Utility}\label{alg:1}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, resource\_utility$
+\Ensure $resource\_utility\_output[0-15]$
+\If{Initial State}
+\State $resource\_utility \leftarrow 7$
+\EndIf
+\If{Trade Rejected}
+\If{$resource\_utility \geq 12$}
+\State $resource\_utility \leftarrow resource\_utility-1$
+\EndIf
+\If{$ 7 \leq resource\_utility < 12$}
+\State $resource\_utility \leftarrow resource\_utility-2$
+\Else
+\State $resource\_utility \leftarrow resource\_utility-3$
+\EndIf
+\EndIf
+\If{Trade Accepted}
+\State $resource\_utility \leftarrow resource\_utility+3$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 2
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo2.png}
-    \label{fig:algo2}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo2.png}
+%     \label{fig:algo2}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Proposal utility}
-% \begin{algorithmic} 
-% \Require $agent\_id, proposal\_utility$
-% \Ensure $proposal\_utility\_output[0-15]$
-% \If{Initial State}
-% \State $proposal\_utility \leftarrow 7$
-% \State $ACC \leftarrow 0$
-% \EndIf
-% \If{Asked About Proposal $\land$ This Proposal Holds $\land ~\neg$Our Decision}
-% \State $ACC \leftarrow ACC+1$
-% \If{$ACC = 3$}
-% \State $proposal\_utility \leftarrow proposal\_utility - 1$
-% \State $ACC \leftarrow 0$
-% \EndIf
-% \EndIf
-% \If{Asked About Proposal $\land$ This Proposal Holds $\land$ Our Decision}
-% \State $proposal\_utility \leftarrow proposal\_utility + 1$
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Proposal Utility}\label{alg:2}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, proposal\_utility$
+\Ensure $proposal\_utility\_output[0-15]$
+\If{Initial State}
+\State $proposal\_utility \leftarrow 7, \; ACC \leftarrow 0$
+\EndIf
+\If{Asked About Proposal $\land$ This Proposal Holds $\land ~\neg$Our Decision}
+\State $ACC \leftarrow ACC+1$
+\If{$ACC = 3$}
+\State $proposal\_utility \leftarrow proposal\_utility - 1, \; ACC \leftarrow 0$
+\EndIf
+\EndIf
+\If{Asked About Proposal $\land$ This Proposal Holds $\land$ Our Decision}
+\State $proposal\_utility \leftarrow proposal\_utility + 1$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %acc go to 0 everytime it changes chair
 % AGLO 3
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo3.png}
-    \label{fig:algo3}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo3.png}
+%     \label{fig:algo3}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Chair utility}
-% \begin{algorithmic} 
-% \Require $agent\_id, chair\_utility$
-% \Ensure $chair\_utility\_output[0-15]$
-% \If{Initial State}
-% \State $chair\_utility \leftarrow 7$
-% \State $ACC \leftarrow 0$
-% \EndIf
-% \If{Asked About Fight Decision}
-% \If{Agent Decision $\neq$ Our Decision}
-% \State $ACC \leftarrow ACC+1$
-% \If{$ACC = 4$}
-% \State $chair\_utility \leftarrow chair\_utility - 1$
-% \State $ACC \leftarrow 0$
-% \EndIf
-% \EndIf
-% \If{Agent Decision $=$ Our Decision}
-% \State $chair\_utility \leftarrow chair\_utility + 1$
-% \EndIf
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Chair Utility}\label{alg:3}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, chair\_utility$
+\Ensure $chair\_utility\_output[0-15]$
+\If{Initial State}
+\State $chair\_utility \leftarrow 7, \; ACC \leftarrow 0$
+\EndIf
+\If{Asked About Fight Decision}
+\If{Agent Decision $\neq$ Our Decision}
+\State $ACC \leftarrow ACC+1$
+\If{$ACC = 4$}
+\State $chair\_utility \leftarrow chair\_utility - 1, \; ACC \leftarrow 0$
+\EndIf
+\EndIf
+\If{Agent Decision $=$ Our Decision}
+\State $chair\_utility \leftarrow chair\_utility + 1$
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AGLO 4
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo4.png}
-    \label{fig:algo4}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo4.png}
+%     \label{fig:algo4}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Total Utility}
-% \begin{algorithmic} 
-% \Require $agent\_id, chair\_utility, resource\_utility, proposal\_utility$
-% \Ensure $total\_utility\_output[0-15]$
-% \If{End of Round}
-% \State $total\_utility \leftarrow average\{chair\_utility \times 0.45, resource\_utility \times 0.45, proposal\_utility \times 0.10\}$
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Total Utility}\label{alg:4}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, chair\_utility, resource\_utility, proposal\_utility$
+\Ensure $total\_utility\_output[0-15]$
+\If{End of Round}
+\State $total\_utility \leftarrow average\{chair\_utility \times 0.45, resource\_utility \times 0.45, proposal\_utility \times 0.10\}$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
@@ -177,104 +177,107 @@ It suffices to note that $w_1$ is updated according to the health and stamina of
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 5
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo5.png}
-    \label{fig:algo5}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo5.png}
+%     \label{fig:algo5}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Borda Score}
-% \begin{algorithmic} 
-% \Require $agentMap, w_1, w_2, needs, productivity$
-% \While{}{$i$ in $agentMap$}
-% \State $Update Weights$
-% \State $Score \leftarrow w_1 \times needs + w_2 \times productivity$
-% \State $fairness[agentID] \leftarrow Score$
-% \EndWhile
-% \State $sort(fairness)$\\
-% \Return FAIRNESS
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Borda Score}\label{alg:5}
+\begin{algorithmic} 
+\scriptsize
+\Require $agentMap, w_1, w_2, needs, productivity$
+\While{}{$i$ in $agentMap$}
+\State $Update Weights$
+\State $Score \leftarrow w_1 \times needs + w_2 \times productivity$
+\State $fairness[agentID] \leftarrow Score$
+\EndWhile
+\State $sort(fairness)$\\
+\Return FAIRNESS
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 6
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo6.png}
-    \label{fig:algo6}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo6.png}
+%     \label{fig:algo6}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Update Weights [W1]}
-% \begin{algorithmic} 
-% \Require $agentMap, healthINIT, staminaINIT,healthNOW, staminaNOW$
-% \State healthINIT $\leftarrow agentMap.healthINIT.ALL$
-% \State staminaINIT $\leftarrow agentMap.staminaINIT.ALL$
-% \If{$updateW1$}
-% \State healthNOW $\leftarrow$ health from thread
-% \State staminaNOW $\leftarrow$ stamina from thread
-% \State HP $\leftarrow$ healthINIT[agent.ID] $-$ healthNOW[agent.ID]
-% \State ST $\leftarrow$ staminaINIT[agent.ID] $-$ staminaNOW[agent.ID]
-% \If{$ST>0$}
-% \State $W1~+= 0.2$
-% \Else
-% \State $W1~-= 0.2$
-% \EndIf
-% \If{$HP>0$}
-% \State $W1~+= 0.2$
-% \Else
-% \If{$HP = 0$}
-% \State $W1 = W1$
-% \Else
-% \State $W1 -= 0.2$
-% \EndIf
-% \State $W1~-= 0.2$
-% \EndIf
-% \If{$W1>10$}
-% \State $W1=10$
-% \EndIf
-% \If{$W1<0$}
-% \State $W1 = 0$
-% \EndIf
-% \State healthINIT[agent.ID] $=$ healthNOW
-% \State staminaINIT[agent.ID] $=$ staminaNOW
-% \Return W1
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Update Weights [W1]}\label{alg:6}
+\begin{algorithmic} 
+\scriptsize
+\Require $agentMap, healthINIT, staminaINIT,healthNOW, staminaNOW$
+\State healthINIT $\leftarrow agentMap.healthINIT.ALL$
+\State staminaINIT $\leftarrow agentMap.staminaINIT.ALL$
+\If{$updateW1$}
+\State healthNOW $\leftarrow$ health from thread
+\State staminaNOW $\leftarrow$ stamina from thread
+\State HP $\leftarrow$ healthINIT[agent.ID] $-$ healthNOW[agent.ID]
+\State ST $\leftarrow$ staminaINIT[agent.ID] $-$ staminaNOW[agent.ID]
+\If{$ST>0$}
+\State $W1~+= 0.2$
+\Else
+\State $W1~-= 0.2$
+\EndIf
+\If{$HP>0$}
+\State $W1~+= 0.2$
+\Else
+\If{$HP = 0$}
+\State $W1 = W1$
+\Else
+\State $W1 -= 0.2$
+\EndIf
+\State $W1~-= 0.2$
+\EndIf
+\If{$W1>10$}
+\State $W1=10$
+\EndIf
+\If{$W1<0$}
+\State $W1 = 0$
+\EndIf
+\State healthINIT[agent.ID] $=$ healthNOW
+\State staminaINIT[agent.ID] $=$ staminaNOW
+\Return W1
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 7
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo7.png}
-    \label{fig:algo7}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo7.png}
+%     \label{fig:algo7}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Update Weights [W2]}
-% \begin{algorithmic} 
-% \Require $agentMap, healthINIT, staminaINIT,healthNOW, staminaNOW$
-% \If{agentFoughtAndDefended}
-% \State $W2~+= 0.2$
-% \Else
-% \State $W2~-= 0.2$
-% \EndIf
-% \If{$W2<0$}
-% \State $W2 = 0$
-% \EndIf
-% \If{$W2>10$}
-% \State $W2 = 10$
-% \EndIf
-% \State
-% \Return W2
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Update Weights [W2]}\label{alg:7}
+\begin{algorithmic} 
+\scriptsize
+\Require $agentMap, healthINIT, staminaINIT,healthNOW, staminaNOW$
+\If{agentFoughtAndDefended}
+\State $W2~+= 0.2$
+\Else
+\State $W2~-= 0.2$
+\EndIf
+\If{$W2<0$}
+\State $W2 = 0$
+\EndIf
+\If{$W2>10$}
+\State $W2 = 10$
+\EndIf
+\State
+\Return W2
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
@@ -309,76 +312,81 @@ Arguably, the decision about agent allocation as a fight resource is the most es
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 8
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo8.png}
-    \label{fig:algo8}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo8.png}
+%     \caption{hello}
+%     \label{fig:algo8}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Internal Fight Decision}
-% \begin{algorithmic} 
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
-% \Ensure Possible to vote
-% \If{$HP < 1.05 \times average(HP\_total) \lor Stamina < 1.05 \times average(STAMINA\_total)$}
-% \Return COWER
-% \EndIf
-%     \If{$Shield \leq Damage$}
-% \Return ATTACK
-% \EndIf
-% \If{$Shield > Damage$}
-% \Return DEFEND
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+
+\begin{algorithm}
+\caption{Internal Fight Decision}\label{alg:8}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
+\Ensure Possible to vote
+\If{$HP < 1.05 \times average(HP\_total) \lor Stamina < 1.05 \times average(STAMINA\_total)$}
+\Return COWER
+\EndIf
+    \If{$Shield \leq Damage$}
+\Return ATTACK
+\EndIf
+\If{$Shield > Damage$}
+\Return DEFEND
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 9
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo9.png}
-    \label{fig:algo9}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo9.png}
+%     \label{fig:algo9}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Edge Case}
-% \begin{algorithmic} 
-% \Require $agent\_id, HP\_total,Stamina\_total, HP, Stamina, Damage, Shield$
-% %\Ensure $Possible\_to\_vote$
+\begin{algorithm}
+\caption{Edge Case}\label{alg:9}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, HP\_total,Stamina\_total, HP, Stamina, Damage, Shield$
+%\Ensure $Possible\_to\_vote$
 
-% \If{$Stamina < 0.6*average(Stamina\_total) \lor HP < 0.6*average(HP\_total)$}
-% \Return COWER
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\If{$Stamina < 0.6*average(Stamina\_total) \lor HP < 0.6*average(HP\_total)$}
+\Return COWER
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 10
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo10.png}
-    \label{fig:algo10}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo10.png}
+%     \label{fig:algo10}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Change Decision}
-% \begin{algorithmic} 
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
-% \Ensure $Possible\_to\_vote$, $\alpha$ initially 0, increments every 5 rounds
-% \If{$\neg EdgeCase()$}
-% \If{$AD \leq DT \land round \geq \alpha+3$}
-% \Return ATTACK
-% \If{$AD > DT \land round \geq \alpha+3$}
-% \Return DEFEND
-% \EndIf
-% \EndIf
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Change Decision}\label{alg:10}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
+\Ensure $Possible\_to\_vote$, $\alpha$ initially 0, increments every 5 rounds
+\If{$\neg EdgeCase()$}
+\If{$AD \leq DT \land round \geq \alpha+3$}
+\Return ATTACK
+\If{$AD > DT \land round \geq \alpha+3$}
+\Return DEFEND
+\EndIf
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
@@ -403,115 +411,119 @@ Arguably, the decision about agent allocation as a fight resource is the most es
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AGLO 11
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo11.png}
-    \label{fig:algo11}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo11.png}
+%     \label{fig:algo11}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Threshold Decision (Part 1)}
-% \begin{algorithmic} 
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
-% %\Ensure $Possible\_to\_vote$
-% \If{$ourHP \geq average(HP\_total) \land decision = COWER$}
-% \State $HPthreshold1 \leftarrow 1.7 \times average(HP\_total)$
-% \EndIf
-% \If{$ourSTAMINA \geq average(STAMINA\_total) \land decision = COWER$}
-% \State $STAMINAthreshold1 \leftarrow 1.7 \times average(STAMINA\_total)$
-% \EndIf
-% \If{$ourHP < average(HP\_total) \land decision = COWER$}
-% \State $HPthreshold1 \leftarrow 0.7 \times average(HP\_total)$
-% \EndIf
-% \If{$ourSTAMINA < average(STAMINA\_total) \land decision = COWER$}
-% \State $STAMINAthreshold1 \leftarrow 0.7 \times average(STAMINA\_total)$
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Threshold Decision (Part 1)}\label{alg:11}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
+%\Ensure $Possible\_to\_vote$
+\If{$ourHP \geq average(HP\_total) \land decision = COWER$}
+\State $HPthreshold1 \leftarrow 1.7 \times average(HP\_total)$
+\EndIf
+\If{$ourSTAMINA \geq average(STAMINA\_total) \land decision = COWER$}
+\State $STAMINAthreshold1 \leftarrow 1.7 \times average(STAMINA\_total)$
+\EndIf
+\If{$ourHP < average(HP\_total) \land decision = COWER$}
+\State $HPthreshold1 \leftarrow 0.7 \times average(HP\_total)$
+\EndIf
+\If{$ourSTAMINA < average(STAMINA\_total) \land decision = COWER$}
+\State $STAMINAthreshold1 \leftarrow 0.7 \times average(STAMINA\_total)$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AGLO 12
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo12.png}
-    \label{fig:algo12}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo12.png}
+%     \label{fig:algo12}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Threshold Decision (Part 2)}
-% \begin{algorithmic} 
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
-% %\Ensure $Possible\_to\_vote$
-% \If{Decision $=$ COWER}
-% \State $AttackThreshold1 \leftarrow 1.1 \times average(attackPoint)$
-% \State $Defence \leftarrow 1.1 \times average(defencePoint)$
-% \EndIf
-% % \Else
-% \If{Agent Fights}
-% \State $HPthreshold1 \leftarrow average(HP\_toral)$
-% \State $STAMINAThreshold1 \leftarrow average(STAMINA\_total)$
-% \State $AttackThreshold1 \leftarrow 0.4 \times average(ATTACK\_total)$
-% \State $DefenceThreshold1 \leftarrow 0.4 \times average(DEFENCE\_total)$
-% \EndIf
-% \If{$\geq50\%$~TSN want to fight}
-% \State $HPthreshold2 \leftarrow 0.7 \times average(HP\_toral)$
-% \State $STAMINAThreshold2 \leftarrow 0.7 \times average(STAMINA\_total)$
-% \State $AttackThreshold2 \leftarrow 0.6 \times average(ATTACK\_total)$
-% \State $DefenceThreshold2 \leftarrow 0.6 \times average(DEFENCE\_total)$
-% \EndIf
-% \If{$<50\%$~TSN want to fight}
-% \State $HPthreshold2 \leftarrow 1.1 \times average(HP\_toral)$
-% \State $STAMINAThreshold2 \leftarrow 1.1 \times average(STAMINA\_total)$
-% \State $AttackThreshold2 \leftarrow 1.1 \times average(ATTACK\_total)$
-% \State $DefenceThreshold2 \leftarrow 1.1 \times average(DEFENCE\_total)$
-% \EndIf
-% \If{NO REPLY FROM TSN}
-% \State Only use $threshold1$
-% \EndIf
-% \If{REPLY FROM TSN}
-% \State $0.8\times threshold1 + 0.2 \times threshold2$
-% \EndIf
-% \If{The agent asked $\geq$ 10\% of fellow agents}
-% \State $1.1 \times (0.8\times threshold1 + 0.2 \times threshold2)$
-% \EndIf
-% \If{The agent asked $<$ 10\% of fellow agents}
-% \State $0.9 \times (0.8\times threshold1 + 0.2 \times threshold2)$
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Threshold Decision (Part 2)}\label{alg:12}
+\begin{algorithmic} 
+\scriptsize
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
+%\Ensure $Possible\_to\_vote$
+\If{Decision $=$ COWER}
+\State $AttackThreshold1 \leftarrow 1.1 \times average(attackPoint)$
+\State $Defence \leftarrow 1.1 \times average(defencePoint)$
+\EndIf
+% \Else
+\If{Agent Fights}
+\State $HPthreshold1 \leftarrow average(HP\_toral)$
+\State $STAMINAThreshold1 \leftarrow average(STAMINA\_total)$
+\State $AttackThreshold1 \leftarrow 0.4 \times average(ATTACK\_total)$
+\State $DefenceThreshold1 \leftarrow 0.4 \times average(DEFENCE\_total)$
+\EndIf
+\If{$\geq50\%$~TSN want to fight}
+\State $HPthreshold2 \leftarrow 0.7 \times average(HP\_toral)$
+\State $STAMINAThreshold2 \leftarrow 0.7 \times average(STAMINA\_total)$
+\State $AttackThreshold2 \leftarrow 0.6 \times average(ATTACK\_total)$
+\State $DefenceThreshold2 \leftarrow 0.6 \times average(DEFENCE\_total)$
+\EndIf
+\If{$<50\%$~TSN want to fight}
+\State $HPthreshold2 \leftarrow 1.1 \times average(HP\_toral)$
+\State $STAMINAThreshold2 \leftarrow 1.1 \times average(STAMINA\_total)$
+\State $AttackThreshold2 \leftarrow 1.1 \times average(ATTACK\_total)$
+\State $DefenceThreshold2 \leftarrow 1.1 \times average(DEFENCE\_total)$
+\EndIf
+\If{NO REPLY FROM TSN}
+\State Only use $threshold1$
+\EndIf
+\If{REPLY FROM TSN}
+\State $0.8\times threshold1 + 0.2 \times threshold2$
+\EndIf
+\If{The agent asked $\geq$ 10\% of fellow agents}
+\State $1.1 \times (0.8\times threshold1 + 0.2 \times threshold2)$
+\EndIf
+\If{The agent asked $<$ 10\% of fellow agents}
+\State $0.9 \times (0.8\times threshold1 + 0.2 \times threshold2)$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 13
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo13.png}
-    \label{fig:algo13}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo13.png}
+%     \label{fig:algo13}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Proposal Agreement}
-% \begin{algorithmic}
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
-% \If{Proposal Agreement}
-% \If{$thresholdHP < 1.1 \times thresholdHPProposal \land thresholdHP > 0.9 \times thresholdHPProposal$}
+\begin{algorithm}
+\caption{Proposal Agreement}\label{alg:13}
+\begin{algorithmic}
+\scriptsize    
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
+\If{Proposal Agreement}
+\If{all thresholds are within $\pm 10\%$}\\
+% \If{$0.9(HP_{proposal}) < HP_{threshold} < 1.1(HP_{proposal})$}
 % \If{$thresholdStamina < 1.1 \times thresholdStaminaProposal \land
 % thresholdStamina > 0.9 \times thresholdStaminaProposal$}
 % \If{$thresholdAttack < 1.1 \times thresholdAttackProposal \land thresholdAttack > 0.9 \times thresholdAttackProposal$}
 % \If{$thresholdDefend < 1.1 \times thresholdDefendProposal \land thresholdDefend > 0.9 \times thresholdDefendProposal$}\\
-% \Return ACCEPT
-% \Else\\
-% \Return REJECT
+\Return ACCEPT
+\Else\\
+\Return REJECT
 % \EndIf
 % \EndIf
 % \EndIf
-% \EndIf
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
@@ -547,172 +559,178 @@ In any scenario, there might be a need to vote for a new chair in case the curre
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 14
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo14.png}
-    \label{fig:algo14}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo14.png}
+%     \label{fig:algo14}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Effectiveness Measure}
-% \begin{algorithmic}
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
-% \State $effective \leftarrow true$
-% \State $MonsterAttackINIT \leftarrow 1$
-% \State $prevLevel = 0$ (initially...)
-% \If{Effectiveness Measure}
-% \State $MonsAtt \leftarrow getMonsterAttack()$
-% \State $NumAgentsAlive \leftarrow getAgentsAlive()$
-% \State $\Delta Percentage \leftarrow 1-(MonsterAttack-MonsterAttackINIT)~/~MonsterAttackINIT$
-% \If{$NumAgentsAlive > prevLevel \times \Delta Percentage$}
-% \State $effective \leftarrow true$
-% \Else
-% \State $effective \leftarrow false$
-% \EndIf
-% \State $prevLevel = thisLevel$\\
-% \Return effective
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Effectiveness Measure}\label{alg:14}
+\begin{algorithmic}
+\scriptsize
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
+\State $effective \leftarrow true$
+\State $MonsterAttackINIT \leftarrow 1$
+\State $prevLevel = 0$ (initially...)
+\If{Effectiveness Measure}
+\State $MonsAtt \leftarrow getMonsterAttack()$
+\State $NumAgentsAlive \leftarrow getAgentsAlive()$
+\State $\Delta Percentage \leftarrow 1-(MonsterAttack-MonsterAttackINIT)~/~MonsterAttackINIT$
+\If{$NumAgentsAlive > prevLevel \times \Delta Percentage$}
+\State $effective \leftarrow true$
+\Else
+\State $effective \leftarrow false$
+\EndIf
+\State $prevLevel = thisLevel$\\
+\Return effective
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 15
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo15.png}
-    \label{fig:algo15}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo15.png}
+%     \label{fig:algo15}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Update Agent Benefit}
-% \begin{algorithmic}
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
-% \State $TSNbenefit \leftarrow false$ (initially...)
-% \State $AGENTbenefit \leftarrow true$ (initially...)
-% \State $ActionDone \leftarrow$ [action from thread]
-% \State $IDgiven \leftarrow$ [ID from the thread]
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Update Agent Benefit}\label{alg:15}
+\begin{algorithmic}
+\scriptsize
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
+\State $TSNbenefit \leftarrow false$ (initially...)
+\State $AGENTbenefit \leftarrow true$ (initially...)
+\State $ActionDone \leftarrow$ [action from thread]
+\State $IDgiven \leftarrow$ [ID from the thread]
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 16
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo16.png}
-    \label{fig:algo16}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo16.png}
+%     \label{fig:algo16}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Update Trusted Social Network (TSN)}
-% \begin{algorithmic}
-% \State Trusted\_network\_benefit $ \leftarrow $ false (initially...)
-% \State Agent\_benefit $ \leftarrow $ true (initially...)
-% \State action\_done $ \leftarrow $ [action from thread]
-% \If{chairID utility $\geq$ 10}
-% \State TrustedNetwrok $ \leftarrow $ true
-% \EndIf
-% \State
-% \Return TrustedNetwork
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Update Trusted Social Network (TSN)}\label{alg:16}
+\begin{algorithmic}
+\scriptsize
+\State Trusted\_network\_benefit $ \leftarrow $ false (initially...)
+\State Agent\_benefit $ \leftarrow $ true (initially...)
+\State action\_done $ \leftarrow $ [action from thread]
+\If{chairID utility $\geq$ 10}
+\State TrustedNetwrok $ \leftarrow $ true
+\EndIf
+\State
+\Return TrustedNetwork
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 17
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo17.png}
-    \label{fig:algo17}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo17.png}
+%     \label{fig:algo17}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Update Agent Benefit}
-% \begin{algorithmic}
-% \State Agent\_benefit $\leftarrow$ true (initially...)
-% \If{$action_done != fightDec()$}
-% \State Agent\_benefit = false
-% \EndIf
-% \If{CPR\_given = false $\land$ eligible("Resource")}
-% \State Agent\_benefit = false
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Update Agent Benefit}\label{alg:17}
+\begin{algorithmic}
+\scriptsize
+\State Agent\_benefit $\leftarrow$ true (initially...)
+\If{$action_done != fightDec()$}
+\State Agent\_benefit = false
+\EndIf
+\If{CPR\_given = false $\land$ eligible("Resource")}
+\State Agent\_benefit = false
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 18
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo18.png}
-    \label{fig:algo18}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo18.png}
+%     \label{fig:algo18}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Eligible to take resource}
-% \begin{algorithmic}
-% \Require $resource,Thresholds$
-% \If{resource $==$ HPPotion}
-% \If{$ourHP < threshold(HPPotion)$}
-% \State
-% \Return true
-% \Else
-% \State
-% \Return false
-% \EndIf
-% \EndIf
-% \If{resource $==$ StaminaPotion}
-% \If{$ourStamina < threshold(StaminaPotion)$}
-% \State
-% \Return true
-% \Else
-% \State
-% \Return false
-% \EndIf
-% \EndIf
-% \If{resource $==$ sword}
-% \If{$ourAttackPoint < threshold(AttackPoint)$}
-% \State
-% \Return true
-% \Else
-% \State
-% \Return false
-% \EndIf
-% \EndIf
-% \If{resource $==$ shield}
-% \If{$ourDefencePoint < threshold(DefencePoint)$}
-% \State
-% \Return true
-% \Else
-% \State
-% \Return false
-% \EndIf
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Eligible to take resource}\label{alg:18}
+\begin{algorithmic}
+\scriptsize
+\Require $resource,Thresholds$
+\If{resource $==$ HPPotion}
+\If{$ourHP < threshold(HPPotion)$}
+\State
+\Return true
+\Else
+\State
+\Return false
+\EndIf
+\EndIf
+\If{resource $==$ StaminaPotion}
+\If{$ourStamina < threshold(StaminaPotion)$}
+\State
+\Return true
+\Else
+\State
+\Return false
+\EndIf
+\EndIf
+\If{resource $==$ sword}
+\If{$ourAttackPoint < threshold(AttackPoint)$}
+\State
+\Return true
+\Else
+\State
+\Return false
+\EndIf
+\EndIf
+\If{resource $==$ shield}
+\If{$ourDefencePoint < threshold(DefencePoint)$}
+\State
+\Return true
+\Else
+\State
+\Return false
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 19
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo19.png}
-    \label{fig:algo19}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo19.png}
+%     \label{fig:algo19}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Vote Next Chair}
-% \begin{algorithmic}
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
+\begin{algorithm}
+\caption{Vote Next Chair}\label{alg:19}
+\begin{algorithmic}
+\scriptsize
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
 
-% \end{algorithmic}
-% \end{algorithm}
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
@@ -749,184 +767,192 @@ Now that the agent is able to execute its rudimentary tasks concerning fight dec
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 20 
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo20.png}
-    \label{fig:algo20}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo20.png}
+%     \label{fig:algo20}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Disobedience Map}
-% \begin{algorithmic}
-% \While{i in disobey[]}
-% \If{disobey[i]}
-% \If{agent.ID in borda[$0:25\% len(borda)$] $\land \neg granted(r)$}
-% \State agent utility $\leftarrow$ utility
-% \EndIf
+\begin{algorithm}
+\caption{Disobedience Map}\label{alg:20}
+\begin{algorithmic}
+\scriptsize
+\While{i in disobey[]}
+\If{disobey[i]}
+\If{agent.ID in borda[$0:25\% len(borda)$] $\land \neg granted(r)$}
+\State agent utility $\leftarrow$ utility
+\EndIf
+\Else
+\If{agent.ID in borda[$25\%:50\% len(borda)$] $\land \neg granted(r)$}
+\State utility $\leftarrow$ utility - 1
+\EndIf
 % \Else
-% \If{agent.ID in borda[$25\%:50\% len(borda)$] $\land \neg granted(r)$}
-% \State utility $\leftarrow$ utility - 1
-% \EndIf
-% % \Else
-% \If{agent.ID in borda[$50\%: len(borda)$] $\land \neg granted(r)$}
-% \State utility $\leftarrow$ utility - 2
-% \EndIf
-% % \Else
-% \If{$granted(r)$}
-% \State utility $\leftarrow$ utility - 4
-% \EndIf
-% \EndIf
-% \EndWhile
-% \end{algorithmic}
-% \end{algorithm}
+\If{agent.ID in borda[$50\%: len(borda)$] $\land \neg granted(r)$}
+\State utility $\leftarrow$ utility - 2
+\EndIf
+% \Else
+\If{$granted(r)$}
+\State utility $\leftarrow$ utility - 4
+\EndIf
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AGLO 21
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo21.png}
-    \label{fig:algo21}
-\end{figure}
-% \begin{algorithm}
-% \begin{algorithmic}
-% \caption{Expert Judgement : Resource}
-% \If{DisobAfter - Initialdisobidience $\geq$ 0.1 $\times$ Initialdisobidience}
-% \State
-% \Return true
-% \Else
-% \State
-% \Return false
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo21.png}
+%     \label{fig:algo21}
+% \end{figure}
+
+\begin{algorithm}
+\begin{algorithmic}
+\scriptsize
+\caption{Expert Judgement : Resource}\label{alg:21}
+\If{DisobAfter - Initialdisobidience $\geq$ 0.1 $\times$ Initialdisobidience}
+\State
+\Return true
+\Else
+\State
+\Return false
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 22
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo22.png}
-    \label{fig:algo22}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo22.png}
+%     \label{fig:algo22}
+% \end{figure}
 
-% \begin{algorithm}
-% \begin{algorithmic}
-% \caption{Expert Judgement : Fight}
-% \If{InitialAgentsAlive - AgentsAliveAfter $\geq$ 0.1 $\times$ InitialAgentsAlive}
-% \State
-% \Return true
-% \Else
-% \State
-% \Return false
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\begin{algorithmic}
+\scriptsize    
+\caption{Expert Judgement : Fight}\label{alg:22}
+\If{InitialAgentsAlive - AgentsAliveAfter $\geq$ 0.1 $\times$ InitialAgentsAlive}
+\State
+\Return true
+\Else
+\State
+\Return false
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 23
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo23.png}
-    \label{fig:algo23}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo23.png}
+%     \label{fig:algo23}
+% \end{figure}
 
-% \begin{algorithm}
-% \begin{algorithmic}
-% \caption{Dispute Resolution}
-% \State temp $\leftarrow$ mapAgentWhoNeedResource[0]
-% \While{i in range(0 , len(mapAgent)-1}
-% \State temp $\leftarrow$ allocate\_resources(temp, mapAgent[i+1])
-% \EndWhile
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\begin{algorithmic}
+\scriptsize
+\caption{Dispute Resolution}\label{alg:23}
+\State temp $\leftarrow$ mapAgentWhoNeedResource[0]
+\While{i in range(0 , len(mapAgent)-1}
+\State temp $\leftarrow$ allocate\_resources(temp, mapAgent[i+1])
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 24
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo24.png}
-    \label{fig:algo24}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo24.png}
+%     \label{fig:algo24}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Ballot Nomination}
-% \begin{algorithmic}
-% \State P = True
-% \State Loot = True
-% \State T = 4   (Number of rounds with no power to append TSN)
-% \State Threshold = 0.4
-% \State VodedIn = false
-% \State Lnv=0
-% \State
-% \If{VotedIn}
-% \State $P \leftarrow true$
-% \State $Loot \leftarrow true$
-% \State $Threshold += 0.1$
-% \State $T \leftarrow += 0.1$
-% \Else
-% \If{$\neg$VotedIn $\land$ Lnv $\geq$ 4}
-% \State $P \leftarrow false$
-% \State $Threshold -= 0.1$
-% \State $T \leftarrow -= 1$
-% \EndIf
-% \If{Lnv = 5}
-% \State $Loot \leftarrow false$
-% \EndIf
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Ballot Nomination}\label{alg:24}
+\begin{algorithmic}
+\scriptsize
+\State P = True
+\State Loot = True
+\State T = 4   (Number of rounds with no power to append TSN)
+\State Threshold = 0.4
+\State VodedIn = false
+\State Lnv=0
+\State
+\If{VotedIn}
+\State $P \leftarrow true$
+\State $Loot \leftarrow true$
+\State $Threshold += 0.1$
+\State $T \leftarrow += 0.1$
+\Else
+\If{$\neg$VotedIn $\land$ Lnv $\geq$ 4}
+\State $P \leftarrow false$
+\State $Threshold -= 0.1$
+\State $T \leftarrow -= 1$
+\EndIf
+\If{Lnv = 5}
+\State $Loot \leftarrow false$
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 25
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo25.png}
-    \label{fig:algo25}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo25.png}
+%     \label{fig:algo25}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{UpdateLnv}
-% \begin{algorithmic}
-% \If{$\neg VotedIn$}
-% \State $Lnv += 1$
-% \Else
-% \State $Lnv = 0$
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{UpdateLnv}\label{alg:25}
+\begin{algorithmic}
+\scriptsize
+\If{$\neg VotedIn$}
+\State $Lnv += 1$
+\Else
+\State $Lnv = 0$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 26
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo26.png}
-    \label{fig:algo26}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo26.png}
+%     \label{fig:algo26}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Yield Floor}
-% \begin{algorithmic}
-% \State floor $\leftarrow$ floor[0]
-% \While{Agent in range(0, len(AgentFloor))}
-% \If{$Utility[ID[I]] > utility[floor]$}
-% \State floor $\leftarrow$ ID[i]
-% \Else
-% \State floor $\leftarrow$ floor
-% \EndIf
-% \EndWhile
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Yield Floor}\label{alg:26}
+\begin{algorithmic}
+\scriptsize
+\State floor $\leftarrow$ floor[0]
+\While{Agent in range(0, len(AgentFloor))}
+\If{$Utility[ID[I]] > utility[floor]$}
+\State floor $\leftarrow$ ID[i]
+\Else
+\State floor $\leftarrow$ floor
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -939,54 +965,56 @@ The agent design approaches the process of trading resources through the perspec
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 27
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo27.png}
-    \label{fig:algo27}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo27.png}
+%     \label{fig:algo27}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Agent Needs}
-% \begin{algorithmic} 
-% \Require $HP\_total, HP, Stamina, Stamina\_total$
-% \Require $InventoryAttack,InventoryDefend $
-% %\Ensure $Possible\_to\_vote$
-% \If{$ourHP < average(HP\_total)$}
-% \State Potion HP
-% \EndIf
-% \If{$ourStamina < average(Stamina\_total)$}
-% \State Potion Stamina
-% \EndIf
-% \If{$InventoryAttack > InventoryDefend $}
-% \State $value = (InventoryAttack - InventoryDefend)*0.9 \land$ return shield, value
-% \Else
-% \State $value = (InventoryDefend - InventoryAttack)*0.9 \land$ return sword, value
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Agent Needs}\label{alg:27}
+\begin{algorithmic} 
+\scriptsize
+\Require $HP\_total, HP, Stamina, Stamina\_total$
+\Require $InventoryAttack,InventoryDefend $
+%\Ensure $Possible\_to\_vote$
+\If{$ourHP < average(HP\_total)$}
+\State Potion HP
+\EndIf
+\If{$ourStamina < average(Stamina\_total)$}
+\State Potion Stamina
+\EndIf
+\If{$InventoryAttack > InventoryDefend $}
+\State $value = (InventoryAttack - InventoryDefend)*0.9 \land$ return shield, value
+\Else
+\State $value = (InventoryDefend - InventoryAttack)*0.9 \land$ return sword, value
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 28
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo28.png}
-    \label{fig:algo28}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo28.png}
+%     \label{fig:algo28}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Accept A Trade}
-% \begin{algorithmic} 
-% \Require $Resourceproposed$
-% %\Ensure $Possible\_to\_vote$
-% \If{$Resourceproposed == Agent Needs$}
-% \State Return ACCEPT
-% \Else
-% \State Return REFUSE
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Accept A Trade}\label{alg:28}
+\begin{algorithmic} 
+\scriptsize
+\Require $Resourceproposed$
+%\Ensure $Possible\_to\_vote$
+\If{$Resourceproposed == Agent Needs$}
+\State Return ACCEPT
+\Else
+\State Return REFUSE
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The \textit{AgentNeeds()} function can be utilised to better understand the market situation, current demand/supply relationship and individual utilities through the perspective of personal needs.
@@ -994,68 +1022,70 @@ The \textit{AgentNeeds()} function can be utilised to better understand the mark
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 29
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo29.png}
-    \label{fig:algo29}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo29.png}
+%     \label{fig:algo29}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Who To Trade}
-% \begin{algorithmic} 
-% \Require $AgentNeeds, AgentNeedsValue, ResourceToTradeBroadcast$
-% \Require $SentMessage $
-% %\Ensure $Possible\_to\_vote$
-% \If{$ AgentNeeds == what\_other\_agent\_broadcasted \land  AgentNeedsValue>= Value\_what\_other\_agent\_broadcasted$}
-% \State AskToTrade with agent
-% \EndIf
-% \If{$\neg SentMessage$}
-% \State Check the broadcast list again
-% \If{$AgentNeeds == what\_other\_agent\_broadcasted$}
-% \State AskToTrade with agent
-% \EndIf
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Who To Trade}\label{alg:29}
+\begin{algorithmic} 
+\scriptsize
+\Require $AgentNeeds, AgentNeedsValue, ResourceToTradeBroadcast$
+\Require $SentMessage $
+%\Ensure $Possible\_to\_vote$
+\If{$ AgentNeeds == what\_other\_agent\_broadcasted \land  AgentNeedsValue>= Value\_what\_other\_agent\_broadcasted$}
+\State AskToTrade with agent
+\EndIf
+\If{$\neg SentMessage$}
+\State Check the broadcast list again
+\If{$AgentNeeds == what\_other\_agent\_broadcasted$}
+\State AskToTrade with agent
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 30
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo30.png}
-    \label{fig:algo30}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo30.png}
+%     \label{fig:algo30}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{What To Trade}
-% \begin{algorithmic} 
-% \Require $InventoryAttack, InventoryDefence, Boolean Inventory(x)$
-% \Require $AgentHP, totalHP, AgentSt, TotalSt, NoTradeCounter,alpha, beta$
-% \Ensure $Initially\_\alpha = 0 \land \beta = 0$
-% \If{$ AgentHP> avg(TotalHP)*(1.15-\alpha) \land Inventory(potionHP)$}
-% \State 
-% \Return potionHP
-% \EndIf
-% \If{$AgentSt> avg(TotalSt)*(1.15-\alpha) \land Inventory(PotionSt)$}
-% \State 
-% \Return potionST
-% \EndIf
-% \If{$NoTradeCounter>4$}
-% \State $\alpha \leftarrow \alpha$ +0.5
-% \State $\beta \leftarrow \beta$ +1
-% \EndIf
-% \If{$InventoryAttack>InventoryDefence$}
-% \State 
-% \Return (median+beta) best sword 
-% \EndIf
-% \If{$InventoryAttack<=InventoryDefence$}
-% \State 
-% \Return (median+beta) best shield 
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{What To Trade}\label{alg:30}
+\begin{algorithmic} 
+\scriptsize
+\Require $InventoryAttack, InventoryDefence, Boolean Inventory(x)$
+\Require $AgentHP, totalHP, AgentSt, TotalSt, NoTradeCounter,alpha, beta$
+\Ensure $Initially\_\alpha = 0 \land \beta = 0$
+\If{$ AgentHP> avg(TotalHP)*(1.15-\alpha) \land Inventory(potionHP)$}
+\State 
+\Return potionHP
+\EndIf
+\If{$AgentSt> avg(TotalSt)*(1.15-\alpha) \land Inventory(PotionSt)$}
+\State 
+\Return potionST
+\EndIf
+\If{$NoTradeCounter>4$}
+\State $\alpha \leftarrow \alpha$ +0.5
+\State $\beta \leftarrow \beta$ +1
+\EndIf
+\If{$InventoryAttack>InventoryDefence$}
+\State 
+\Return (median+beta) best sword 
+\EndIf
+\If{$InventoryAttack<=InventoryDefence$}
+\State 
+\Return (median+beta) best shield 
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -1068,37 +1098,38 @@ Because of the scarcity, it is not always the best weapon that the agent is aski
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 31
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo31.png}
-    \label{fig:algo31}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo31.png}
+%     \label{fig:algo31}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Loot Allocation}
-% \begin{algorithmic} 
-% \Require $HP\_total, HP, Stamina, Stamina\_total$
-% \Require $TotalAttackpoint, TotalDefencepoint, Swords, Shields$
-% %\Ensure $Possible\_to\_vote$
-% \If{$ourHP < average(HP\_total)$}
-% \State  Ask for potion HP
-% \EndIf
-% \If{$ourStamina < average(Stamina\_total)$}
-% \State Ask for potion Stamina
-% \Else
-% \If{$average(TotalAttackpoint)>(4/len(AgentAlive))*AttackPoint$}
-% \State Ask for $(4/len(AgentAlive))*NumberSwords$
-% \Else
-% \State Don't ask for Attack Point
-% \EndIf
-% \If{$average(TotalDefencepoint)>(4/len(AgentAlive))*DefencePoint$}
-% \State Ask for $(4/len(AgentAlive))*NumberShield$
-% \Else
-% \State Don't ask for Defence Point
-% \EndIf
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Loot Allocation}\label{alg:31}
+\begin{algorithmic} 
+\scriptsize
+\Require $HP\_total, HP, Stamina, Stamina\_total$
+\Require $TotalAttackpoint, TotalDefencepoint, Swords, Shields$
+%\Ensure $Possible\_to\_vote$
+\If{$ourHP < average(HP\_total)$}
+\State  Ask for potion HP
+\EndIf
+\If{$ourStamina < average(Stamina\_total)$}
+\State Ask for potion Stamina
+\Else
+\If{$average(TotalAttackpoint)>(4/len(AgentAlive))*AttackPoint$}
+\State Ask for $(4/len(AgentAlive))*NumberSwords$
+\Else
+\State Don't ask for Attack Point
+\EndIf
+\If{$average(TotalDefencepoint)>(4/len(AgentAlive))*DefencePoint$}
+\State Ask for $(4/len(AgentAlive))*NumberShield$
+\Else
+\State Don't ask for Defence Point
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -1107,53 +1138,55 @@ Because of the scarcity, it is not always the best weapon that the agent is aski
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AGLO 32
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo32.png}
-    \label{fig:algo32}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo32.png}
+%     \label{fig:algo32}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Threshold Loot Allocation}
-% \begin{algorithmic} 
-% \Require $HP\_total, Stamina\_total, TotalAttackPoint,TotalDefencePoint$
-% ThresholdHPpotion =  average(TotHP)\\
-% ThresholdStaminapotion =  average(TotStamina)\\
-% ThresholdSword = average(TotAtackPoint)/(4/len(AgentAlive))\\
-% ThresholdShield = average(TotDefendPoint)/(4/len(AgentAlive))\\
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Threshold Loot Allocation}\label{alg:32}
+\begin{algorithmic} 
+\scriptsize
+\Require $HP\_total, Stamina\_total, TotalAttackPoint,TotalDefencePoint$
+ThresholdHPpotion =  average(TotHP)\\
+ThresholdStaminapotion =  average(TotStamina)\\
+ThresholdSword = average(TotAtackPoint)/(4/len(AgentAlive))\\
+ThresholdShield = average(TotDefendPoint)/(4/len(AgentAlive))\\
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 33
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo33.png}
-    \label{fig:algo33}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo33.png}
+%     \label{fig:algo33}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Proposal Agreement Loot Allocation}
-% \begin{algorithmic}
-% \Require $agent\_id, HP\_total, HP, Damage, Shield$
-% \If{Proposal Agreement}
-% \If{$thresholdHP < 1.1 \times thresholdHPProposal \land thresholdHP > 0.9 \times thresholdHPProposal$}
-% \If{$thresholdStamina < 1.1 \times thresholdStaminaProposal \land
-% thresholdStamina > 0.9 \times thresholdStaminaProposal$}
-% \If{$thresholdAttack < 1.1 \times thresholdAttackProposal \land thresholdAttack > 0.9 \times thresholdAttackProposal$}
-% \If{$thresholdDefend < 1.1 \times thresholdDefendProposal \land thresholdDefend > 0.9 \times thresholdDefendProposal$}\\
-% \Return ACCEPT
-% \Else\\
-% \Return REJECT
-% \EndIf
-% \EndIf
-% \EndIf
-% \EndIf
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Proposal Agreement Loot Allocation}\label{alg:33}
+\begin{algorithmic}
+\scriptsize
+\Require $agent\_id, HP\_total, HP, Damage, Shield$
+\If{Proposal Agreement}
+\If{$thresholdHP < 1.1 \times thresholdHPProposal \land thresholdHP > 0.9 \times thresholdHPProposal$}
+\If{$thresholdStamina < 1.1 \times thresholdStaminaProposal \land
+thresholdStamina > 0.9 \times thresholdStaminaProposal$}
+\If{$thresholdAttack < 1.1 \times thresholdAttackProposal \land thresholdAttack > 0.9 \times thresholdAttackProposal$}
+\If{$thresholdDefend < 1.1 \times thresholdDefendProposal \land thresholdDefend > 0.9 \times thresholdDefendProposal$}\\
+\Return ACCEPT
+\Else\\
+\Return REJECT
+\EndIf
+\EndIf
+\EndIf
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \textit{DrinkPotion()} is a function that indicates when our agent will take their potions, if possessed. It is done every round by comparing the average HP and Stamina.
@@ -1161,56 +1194,58 @@ Because of the scarcity, it is not always the best weapon that the agent is aski
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 34
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo34.png}
-    \label{fig:algo34}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo34.png}
+%     \label{fig:algo34}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{Drink Potion}
-% \begin{algorithmic} 
-% \Require $HP\_total, HP, Stamina, Stamina\_total$
-% %\Ensure $Possible\_to\_vote$
-% \If{$ourHP < average(HP\_total)*1.5 \land$ we have potions HP}
-% \State drink potion HP
-% \EndIf
-% \If{$ourStamina < average(Stamina\_total)*1.5 \land$ we have potions Stamina}
-% \State drink potion Stamina
-% \EndIf
-% \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+\caption{Drink Potion}\label{alg:34}
+\begin{algorithmic} 
+\scriptsize
+\Require $HP\_total, HP, Stamina, Stamina\_total$
+%\Ensure $Possible\_to\_vote$
+\If{$ourHP < average(HP\_total)*1.5 \land$ we have potions HP}
+\State drink potion HP
+\EndIf
+\If{$ourStamina < average(Stamina\_total)*1.5 \land$ we have potions Stamina}
+\State drink potion Stamina
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 35
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo35.png}
-    \label{fig:algo35}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo35.png}
+%     \label{fig:algo35}
+% \end{figure}
 
-% \begin{algorithm}
-% \caption{HP Pool}
-% \begin{algorithmic} 
-% \Require $HP$
-% \If{$ourHP > 0.8*max(HP)$}
-% \State donate 0.3 * ourHP
-% \Else
-% \If{$ourHP > 0.5*max(HP)$} 
-% \State donate 0.1 * ourHP
-% \Else 
-% \If{$ourHP > 0.4*max(HP)$}
-% \State donate 0.05 * ourHP
-% \Else
-% \State Don't donate
-% \EndIf
-% \EndIf
-% \EndIf
+\begin{algorithm}
+\caption{HP Pool}\label{alg:35}
+\begin{algorithmic} 
+\scriptsize
+\Require $HP$
+\If{$ourHP > 0.8*max(HP)$}
+\State donate 0.3 * ourHP
+\Else
+\If{$ourHP > 0.5*max(HP)$} 
+\State donate 0.1 * ourHP
+\Else 
+\If{$ourHP > 0.4*max(HP)$}
+\State donate 0.05 * ourHP
+\Else
+\State Don't donate
+\EndIf
+\EndIf
+\EndIf
 
-% \end{algorithmic}
-% \end{algorithm}
+\end{algorithmic}
+\end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -1220,7 +1255,7 @@ Because of the scarcity, it is not always the best weapon that the agent is aski
 One of the foundational elements of a Self-Organising Multi-Agent System are the interactions between the agents as well as the limitations that an environment might impose. When designing our agents strategy on paper there were some aspects that had do be fine-tuned in an experimental approach such as the scalability of our strategy as the game progressed as well as some threshold definitions.
 
 % Infinite Fight Loop All defend mode: Modified Fight Decision Strategy to fight more.
-A particular example that we noticed during the experiments within a homogenous environment consisting of our Teams agents was the herd effect: Although our agents efficiently aligned after a certain amount of rounds, given our Utilitarianism Preference nature, the agents ended up defending alltogether that eventually ended with them being slaughtered by the perilous beast. In order to overcome this local minima that we've found and improve our agents performance, we tweaked our internal Fight Decision thresholds as well as modifying our strategy to be more aggresive at the beginning of the game, as seen in Algorithm 8 \ref{fig:algo8}.
+A particular example that we noticed during the experiments within a homogenous environment consisting of our Teams agents was the herd effect: Although our agents efficiently aligned after a certain amount of rounds, given our Utilitarianism Preference nature, the agents ended up defending alltogether that eventually ended with them being slaughtered by the perilous beast. In order to overcome this local minima that we've found and improve our agents performance, we tweaked our internal Fight Decision thresholds as well as modifying our strategy to be more aggresive at the beginning of the game, as seen in Algorithm \ref{alg:8}.
 
 % Modifications to thresholds through experiments with our Agents and the Random Agent \ref{fig:algo8}.
 
