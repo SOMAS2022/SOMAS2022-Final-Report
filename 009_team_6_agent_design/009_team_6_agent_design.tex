@@ -35,7 +35,7 @@ Each measure takes a value in the range [0,100] and is initialised to 50, with t
 
 \subsection{Generosity}
 
-The generosity value is used to track how generous an agent is when we trade with them. For example, another agent gifting us an item would be seen as generous, particularly if the item gifted is of higher value than our own. The value is updated as per equation \ref{eq:T6GenerosityFormula}.
+The generosity value is used to track how generous an agent is when we trade with them. For example, another agent gifting us an item would be seen as generous, particularly if the item gifted is of higher value than our own. The value is updated as per (\ref{eq:T6GenerosityFormula}).
 
 \begin{equation}\label{eq:T6GenerosityFormula}
     G_{i} = G_{i} + (O_{v} - D_{v})
@@ -52,7 +52,7 @@ The value is updated at the end of each level. Note that each level can consist 
 
 The Similarity value is used to track how closely another agents beliefs align with our own. This is achieved by comparing proposals (both loot and fight) with our own. It is believed that an agent's overall beliefs and strategy are well represented by their proposals, which makes this an attractive method for updating the value.\\
 
-Whenever a proposal is received, either to vote on, or to be shared by us when we are the leader, equation \ref{eq:T6SimilarityFormula} is used to update the Similarity value for the proposer.
+Whenever a proposal is received, either to vote on, or to be shared by us when we are the leader, (\ref{eq:T6SimilarityFormula}) is used to update the Similarity value for the proposer.
 
 \begin{equation}\label{eq:T6SimilarityFormula}
     \begin{aligned}
@@ -77,14 +77,14 @@ There are three main factors that are considered when updating the Leadership va
     \item Responsibility - an agent shouldn't cower just because they are the leader, they should lead by example
 \end{itemize}
 
-Counts are maintained for the total number of proposals received, and the number of proposals received in the current round. At the end of each round, the leadership value is updated based on a comparison between the average number of proposals received per round, versus the number of proposals received in the current round. The relevant update is outlined by equation \ref{eq:T6LeadershipFOIFormula}.
+Counts are maintained for the total number of proposals received, and the number of proposals received in the current round. At the end of each round, the leadership value is updated based on a comparison between the average number of proposals received per round, versus the number of proposals received in the current round. The relevant update is outlined by (\ref{eq:T6LeadershipFOIFormula}).
 
 \begin{equation}\label{eq:T6LeadershipFOIFormula}
     L_{L} = L_{L} + \frac{P_{c}-P_{a}}{4}
 \end{equation}
 Where $P_{c}$ is the number of proposals received in the current round, and $P_{a}$ is the average number of proposals received per round.\\
 
-The final update occurs whenever a new leader is elected. The agent stores the Bravery value for the leader at the time of their appointment. At the end of their term, their current Bravery value is compared to the value at the start of their term. As the leader is expected to lead by example, any reduction in Bravery is punished, and any increase is rewarded. Equation \ref{eq:T6LeadershipBravery} outlines the process.
+The final update occurs whenever a new leader is elected. The agent stores the Bravery value for the leader at the time of their appointment. At the end of their term, their current Bravery value is compared to the value at the start of their term. As the leader is expected to lead by example, any reduction in Bravery is punished, and any increase is rewarded. (\ref{eq:T6LeadershipBravery}) outlines the process.
 
 \begin{equation}\label{eq:T6LeadershipBravery}
     L_{L} = L_{L} + Max(-5,Min((B_{L}^{t}-B_{L}^{t-}),5))
@@ -93,7 +93,7 @@ Where $B_{L}^{t-}$ is the leader's Bravery at the start of their term, and $B_{L
 
 \subsection{Trust}
 
-The Trust value is a measure of how dependable other agents are. If an agent is told to take a certain action by the leader, do they comply or defect? At the end of each level a list of defectors is published by the game. All agents on this list have their Trust value decreased as per equation \ref{eq:T6TrustFormula}. Complying agents have their value increased.
+The Trust value is a measure of how dependable other agents are. If an agent is told to take a certain action by the leader, do they comply or defect? At the end of each level a list of defectors is published by the game. All agents on this list have their Trust value decreased as per (\ref{eq:T6TrustFormula}). Complying agents have their value increased.
 
 \begin{equation}\label{eq:T6TrustFormula}
     T_{i}=\left\{
@@ -114,7 +114,7 @@ The agent has its own internal rules for when it should attack, defend, and cowe
 
 \subsection{Fight Proposals}\label{T6FightProposals}
 
-Our agent generates a fight proposal each round. This includes a number of rules based on an agent's state, and the fight action that should be taken if the condition is met. This proposal is sent to the leader 10\% of the time. Proposals received are compared to our own proposal, using the $Sim$ function from equation \ref{eq:T6SimilarityFormula}. If the similarity score is $\geq 0.8$, the agent votes \textbf{for} the proposal, else the agent votes \textbf{against} the proposal.
+Our agent generates a fight proposal each round. This includes a number of rules based on an agent's state, and the fight action that should be taken if the condition is met. This proposal is sent to the leader 10\% of the time. Proposals received are compared to our own proposal, using the $Sim$ function from (\ref{eq:T6SimilarityFormula}). If the similarity score is $\geq 0.8$, the agent votes \textbf{for} the proposal, else the agent votes \textbf{against} the proposal.
 
 \section{Loot}
 
@@ -164,7 +164,7 @@ Currently the game requires all agents to submit a leadership manifesto whenever
 
 Our agent appreciates that its initial guess might not be great, so the manifesto dynamically changes as the game progresses. This is to both increase the likelihood of being selected, and for the benefit of the collective. The agent maintains an opinion for both the loot and fight decision powers. These opinions are in the range [0,100], where $>50$ means \textbf{should} have the power, and $\leq 50$ means \textbf{should not} have the power. Both values are initialised to 25, indicating that the agent believes it shouldn't hold either power as leader.\\
 
-Values are also stored for term length and overthrow threshold. These are both floating point numbers to allow for fine tuning. All values are updated as per equation \ref{eq:T6ManifestoFormula}, and then restricted to an appropriate range (e.g. [1,10] for term length).
+Values are also stored for term length and overthrow threshold. These are both floating point numbers to allow for fine tuning. All values are updated as per (\ref{eq:T6ManifestoFormula}), and then restricted to an appropriate range (e.g. [1,10] for term length).
 
 \begin{equation}\label{eq:T6ManifestoFormula}
     V_{u} = V_{u} + (L_{i}-50)*(V_{L}-V_{u}/100)
@@ -175,7 +175,7 @@ Manifesto creation involves updating the manifesto values, converting the power 
 
 \subsection{Fight Decisions}
 
-Our initial manifesto does not give our agent the power to overrule fight decisions. However, that manifesto can change, as outlined in \ref{T6RunningForLeader}, such that it is possible for our agent to be elected with the power to overrule fight decisions. One of our agent's beliefs is that freedom of information is to the advantage of the collective. Therefore, a reasonable proportions of fight proposals received as leader should be made available to all other agents. Once again, proposal similarity is used in this decision making. A similarity score is generated by the `Sim' function in equation \ref{eq:T6SimilarityFormula}, and if this value is $>0.6$ then the proposal is shared. This allows us as leader to influence the fight without appearing dictatorial. Once a proposal has been voted for, the proposed actions are sent to each agent unchanged, respecting the democratic outcome. Any agents that don't agree with the proposed action always have the opportunity to defect.
+Our initial manifesto does not give our agent the power to overrule fight decisions. However, that manifesto can change, as outlined in \ref{T6RunningForLeader}, such that it is possible for our agent to be elected with the power to overrule fight decisions. One of our agent's beliefs is that freedom of information is to the advantage of the collective. Therefore, a reasonable proportions of fight proposals received as leader should be made available to all other agents. Once again, proposal similarity is used in this decision making. A similarity score is generated by the `Sim' function in (\ref{eq:T6SimilarityFormula}), and if this value is $>0.6$ then the proposal is shared. This allows us as leader to influence the fight without appearing dictatorial. Once a proposal has been voted for, the proposed actions are sent to each agent unchanged, respecting the democratic outcome. Any agents that don't agree with the proposed action always have the opportunity to defect.
 
 \subsection{Loot Decisions}
 
@@ -219,7 +219,7 @@ It is therefore of the utmost importance that our agent votes for a `good' leade
     \item Rank candidates according to overall score
     \item Vote for the highest ranked candidate (in case of plurality vote)
 \end{enumerate}
-The manifesto score is a value in the range [0,1], where 1 indicates that the manifesto is identical to our own. The score tends to 0 as a manifesto increasingly deviates from our own. The score is calculated according to equation \ref{eq:T6ManifestoScore}.
+The manifesto score is a value in the range [0,1], where 1 indicates that the manifesto is identical to our own. The score tends to 0 as a manifesto increasingly deviates from our own. The score is calculated according to (\ref{eq:T6ManifestoScore}).
 
 \begin{equation}\label{eq:T6ManifestoScore}
     M_{i}=\left\{
@@ -231,7 +231,7 @@ The manifesto score is a value in the range [0,1], where 1 indicates that the ma
 Where $TL$ is the manifesto's term length, $OT$ is the manifesto's overthrow threshold, $U_k$ is our value for 
 the $k$th manifesto element, and $C_k$ is the corresponding value from the candidate's manifesto.\\
 
-Equation \ref{eq:T6LeadershipOpinion} is used to calculate the opinion score.
+(\ref{eq:T6LeadershipOpinion}) is used to calculate the opinion score.
 
 \begin{equation}\label{eq:T6LeadershipOpinion}
     O_{i}=\left\{
@@ -242,7 +242,7 @@ Equation \ref{eq:T6LeadershipOpinion} is used to calculate the opinion score.
 \end{equation}
 Where all variables are the social capital values for the $i$th agent (the candidate).\\
 
-Once both scores have been calculated, the overall score can be derived (see equation \ref{eq:T6OverallLeadershipFormula}).
+Once both scores have been calculated, the overall score can be derived (\ref{eq:T6OverallLeadershipFormula}).
 
 \begin{equation}\label{eq:T6OverallLeadershipFormula}
     R_{i} = M_{i} * O_{i}
@@ -254,7 +254,7 @@ All candidates are ranked based on their score $R_{i}$, and in the case of plura
 
 For no-confidence votes, a combination of Social Capital values and objective success are used to determine our vote. In this instance objective success refers to the number of agents that died in the most recent round.\\
 
-Much like in leadership elections, an overall opinion of the leader is derived from their social capital values, as per equation \ref{eq:T6NoConfidenceOpinionFormula}. This is then multiplied by a scaling factor, giving a final measure of the leader's performance (equation \ref{eq:T6AgentDeathsFormula} and equation \ref{eq:T6NoConfidenceValue}).
+Much like in leadership elections, an overall opinion of the leader is derived from their social capital values, as per (\ref{eq:T6NoConfidenceOpinionFormula}). This is then multiplied by a scaling factor, giving a final measure of the leader's performance (\ref{eq:T6AgentDeathsFormula}, \ref{eq:T6NoConfidenceValue}).
 
 \begin{equation}\label{eq:T6NoConfidenceOpinionFormula}
     O_{L} = 0.5 * L_{L} + 0.2 * S_{L} + 0.15 * T_{L} + 0.1 * B_{L} + 0.05 * G_{L}
@@ -290,12 +290,13 @@ In many cases, it may not be possible to communicate this distributed knowledge 
 There must be a way in which each agent should implicitly be able to observe other agents and make informed decisions, on whether an agent may have some information, not available to them, which they can use to maximize their self-utility.
 
 \subsection{Groupthink (GT)}
-This behaviour can be observed in nature. Consider the figure below showing a shoal of fish. \\
+This behaviour can be observed in nature. Consider figure \ref{fig:T6Fish} showing a shoal of fish. \\
 
 \begin{figure}[h]           %this opens a floating environment. It will move around. The [h] tells the compiler to put the image [h]ere, not at the [t]op, [b]ottom or on a separate [p]age
 	\centering				%put the figure in the middle of the page
 	\includegraphics[scale = 0.1]{fish.jpg}			%path can be relative or absolute
-	\label{fig:example}			%so you can reference to the figure elsewhere using \ref{}
+    \caption{Shoal of Fish}
+	\label{fig:T6Fish}			%so you can reference to the figure elsewhere using \ref{}
 \end{figure}
 
 Each fish can be represented by an agent with its own values. In a time-limited environment facing imminent danger, this species of fish will collectively organise, through the virtue of maximising their self-utility, which could be avoiding predation and surviving.\\
