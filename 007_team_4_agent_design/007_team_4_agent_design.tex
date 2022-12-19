@@ -57,7 +57,7 @@ Hence, a tolerance interval is defined for every attribute in the manifesto and 
 
 \section{Post-combat}
 
-\par There are several actions we can perform during the post-combat round, which are donating HP to the health pool, trading with other agents and distributing loots.
+\par There are several actions we can perform during the post-combat round, which are donating HP to the health pool, trading with other agents, distributing loots, electing/deposing chair and handling disobedience.
 
 \subsection{Donating HP to the Health Pool}
 
@@ -104,7 +104,7 @@ tradeEval = (N_{swords} + N_{shields}) / C
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/3_trading_receive_2.png}
+    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/5_loot.png}
     \caption{Structure for loot distribution.}
     \label{fig:proj_struct}
 \end{figure}
@@ -122,7 +122,7 @@ tradeEval = (N_{swords} + N_{shields}) / C
 \par The penalty for disobedience is to refuse all trading requests for a some period of time. Technically, each time an agent disobey, its disobedience value is incremented, and at the end of every 3 rounds, this value is decremented. This creates a mechanism of punishment by locking away those agents from trading with our agent. For instance, if an agent disobey the social contract, we don't accept trade requests with that agent for 3 rounds (until the disobedience value is decremented to 0). This also has a cumulative effect, so if an agent disobey twice in the same round, it gets a 6-round punishment, which may reinforce the importance of trusting the institution in power and and following social contracts. 
 
 \section{Governance}
-\par Our chair campaigns with the following manifesto: Number of levels - 10, Percentage of votes to depose: 65, Fight Imposition - Yes, Loot Imposition - Yes. Based on our governance strategy below, the actions of the agents may require  a few levels to reach the ideal results, as such our agent is campaigning to be in power for many levels. However, in the event that most agents do not want a chair for too long, we capped his/her term at 10 levels. The decisions to utilize a fight and loot imposition will be discussed below.
+\par Our chair campaigns with the following manifesto: Number of levels - 10, Percentage of votes to depose: 65, Fight Imposition - Yes, Loot Imposition - Yes. Based on our governance strategy below, the actions of the agents may require a few levels to reach the ideal results, as such our agent is campaigning to be in power for many levels. However, in the event that most agents do not want a chair for too long, we capped his/her term at 10 levels. The decisions to utilize a fight and loot imposition will be discussed below.
  
  \par The focus behind creating an apt system of governance, is how the knowledge of this elected chair is managed. Our governance is primarily based on an economy of esteem, which is a system that rewards agents who act in a manner that contributes to the progress of the group. This contribution is recognized in the form of attacking and defending, and the reward is in the form of a greater influence in voting on a proposal regarding fight and loot decisions. This is based upon the Athenian system of government in which greater cooperation and contribution to the collective resulted in greater social benefits. Our chair aggregates knowledge based on prior fight actions; we chose 3 prior rounds as this was long enough to assess patterns in agents’ behaviour but not so long as to prevent an agent from being able to change behaviour. Upon having the proposals from each agent, a weighted mean is taken of the thresholds for attacking, defending, and loot acquisitions, creating a new proposal. The weights of this mean are the number of votes an agent can have. Having fought (attacked or defended) 3 times in the past 3 rounds, gives an agent 4 votes, having fought twice gives 3 votes, having fought once gives 2 votes, and having fought 0 times gives 1 vote. The benefit of this approach is two-fold. Firstly, it incentivizes agents to contribute more to the collective good by rewarding them with a greater ability to make a choice. Secondly, given that an agent who has been fighting in the past few rounds has lower health, it gives them a greater voice to explain why they potentially deserve to rest in the form a cower decision. Once this new weighted proposal is created it is broadcasted to all agents to vote on it. If the vote does not pass, the weight of each category is decremented by one, except those of agents who did not fight at all in the past 3 rounds. This yields a proposal closer to the simple majority and then is broadcasted again, and the process repeats each time a vote does not pass. While simple majorities are not the best form of knowledge aggregation, the voting not passing multiple times suggests that the desire of the agents is closer to a simple majority than a weighted mean based around the collective good. As a result of creating and broadcasting a new proposal, our leader requires both the fight imposition and loot imposition.
 
@@ -137,7 +137,7 @@ Figure 7.6 shows the results obtained by setting these parameters in the .env fi
 
 We can see that for the number of agents remaining at the end of each level, the line becomes quite consistent up to level 20. This means that we have 100 agents up to level 20 which shows strong performance under our agent strategy. The same pattern can be seen with the number of agents remaining at the end of each round. Up until round 67, the consistency of the line is very high showing that 100 agents have remained until round 67. However, it slowly starts to decline after this point where round 85 is left with 55 agents (game lost). 
 
-The HP pool graph shows interesting trends where we see the HP pool gravitate upwards to 20,000 on level 4 (the maximum peak). However, it decreases after this point with no rise which indicates that agents stopped donating to the HP pool, by level 23 the agents start to constantly fight.
+The HP pool graph shows interesting trends where we see the HP pool gravitate upwards to 20,000 on level 4 (the maximum peak). However, it decreases after this point with no rise which indicates that agents stopped donating to the HP pool, and by level 16 the agents start to constantly having to fight, which leads to a loss in the game.
 
 \newpage
 \begin{figure}[htbp]
@@ -168,13 +168,18 @@ The HP pool graph shows interesting trends where we see the HP pool gravitate up
     &
     \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX1_6.jpg}
 \end{tabular}
-    \caption{Experiment results 1}
+    \caption{Experiment 1 results}
 \end{figure}
 
 \newpage
 
 Experiment 2:
-\par The parameters were now changed from 60 to 20 levels.
+\par The parameters were now changed from 60 to 20 levels from the first experiment.Figure 7.7 shows the results obtained by setting these parameters in the .env file of the repository. 
+
+The first two graphs depict the number of agents remaining at the end of each level or fight round. The pass threshold is set at 60, meaning that a minimum of 60 agents are required to progress. The graphs show that the number of agents begins to decline at round 23, and around mid 25, the number of agents falls to the pass threshold. After this point, the number of agents significantly decreases.
+
+The HP pool graph shows the fluctuations in the total health of the agents over time. At level 2, the HP pool reaches its highest point at around 1,500. After this, the pool decreases and does not increase again, indicating that agents have stopped contributing to the pool. Differently from Experiment 1, we can see that the number of agents donating to the HP pool is not sufficient in the first level, so they must fight right at the beginning of the game, and are not able to scavenge good loot. Hence, they cannot handle the monster and lose the game in the next couple of levels.  
+
 
 \begin{figure}[htbp]
 \begin{tabular}{ll}
@@ -189,9 +194,9 @@ Experiment 2:
 \begin{figure}[htbp]
 \begin{tabular}{ll}
     \centering
-    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX2_3.jpg}
+    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX2_5.jpg}
     &
-    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX2_4.jpg}
+    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX2_6.jpg}
 \end{tabular}
 
 \end{figure}
@@ -200,19 +205,22 @@ Experiment 2:
 \begin{figure}[htbp]
 \begin{tabular}{ll}
     \centering
-    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX2_5.jpg}
+    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX2_3.jpg}
     &
-    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX2_6.jpg}
+    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX2_4.jpg}
 \end{tabular}
-    \caption{Experiment results 2}
+    \caption{Experiment 2 results.}
 \end{figure}
 
 
 \newpage
 
-Experiment 3:
+Experiment 3: The parameters were now changed so that there are only 30 of our agent in the game. Figure 7.8 shows the results obtained by setting these parameters in the .env file of the repository. 
 
-\par In the agents remaining at the end of each level graph the pass threshold is 18 and the agent remaining is 30, after 23 iterations we can see the agent remaining significantly declines and reaches its minimum at 
+\par The first two graph shows the number of agents remaining at the end of each level or fight round. The pass threshold is set at 18, meaning that the minimum number of agents required is 18. Initially, the number of agents remaining is 30, but as the levels progress, the number of agents significantly declines and reaches its minimum at level 25 (or round 97).
+
+The HP pool graph displays the trends in the HP pool, with similar behavior as in Experiment 1. At level 4, the HP pool reaches its maximum peak of 7,000. However, after this point, the HP pool decreases and does not rise again, indicating that agents may have stopped contributing to the pool. From level 12 onwards, the agents appear to constantly be in fights, as indicated by the constant decrease in the HP pool.
+
 
 \begin{figure}[htbp]
 \begin{tabular}{ll}
@@ -238,16 +246,20 @@ Experiment 3:
 \begin{figure}[htbp]
 \begin{tabular}{ll}
     \centering
-    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX3_5.jpg}
-    &
     \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX3_6.jpg}
+    &
+    \includegraphics[width=0.5\textwidth]{007_team_4_agent_design/figures/EX3_5.jpg}
 \end{tabular}
-    \caption{Experiment results 3}
+    \caption{Experiment 3 results.}
 \end{figure}
+
+
+\par In all the experiments, the agents lost and couldn't escape the pit. It was observed that the agents tend to donate to the HP pool, and this strategy works for a limited time, since the average HP seems to be constantly decreasing. This may happen due to a lack of health potions dropped by the monster, or a poor loot allocation. Furthermore, when agents start to have to fight, it is in fact observed that they manage to survive and maintain a good performance for some levels, until the difficulty is increased to a very high intensity, which cannot be handled by the agents.
+
 
 \newpage
 
-\par The key idea in our agent implementation is that it attempts to balance its social contribution and its chances of survival (economy of esteem). For instance, when reaching an impasse with the fight decision, our agent follows the logical decision for the common good more frequently. Also, it chooses to interact/trade with agents with a higher social contribution value and do not disobey social contracts, which reinforces the ideology implemented. Also, by donating to the HP pool, we can see how beneficial itwas in the simulations, since as soon as the agents start fighting the monster, they start to encounter difficulties and were not able to win the game. This reveals that contribution to social good yields better results than a selfish mindset.
+\par Given our agent operates under an economy of esteem, it's key idea is to ensure that it balances social contributions with its chances of survival. For instance, when reaching an impasse with the fight decision, our agent follows the logical decision for the common good more frequently. Also, it chooses to interact/trade with agents with a higher social contribution value and do not disobey social contracts, which reinforces the ideology implemented. Also, by donating to the HP pool, we can see how beneficial it was in the simulations, since as soon as the agents start fighting the monster, they start to encounter difficulties and were not able to win the game. This reveals that contribution to social good yields better results than a selfish mindset. At the same time, the variable C balances the amount of our agent's social contributions, so that it doesn't always choose to contribute to the social good and makes it prioritize its own survival.
 
 \par By analysing the experiments 1 and 3 (60 levels) we can notice that our agent performs better than the random agent (survives until level 18). One of the reasons for that is our agent takes into consideration past actions from other agents in order to make a decision. With this learning process, our agent surpasses the random agent performance by replacing randomness for knowledge when making a decision. Also, in our agent's strategy, for the fight manifesto, the majority of agents fighting will be attacking since too many agents defending may lead to a prolonged level and a lot of damage being taken. Furthermore, our manifesto for loot distribution is based on each agent's current needs, which is an attempt to optimise the stats for each agent before the new level starts. Finally, we have a governance ideology that rewards agents that contribute to the social good, giving them more importance in voting.
 
