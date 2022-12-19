@@ -70,7 +70,7 @@ One of the greatest challenges when working on the agent design was an algorithm
 
 \textit{Proposal performance}: If our agent was asked about their fight decision preference, and the resulting proposal confirmed this action, a reward is given to the agent responsible. In the opposite case, where our preference was denied after consultation, a punishment would be applied. To once again introduce possitive reinforcement, a punishment will not be applied until the condition is met multiple times. Again, these rewards and proposals are applied as increasing or decreasing the agents proposal utility, as shown in Algorithm \ref{alg:2}. Intuitively, this score could never update for a given agent, as it requires both contact to be made and their proposal to be granted access to the floor. 
 
-\begin{algorithm}
+\begin{algorithm}[htb]
 \caption{Proposal Utility}\label{alg:2}
 \begin{algorithmic} 
 \scriptsize
@@ -94,7 +94,7 @@ One of the greatest challenges when working on the agent design was an algorithm
 
 \textit{Biased chair}: This is based on the assumption that our strategy is always best. If there is a difference between the internally calculated fight action and the obliged action determined by the agreed proposal, then the chair's strategy is considered sub-optimal and a punishment is applied. To allow of any initial transients, this punishement is only applied after the chair has been in power for a number of rounds. This contraint however, does not apply to the reward given if the actions match. In this case, the chair's strategy would be considered optimal. Algorithm \ref{alg:3} shows how rewards and punishments are applied by increasing or decreasing the chair utility. 
 
-\begin{algorithm}
+\begin{algorithm}[htb]
 \caption{Chair Utility}\label{alg:3}
 \begin{algorithmic} 
 \scriptsize
@@ -115,10 +115,10 @@ One of the greatest challenges when working on the agent design was an algorithm
 \end{algorithmic}
 \end{algorithm}
 
-To obtain an overall utility score, shown in Algorithm \ref{alg:4}, both chair and resource utilities are weighted equally. Due to the nature of round/level operation within the game, \textit{proposal utility} has a lower level of contribution to the weighted average. This decision was made according to the \textit{participation principle}, and the fact that the decision frequency is lower than its application. With all of the above algorithms; thresholds, rewards and punishments should be determined during testing and my could be based on a percentage change of current values.                     
+To obtain an overall utility score, shown in Algorithm \ref{alg:4}, both chair and resource utilities are weighted equally. Due to the nature of round/level operation within the game, \textit{proposal utility} has a lower level of contribution to the weighted average. This decision was made according to the \textit{participation principle}, and the fact that the decision frequency is lower than its application. With all of the above algorithms; thresholds, rewards and punishments should be determined during testing and my could be based on a percentage change of current values. This logic applies to all thresholds embedded with the alogrithms in this team's section. If a threshold value is specificed, it is for the readers convience of readability.                    
 
 
-\begin{algorithm}
+\begin{algorithm}[htb]
 \caption{Utility}\label{alg:4}
 \begin{algorithmic} 
 \scriptsize
@@ -141,16 +141,8 @@ The final \textit{borda score} returned for each agent can be further used as a 
 
 It suffices to note that $w_1$ is updated according to the health and stamina of each agent, whereas $w_2$ is changed by a simple fact, whether an agent was active in battle\footnote{fought or defended actively} or just cowered.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 5
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo5.png}
-%     \label{fig:algo5}
-% \end{figure}
-
-\begin{algorithm}
+\begin{algorithm}[htb]
 \caption{Borda Score}\label{alg:5}
 \begin{algorithmic} 
 \scriptsize
@@ -166,16 +158,7 @@ It suffices to note that $w_1$ is updated according to the health and stamina of
 \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 6
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo6.png}
-%     \label{fig:algo6}
-% \end{figure}
-
-\begin{algorithm}
+\begin{algorithm}[htb]
 \caption{Update Weights [W1]}\label{alg:6}
 \begin{algorithmic} 
 \scriptsize
@@ -216,16 +199,8 @@ It suffices to note that $w_1$ is updated according to the health and stamina of
 \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 7
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo7.png}
-%     \label{fig:algo7}
-% \end{figure}
-
-\begin{algorithm}
+\begin{algorithm}[ht]
 \caption{Update Weights [W2]}\label{alg:7}
 \begin{algorithmic} 
 \scriptsize
@@ -274,20 +249,10 @@ Arguably, the decision about agent allocation as a fight resource is the most es
         The first part is an internal function to see if our agent is going to fight or flee. In this part, the Health points, resource confidence\footnote{attack, shield} and the number of cowering decisions until the current state.
         To maximise self-satisfaction and avoid jeopardy, the agent will always cower if its health point is smaller  than  1.25 $\times$ average(HP) of the agents or 1.25 $\times$ stamina(HP). Otherwise, based on which resource confidence is higher, it will defend or attack as outlined below.
 
-        On the other hand, if our agent is not in the internally-defined edge case\footnote{that is, it has not a critically low level of parameters required to survive the round}, and he has cowered for more than $\alpha$\footnote{starting with $\alpha~=~3$} rounds, it will fight. The accumulator parameter $\alpha$ will be increased continuously every 3 levels by 1; hence, the agent becomes more selfish the more levels increase.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 8
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo8.png}
-%     \caption{hello}
-%     \label{fig:algo8}
-% \end{figure}
+        On the other hand, if our agent is not in the internally-defined edge case\footnote{that is, it has not a critically low level of parameters required to survive the round}, and he has cowered for more than $\alpha$\footnote{starting with $\alpha~=~3$} rounds, it will fight. The accumulator parameter $\alpha$ will be increased continuously every 3 levels by 1; hence, the agent becomes more selfish the more levels increase. the implementation of this is shown in Algorithms \ref{alg:8}-\ref{alg:10}. 
 
 
-\begin{algorithm}
+\begin{algorithm}[htb]
 \caption{Internal Fight Decision}\label{alg:8}
 \begin{algorithmic} 
 \scriptsize
@@ -304,41 +269,20 @@ Arguably, the decision about agent allocation as a fight resource is the most es
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 9
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo9.png}
-%     \label{fig:algo9}
-% \end{figure}
-
-\begin{algorithm}
+\begin{algorithm}[htb]
 \caption{Edge Case}\label{alg:9}
 \begin{algorithmic} 
 \scriptsize
 \Require $agent\_id, HP\_total,Stamina\_total, HP, Stamina, Damage, Shield$
 %\Ensure $Possible\_to\_vote$
-
 \If{$Stamina < 0.6*average(Stamina\_total) \lor HP < 0.6*average(HP\_total)$}
 \Return COWER
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 10
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo10.png}
-%     \label{fig:algo10}
-% \end{figure}
-
-\begin{algorithm}
+\begin{algorithm}[htb]
 \caption{Change Decision}\label{alg:10}
 \begin{algorithmic} 
 \scriptsize
@@ -354,38 +298,19 @@ Arguably, the decision about agent allocation as a fight resource is the most es
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
 
 \subsection{Threshold Proposal for Fight Decision}
     
-    The second fight decision is required to form a viable proposal based on the internal needs and necessary actions for the collective to succeed. In all, in this design agent must operate on 6 thresholds; three for the \textit{Attack}\footnote{this concerns HP, Stamina, BonusAttack} and three for the \textit{Defence}\footnote{this concerns Stamina and BonusDefence only}. These will be used to effectively obtain the proposal map which defines each agent's desired state for the level. There are three factors that impact the value of the proposal thresholds.
+The second fight decision is required to form a viable proposal based on the internal needs and necessary actions for the collective to succeed. In all, in this design agent must operate on 6 thresholds; three for the \textit{Attack}\footnote{this concerns HP, Stamina, BonusAttack} and three for the \textit{Defence}\footnote{this concerns Stamina and BonusDefence only}. These will be used to effectively obtain the proposal map which defines each agent's desired state for the level. There are three factors that impact the value of the proposal thresholds.
     
-    \begin{itemize}
-    \item The first one is based on the internal agent's decision. 
-    It was decided that if our agent cowers, but is currently in a good state\footnote{which would still allow it to fight}, then the HP and Stamina threshold for people to attack or defend should be lower than the social average. However, if our agent wants to cower and he is in bad shape, the HP and Stamina threshold for the proposal could, in fact, be higher than the average. For the attack and defend threshold, we will propose approximately the average value be in place.
-    On the other hand, if an agent decides to fight, then he will ask for an average threshold, as it is beneficial for a higher proportion of agents to fight in order to distribute the damage.
+The first one is based on the internal agent's decision and shown in Algorithm \ref{alg:thresh1}. It was decided that if our agent cowers, but is currently in a good state\footnote{which would still allow it to fight}, then the HP and Stamina threshold for people to attack or defend should be lower than the social average. However, if our agent wants to cower and he is in bad shape, the HP and Stamina threshold for the proposal could, in fact, be higher than the average. For the attack and defend threshold, we will propose approximately the average value be in place. On the other hand, if an agent decides to fight, then he will ask for an average threshold, as it is beneficial for a higher proportion of agents to fight in order to distribute the damage.
+ 
 
-    \item The second threshold is based on the agent's trusted social network decision to fight or flight. If more than half of the group of agents we have established a bond with want to fight, the threshold is less than the average. Otherwise, it remains as before. If there is no reply from anyone in the TSN, then threshold 1 will hold. Otherwise, the weighted average of \textit{Threshold2} will be chosen, bearing in mind a substantially higher weight for the first one; that is, our agent's internal decision.
-    
-    \item Ultimately, the third threshold is a metric taking into consideration a group of agents from 3 different categories. These are to be understood as a social classification of individuals who, either, have the highest needs, are 'neutral' in the context of social capital, or are simply non-effective free-riders. 
-    Based on the sorted array of agents, thanks to the Borda score, it is possible to establish the threshold. Even though this might be seen as a relatively convoluted way of gathering data about social behaviour, it allows for establishing a just collective action without an undesirable elitism component.
-    \end{itemize}
 
-\clearpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% AGLO 11
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo11.png}
-%     \label{fig:algo11}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Threshold Decision (Part 1)}\label{alg:11}
+\begin{algorithm}[htb]
+\caption{Threshold Decision (Part 1)}\label{alg:thresh1}
 \begin{algorithmic} 
 \scriptsize
 \Require $agent\_id, HP\_total, HP, Damage, Shield$
@@ -404,19 +329,12 @@ Arguably, the decision about agent allocation as a fight resource is the most es
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% AGLO 12
+The second threshold, shown in Algorithm \ref{alg:thresh2} is based on the agent's trusted social network decision to fight or flight. If more than half of the group of agents we have established a bond with want to fight, the threshold is less than the average. Otherwise, it remains as before. If there is no reply from anyone in the TSN, then threshold 1 will hold. Otherwise, the weighted average of threshold 2 will be chosen, bearing in mind a substantially higher weight for the first one; that is, our agent's internal decision.
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo12.png}
-%     \label{fig:algo12}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Threshold Decision (Part 2)}\label{alg:12}
+    
+\begin{algorithm}[htb]
+\caption{Threshold Decision (Part 2)}\label{alg:thresh2}
 \begin{algorithmic} 
 \scriptsize
 \Require $agent\_id, HP\_total, HP, Damage, Shield$
@@ -458,19 +376,15 @@ Arguably, the decision about agent allocation as a fight resource is the most es
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 13
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo13.png}
-%     \label{fig:algo13}
-% \end{figure}
+Ultimately, the third threshold is a metric taking into consideration a group of agents from 3 different categories. These are to be understood as a social classification of individuals who, either, have the highest needs, are 'neutral' in the context of social capital, or are simply non-effective free-riders. Based on the sorted array of agents, thanks to the Borda score, it is possible to establish the threshold. Even though this might be seen as a relatively convoluted way of gathering data about social behaviour, it allows for establishing a just collective action without an undesirable elitism component.
 
-\begin{algorithm}
-\caption{Proposal Agreement}\label{alg:13}
+
+Once again, our agent must also consider fight proposals on the floor. Algorithm \ref{alg:propagree} shows that any proposal whos conditions are within a $\pm 10\%$ range of ours will be accpeted. 
+
+\begin{algorithm}[htb]
+\caption{Proposal Agreement}\label{alg:propagree}
 \begin{algorithmic}
 \scriptsize    
 \Require $agent\_id, HP\_total, HP, Damage, Shield$
@@ -492,7 +406,11 @@ Arguably, the decision about agent allocation as a fight resource is the most es
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
 
 \clearpage
 
@@ -522,183 +440,183 @@ The trusted-network-benefit parameter is true if and only if the current chair i
 
 In the actual voting function, the algorithm aims to use all aforementioned parameters in deciding whether the no confidence vote is necessary. This is determined through the balanced parameter values which, in certain cases, might result in \textit{forgiveness}. The decision is taken based on effectiveness first to consider the greater good, but only if our agent is already satisfied; certainly not in case of personal existential jeopardy.
 
-In any scenario, there might be a need to vote for a new chair in case the current one gets deposed. This process is initiated based on the manifesto proposed by each nominee. The algorithm presented below aims to cast a vote that maximises own benefit.
+In any scenario, there might be a need to vote for a new chair in case the current one gets deposed. This process is initiated based on the manifesto proposed by each nominee. Algoritm \ref{alg:confidence vote}, presented below, aims to cast a vote that maximises own benefit.
+
+\begin{algorithm}[htb]
+\caption{Confidence Vote}\label{alg:confidence vote}
+\begin{algorithmic}
+\Require $Chair.ID,action\_our\_agent\_did, Boolean ResourceGiven$
+\State $Counter\_not\_agent\_benefit = 0$
+\State $Counter\_not\_effective = 0$
+\State $vote = 1$ 
+\State $effective = effectivenessMeasure()$
+\State $AgentBenefit = updateAgentBenefit(action_done, ResourceGiven)$
+\State $TrustedNetwork = updateTrustedNetwork(chairID)$
+\If{$\neg Effective$}
+\State Counter\_not\_effective = Counter\_not\_effective + 1
+\Else  
+\State Counter\_not\_effective = 0
+\EndIf
+\If{$\neg AgentBenefit$}
+\State Counter\_not\_agent\_benefit = Counter\_not\_agent\_benefit + 1
+\Else
+\State Counter\_not\_agent\_benefit = 0
+\EndIf
+\If{$TrustedNetowrk \land Counter\_not\_effective > 2$}\\
+\Return Vote = 0
+\EndIf
+\If{$TrustedNetwork \land Counter\_not\_agent\_benefit $}\\
+\Return Vote = 0
+\EndIf
+\If{$Counter\_not\_effective > 1$}\\
+\Return Vote = 0
+\EndIf
+\If{$Counter\_not\_agent\_benefit > 1$}\\
+\Return Vote = 0
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 14
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo14.png}
-%     \label{fig:algo14}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Effectiveness Measure}\label{alg:14}
-\begin{algorithmic}
-\scriptsize
-\Require $agent\_id, HP\_total, HP, Damage, Shield$
-\State $effective \leftarrow true$
-\State $MonsterAttackINIT \leftarrow 1$
-\State $prevLevel = 0$ (initially...)
-\If{Effectiveness Measure}
-\State $MonsAtt \leftarrow getMonsterAttack()$
-\State $NumAgentsAlive \leftarrow getAgentsAlive()$
-\State $\Delta Percentage \leftarrow 1-(MonsterAttack-MonsterAttackINIT)~/~MonsterAttackINIT$
-\If{$NumAgentsAlive > prevLevel \times \Delta Percentage$}
-\State $effective \leftarrow true$
-\Else
-\State $effective \leftarrow false$
-\EndIf
-\State $prevLevel = thisLevel$\\
-\Return effective
-\EndIf
-\end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+% \caption{Effectiveness Measure}\label{alg:14}
+% \begin{algorithmic}
+% \scriptsize
+% \Require $agent\_id, HP\_total, HP, Damage, Shield$
+% \State $effective \leftarrow true$
+% \State $MonsterAttackINIT \leftarrow 1$
+% \State $prevLevel = 0$ (initially...)
+% \If{Effectiveness Measure}
+% \State $MonsAtt \leftarrow getMonsterAttack()$
+% \State $NumAgentsAlive \leftarrow getAgentsAlive()$
+% \State $\Delta Percentage \leftarrow 1-(MonsterAttack-MonsterAttackINIT)~/~MonsterAttackINIT$
+% \If{$NumAgentsAlive > prevLevel \times \Delta Percentage$}
+% \State $effective \leftarrow true$
+% \Else
+% \State $effective \leftarrow false$
+% \EndIf
+% \State $prevLevel = thisLevel$\\
+% \Return effective
+% \EndIf
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 15
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo15.png}
-%     \label{fig:algo15}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Update Agent Benefit}\label{alg:15}
-\begin{algorithmic}
-\scriptsize
-\Require $agent\_id, HP\_total, HP, Damage, Shield$
-\State $TSNbenefit \leftarrow false$ (initially...)
-\State $AGENTbenefit \leftarrow true$ (initially...)
-\State $ActionDone \leftarrow$ [action from thread]
-\State $IDgiven \leftarrow$ [ID from the thread]
-\end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+% \caption{Update Agent Benefit}\label{alg:15}
+% \begin{algorithmic}
+% \scriptsize
+% \Require $agent\_id, HP\_total, HP, Damage, Shield$
+% \State $TSNbenefit \leftarrow false$ (initially...)
+% \State $AGENTbenefit \leftarrow true$ (initially...)
+% \State $ActionDone \leftarrow$ [action from thread]
+% \State $IDgiven \leftarrow$ [ID from the thread]
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 16
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo16.png}
-%     \label{fig:algo16}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Update Trusted Social Network (TSN)}\label{alg:16}
-\begin{algorithmic}
-\scriptsize
-\State Trusted\_network\_benefit $ \leftarrow $ false (initially...)
-\State Agent\_benefit $ \leftarrow $ true (initially...)
-\State action\_done $ \leftarrow $ [action from thread]
-\If{chairID utility $\geq$ 10}
-\State TrustedNetwrok $ \leftarrow $ true
-\EndIf
-\State
-\Return TrustedNetwork
-\end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+% \caption{Update Trusted Social Network (TSN)}\label{alg:16}
+% \begin{algorithmic}
+% \scriptsize
+% \State Trusted\_network\_benefit $ \leftarrow $ false (initially...)
+% \State Agent\_benefit $ \leftarrow $ true (initially...)
+% \State action\_done $ \leftarrow $ [action from thread]
+% \If{chairID utility $\geq$ 10}
+% \State TrustedNetwrok $ \leftarrow $ true
+% \EndIf
+% \State
+% \Return TrustedNetwork
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 17
+% }
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo17.png}
-%     \label{fig:algo17}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Update Agent Benefit}\label{alg:17}
-\begin{algorithmic}
-\scriptsize
-\State Agent\_benefit $\leftarrow$ true (initially...)
-\If{$action_done != fightDec()$}
-\State Agent\_benefit = false
-\EndIf
-\If{CPR\_given = false $\land$ eligible("Resource")}
-\State Agent\_benefit = false
-\EndIf
-\end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+% \caption{Update Agent Benefit}\label{alg:17}
+% \begin{algorithmic}
+% \scriptsize
+% \State Agent\_benefit $\leftarrow$ true (initially...)
+% \If{$action_done != fightDec()$}
+% \State Agent\_benefit = false
+% \EndIf
+% \If{CPR\_given = false $\land$ eligible("Resource")}
+% \State Agent\_benefit = false
+% \EndIf
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 18
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo18.png}
-%     \label{fig:algo18}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Eligible to take resource}\label{alg:18}
-\begin{algorithmic}
-\scriptsize
-\Require $resource,Thresholds$
-\If{resource $==$ HPPotion}
-\If{$ourHP < threshold(HPPotion)$}
-\State
-\Return true
-\Else
-\State
-\Return false
-\EndIf
-\EndIf
-\If{resource $==$ StaminaPotion}
-\If{$ourStamina < threshold(StaminaPotion)$}
-\State
-\Return true
-\Else
-\State
-\Return false
-\EndIf
-\EndIf
-\If{resource $==$ sword}
-\If{$ourAttackPoint < threshold(AttackPoint)$}
-\State
-\Return true
-\Else
-\State
-\Return false
-\EndIf
-\EndIf
-\If{resource $==$ shield}
-\If{$ourDefencePoint < threshold(DefencePoint)$}
-\State
-\Return true
-\Else
-\State
-\Return false
-\EndIf
-\EndIf
-\end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+% \caption{Eligible to take resource}\label{alg:18}
+% \begin{algorithmic}
+% \scriptsize
+% \Require $resource,Thresholds$
+% \If{resource $==$ HPPotion}
+% \If{$ourHP < threshold(HPPotion)$}
+% \State
+% \Return true
+% \Else
+% \State
+% \Return false
+% \EndIf
+% \EndIf
+% \If{resource $==$ StaminaPotion}
+% \If{$ourStamina < threshold(StaminaPotion)$}
+% \State
+% \Return true
+% \Else
+% \State
+% \Return false
+% \EndIf
+% \EndIf
+% \If{resource $==$ sword}
+% \If{$ourAttackPoint < threshold(AttackPoint)$}
+% \State
+% \Return true
+% \Else
+% \State
+% \Return false
+% \EndIf
+% \EndIf
+% \If{resource $==$ shield}
+% \If{$ourDefencePoint < threshold(DefencePoint)$}
+% \State
+% \Return true
+% \Else
+% \State
+% \Return false
+% \EndIf
+% \EndIf
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 19
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo19.png}
-%     \label{fig:algo19}
-% \end{figure}
+% \begin{algorithm}
+% \caption{Vote Next Chair}\label{alg:19}
+% \begin{algorithmic}
+% \scriptsize
+% \Require $agent\_id, HP\_total, HP, Damage, Shield$
 
-\begin{algorithm}
-\caption{Vote Next Chair}\label{alg:19}
-\begin{algorithmic}
-\scriptsize
-\Require $agent\_id, HP\_total, HP, Damage, Shield$
-
-\end{algorithmic}
-\end{algorithm}
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
@@ -707,147 +625,39 @@ In any scenario, there might be a need to vote for a new chair in case the curre
 
 This section outlines all responsibilities and prerogatives of the agent who is, either, nominating himself, or already being the social chair. It is crucial to assume that the chair possesses the capacity to perceive the social construction and political meta-games so that it provides an effective, efficient, and mutually satisfiable way to solve collective problems\footnote {As a wise man once said...}.
 
-The algorithm presented below outlines the way in which the ballot nomination is executed, indicates the logic behind processing votes from each subsequent individual, regulates dispute resolution, governance modes and yielding the floor. There is a certain number of actions the chair may execute. For the \textit{majority 'mode'} the proposal with the highest number of votes will be implemented. On the other hand, the agent might nominate itself with the $P$ flag value being true. As a result, a dicta... ekhm... 'Expert Judgement' call can be made,  in which case the proposal having the highest level of support in the society can still be overruled. A similar approach was applied to the capability of dealing with resource allocation. The discrete value of the \textit{loot} flag determines the chair's competence; it can either be a mediator\footnote{in which case there is no direct imposition onto who is granted the resource} or execute the litigation; have a role of the judge. The set of first-order predicate logic clauses below formalises the chair operation.
-
-For the fight proposal, the following holds
-
-\begin{equation}
-    \exists x, agent(x) \land isChair(x) \land \neg P \rightarrow Majority()
-\end{equation}
-\begin{equation}
-    \exists x, agent(x) \land isChair(x) \land SatisfiedVote(x) \land P \rightarrow Majority()
-\end{equation}
-\begin{equation}
-    \exists x, agent(x) \land isChair(x) \land \neg SatVote(x) \land P \rightarrow ExpJudge()
-\end{equation}
-
-For resource allocation, the following holds
-
-\begin{equation}
-    \exists x, agent(x) \land isChair(x) \land Loot \rightarrow DisputeResolution()
-\end{equation}
-\begin{equation}
-    \exists x, agent(x) \land isChair(x) \land \neg Loot \rightarrow YieldFloor()
-\end{equation}
-
-Now that the agent is able to execute its rudimentary tasks concerning fight decision and resource allocation, it is crucial to enrich that functionality with an internal disobedience recognition. This mechanism represents the contempt implementation by broadcasting information about the disobedience to all individuals. Each one can then take the necessary action as deemed appropriate. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 20 
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo20.png}
-%     \label{fig:algo20}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Disobedience Map}\label{alg:20}
+\begin{algorithm}[htb]
 \begin{algorithmic}
-\scriptsize
-\While{i in disobey[]}
-\If{disobey[i]}
-\If{agent.ID in borda[$0:25\% len(borda)$] $\land \neg granted(r)$}
-\State agent utility $\leftarrow$ utility
-\EndIf
-\Else
-\If{agent.ID in borda[$25\%:50\% len(borda)$] $\land \neg granted(r)$}
-\State utility $\leftarrow$ utility - 1
-\EndIf
-% \Else
-\If{agent.ID in borda[$50\%: len(borda)$] $\land \neg granted(r)$}
-\State utility $\leftarrow$ utility - 2
-\EndIf
-% \Else
-\If{$granted(r)$}
-\State utility $\leftarrow$ utility - 4
-\EndIf
-\EndIf
-\EndWhile
-\end{algorithmic}
-\end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% AGLO 21
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo21.png}
-%     \label{fig:algo21}
-% \end{figure}
-
-\begin{algorithm}
-\begin{algorithmic}
-\scriptsize
-\caption{Expert Judgement : Resource}\label{alg:21}
-\If{DisobAfter - Initialdisobidience $\geq$ 0.1 $\times$ Initialdisobidience}
-\State
-\Return true
-\Else
-\State
-\Return false
-\EndIf
-\end{algorithmic}
-\end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 22
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo22.png}
-%     \label{fig:algo22}
-% \end{figure}
-
-\begin{algorithm}
-\begin{algorithmic}
-\scriptsize    
-\caption{Expert Judgement : Fight}\label{alg:22}
-\If{InitialAgentsAlive - AgentsAliveAfter $\geq$ 0.1 $\times$ InitialAgentsAlive}
-\State
-\Return true
-\Else
-\State
-\Return false
-\EndIf
-\end{algorithmic}
-\end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 23
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo23.png}
-%     \label{fig:algo23}
-% \end{figure}
-
-\begin{algorithm}
-\begin{algorithmic}
-\scriptsize
-\caption{Dispute Resolution}\label{alg:23}
+\caption{Chair Function}\label{alg:chairfunction}
 \State temp $\leftarrow$ mapAgentWhoNeedResource[0]
-\While{i in range(0 , len(mapAgent)-1}
-\State temp $\leftarrow$ allocate\_resources(temp, mapAgent[i+1])
-\EndWhile
+\If{$\neg Power\_Flag$}
+\State YieldFloor() and Update fighting map according to voted proposal
+\Else
+\If{$Power\_Flag$}
+\If{$\neg Expert\_judgement\_fight$}
+\State YieldFloor() and Update fighting map according to voted proposal
+\Else
+\State YieldFloor() and Update fighting map according to internal threshholds
+\EndIf
+\EndIf
+\EndIf
+\If{$\neg loot\_Flag$}
+\State YieldFloor() and Update resource map according to voted proposal
+\Else
+\If{$loot\_Flag$}
+\If{$\neg Expert\_judgement\_loot$}
+\State YieldFloor() and Update resource map according to voted proposal
+\Else
+\State YieldFloor() and Update resource map according to internal threshholds
+\EndIf
+\EndIf
+\EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 24
+Algorithm \ref{alg:chairfunction} (above) combined with Algorithm \ref{alg:ballotnom} (below), outlines the way in which the ballot nomination is executed. It indicates the logic behind processing votes from each subsequent; dispute resolution, governance election or floor yielding. There is a certain number of actions the chair may execute. For the \textit{majority 'mode'} the proposal with the highest number of votes will be implemented. 
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo24.png}
-%     \label{fig:algo24}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Ballot Nomination}\label{alg:24}
+\begin{algorithm}[htb]
+\caption{Ballot Nomination}\label{alg:ballotnom}
 \begin{algorithmic}
 \scriptsize
 \State P = True
@@ -874,53 +684,145 @@ Now that the agent is able to execute its rudimentary tasks concerning fight dec
 \EndIf
 \end{algorithmic}
 \end{algorithm}
+
+On the other hand, the agent might nominate itself with the $P$ flag value being true. As a result, a dicta... ekhm... 'Expert Judgement' call can be made,  in which case the proposal having the highest level of support in the society can still be overruled. A similar approach was applied to the capability of dealing with resource allocation. The discrete value of the \textit{loot} flag determines the chair's competence; it can either be a mediator\footnote{in which case there is no direct imposition onto who is granted the resource} or execute the litigation; have a role of the judge. The set of first-order predicate logic clauses below formalises the chair operation.
+
+For the fight proposal, the following holds
+
+\begin{equation}
+    \exists x. agent(x) \land isChair(x) \land \neg P \rightarrow Majority()
+\end{equation}
+\begin{equation}
+    \exists x. agent(x) \land isChair(x) \land \neg ExpJudgementFight() \land P \rightarrow Majority()
+\end{equation}
+\begin{equation}
+    \exists x. agent(x) \land isChair(x) \land ExpJudgementFight() \land P \rightarrow ExpAssignemnt()
+\end{equation}
+
+For resource allocation, the following holds
+
+\begin{equation}
+    \exists x. agent(x) \land isChair(x) \land \neg L \land \neg ExpJudgementLoot()\rightarrow Majority()
+\end{equation}
+\begin{equation}
+    \exists x. agent(x) \land isChair(x) \land L \land ExpJudgementLoot() \rightarrow ExpAssignemnt()
+\end{equation}
+
+Now that the agent is able to execute its rudimentary tasks concerning fight decision and resource allocation, it is crucial to enrich that functionality with an internal disobedience recognition. This mechanism represents the contempt implementation by broadcasting information about the disobedience to all individuals. Each one can then take the necessary action as deemed appropriate; which in the case of the agent would be a trade embargo imposed by decreasing each disobeying agent's utility (punishment depends on each agent's Borda score), causing the agent to not trade with them eventually.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALGO 20 
+
+% \begin{algorithm}
+% \caption{Disobedience Map}\label{alg:20}
+% \begin{algorithmic}
+% \scriptsize
+% \While{i in disobey[]}
+% \If{disobey[i]}
+% \If{agent.ID in borda[$0:25\% len(borda)$] $\land \neg granted(r)$}
+% \State agent utility $\leftarrow$ utility
+% \EndIf
+% \Else
+% \If{agent.ID in borda[$25\%:50\% len(borda)$] $\land \neg granted(r)$}
+% \State utility $\leftarrow$ utility - 1
+% \EndIf
+% % \Else
+% \If{agent.ID in borda[$50\%: len(borda)$] $\land \neg granted(r)$}
+% \State utility $\leftarrow$ utility - 2
+% \EndIf
+% % \Else
+% \If{$granted(r)$}
+% \State utility $\leftarrow$ utility - 4
+% \EndIf
+% \EndIf
+% \EndWhile
+% \end{algorithmic}
+% \end{algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AGLO 21
+
+% \begin{algorithm}
+% \begin{algorithmic}
+% \scriptsize
+% \caption{Expert Judgement : Resource}\label{alg:21}
+% \If{DisobAfter - Initialdisobidience $\geq$ 0.1 $\times$ Initialdisobidience}
+% \State
+% \Return true
+% \Else
+% \State
+% \Return false
+% \EndIf
+% \end{algorithmic}
+% \end{algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALGO 22
+
+% \begin{algorithm}
+% \begin{algorithmic}
+% \scriptsize    
+% \caption{Expert Judgement : Fight}\label{alg:22}
+% \If{InitialAgentsAlive - AgentsAliveAfter $\geq$ 0.1 $\times$ InitialAgentsAlive}
+% \State
+% \Return true
+% \Else
+% \State
+% \Return false
+% \EndIf
+% \end{algorithmic}
+% \end{algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALGO 23
+
+% \begin{algorithm}
+% \begin{algorithmic}
+% \scriptsize
+% \caption{Dispute Resolution}\label{alg:23}
+% \State temp $\leftarrow$ mapAgentWhoNeedResource[0]
+% \While{i in range(0 , len(mapAgent)-1}
+% \State temp $\leftarrow$ allocate\_resources(temp, mapAgent[i+1])
+% \EndWhile
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 25
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo25.png}
-%     \label{fig:algo25}
-% \end{figure}
-
-\begin{algorithm}
-\caption{UpdateLnv}\label{alg:25}
-\begin{algorithmic}
-\scriptsize
-\If{$\neg VotedIn$}
-\State $Lnv += 1$
-\Else
-\State $Lnv = 0$
-\EndIf
-\end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+% \caption{UpdateLnv}\label{alg:25}
+% \begin{algorithmic}
+% \scriptsize
+% \If{$\neg VotedIn$}
+% \State $Lnv += 1$
+% \Else
+% \State $Lnv = 0$
+% \EndIf
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ALGO 26
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo26.png}
-%     \label{fig:algo26}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Yield Floor}\label{alg:26}
-\begin{algorithmic}
-\scriptsize
-\State floor $\leftarrow$ floor[0]
-\While{Agent in range(0, len(AgentFloor))}
-\If{$Utility[ID[I]] > utility[floor]$}
-\State floor $\leftarrow$ ID[i]
-\Else
-\State floor $\leftarrow$ floor
-\EndIf
-\EndWhile
-\end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+% \caption{Yield Floor}\label{alg:26}
+% \begin{algorithmic}
+% \scriptsize
+% \State floor $\leftarrow$ floor[0]
+% \While{Agent in range(0, len(AgentFloor))}
+% \If{$Utility[ID[I]] > utility[floor]$}
+% \State floor $\leftarrow$ ID[i]
+% \Else
+% \State floor $\leftarrow$ floor
+% \EndIf
+% \EndWhile
+% \end{algorithmic}
+% \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -930,17 +832,8 @@ Ostrom's framework recognises that individuals are purposeful actors responding 
 
 The agent design approaches the process of trading resources through the perspective of \textit{fairness}. The trade is fair, as by exchanging something as by exchanging a resource the marginal utility of our agent increases, and so does for the agent agreeing to the trade. Functions presented below are formed by implementing a simple comparison mechanism between 'us' and other fellow agents. The resources concerned are \textit{swords}, \textit{shields} and \textit{potions}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 27
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo27.png}
-%     \label{fig:algo27}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Agent Needs}\label{alg:27}
+\begin{algorithm}[htb]
+\caption{Agent Needs}\label{alg:agentneeds}
 \begin{algorithmic} 
 \scriptsize
 \Require $HP\_total, HP, Stamina, Stamina\_total$
@@ -959,45 +852,11 @@ The agent design approaches the process of trading resources through the perspec
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 28
+The Algorithm \ref{alg:agentneeds} can be utilised to better understand the market situation, current demand/supply relationship and individual utilities through the perspective of personal needs. This utilisation can be seen in Algorithm \ref{alg:whototrade} and Algorithm \ref{alg:whattotrade}.
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo28.png}
-%     \label{fig:algo28}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Accept A Trade}\label{alg:28}
-\begin{algorithmic} 
-\scriptsize
-\Require $Resourceproposed$
-%\Ensure $Possible\_to\_vote$
-\If{$Resourceproposed == Agent Needs$}
-\State Return ACCEPT
-\Else
-\State Return REFUSE
-\EndIf
-\end{algorithmic}
-\end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The \textit{AgentNeeds()} function can be utilised to better understand the market situation, current demand/supply relationship and individual utilities through the perspective of personal needs.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 29
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo29.png}
-%     \label{fig:algo29}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Who To Trade}\label{alg:29}
+\begin{algorithm}[htb]
+\caption{Who To Trade}\label{alg:whototrade}
 \begin{algorithmic} 
 \scriptsize
 \Require $AgentNeeds, AgentNeedsValue, ResourceToTradeBroadcast$
@@ -1014,19 +873,9 @@ The \textit{AgentNeeds()} function can be utilised to better understand the mark
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 30
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo30.png}
-%     \label{fig:algo30}
-% \end{figure}
-
-\begin{algorithm}
-\caption{What To Trade}\label{alg:30}
+\begin{algorithm}[htb]
+\caption{What To Trade}\label{alg:whattotrade}
 \begin{algorithmic} 
 \scriptsize
 \Require $InventoryAttack, InventoryDefence, Boolean Inventory(x)$
@@ -1054,26 +903,12 @@ The \textit{AgentNeeds()} function can be utilised to better understand the mark
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-The loot allocation function block solves the problem of which resources to ask from the common pool. On the first instance, it will compare its own HP and Stamina level to the average value and ask for potions if deemed necessary. For the shields and swords, which are crucial tools for survival and necessary to remain useful to the commonwealth, our agent is going to compare the average total attack points across all agents in relation to his own ones. Based on this comparison, it will ask for, either, the best, mediocre or the worst quality sword. It might, eventually, ask for no swords if decided that it is not beneficial in line with the law of marginal returns\footnote{in which case an additional weapon will not contribute to the individual utility}.
+The loot allocation, shown in Algorithm \ref{alg:lootallocation} solves the problem of which resources to ask from the common pool. On the first instance, it will compare its own HP and Stamina level to the average value and ask for potions if deemed necessary. For the shields and swords, which are crucial tools for survival and necessary to remain useful to the commonwealth, our agent is going to compare the average total attack points across all agents in relation to his own ones. Based on this comparison, it will ask for, either, the best, mediocre or the worst quality sword. It might, eventually, ask for no swords if decided that it is not beneficial in line with the law of marginal returns\footnote{in which case an additional weapon will not contribute to the individual utility}.
 
-The same reasoning is applied to all kinds of resources.
-
-Because of the scarcity, it is not always the best weapon that the agent is asking for. One recognises that it might be socially penalised if having too extensive inventory compared to the others.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 31
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo31.png}
-%     \label{fig:algo31}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Loot Allocation}\label{alg:31}
+\begin{algorithm}[htb]
+\caption{Loot Allocation}\label{alg:lootallocation}
 \begin{algorithmic} 
 \scriptsize
 \Require $HP\_total, HP, Stamina, Stamina\_total$
@@ -1098,22 +933,11 @@ Because of the scarcity, it is not always the best weapon that the agent is aski
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The same reasoning is applied to all kinds of resources. Due to scarcity, it is not always the best weapon that the agent is asking for. One recognises that it might be socially penalised if having too extensive inventory compared to the others. The basis for our agent's resource allocation strategy is outlined in Algorithm \ref{alg:threshloot}. It operates on previously obtained \textit{fairness} parameter. However, our agent's proposals cannot always be guarenteeded the floor. Therefore, Algorithm \ref{alg:proplootallocation} outlines our agent's strategy for anlaysing proposals on the floor.  
 
-\textit{ThresholdLootAllocation()} forms the basis for our agent's resource allocation strategy. It operates on previously obtained \textit{fairness} parameter. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% AGLO 32
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo32.png}
-%     \label{fig:algo32}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Threshold Loot Allocation}\label{alg:32}
+\begin{algorithm}[htb]
+\caption{Threshold Loot Allocation}\label{alg:threshloot}
 \begin{algorithmic} 
 \scriptsize
 \Require $HP\_total, Stamina\_total, TotalAttackPoint,TotalDefencePoint$
@@ -1123,19 +947,9 @@ ThresholdSword = average(TotAtackPoint)/(4/len(AgentAlive))\\
 ThresholdShield = average(TotDefendPoint)/(4/len(AgentAlive))\\
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 33
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo33.png}
-%     \label{fig:algo33}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Proposal Agreement Loot Allocation}\label{alg:33}
+\begin{algorithm}[htb]
+\caption{Proposal Agreement Loot Allocation}\label{alg:proplootallocation}
 \begin{algorithmic}
 \scriptsize
 \Require $agent\_id, HP\_total, HP, Damage, Shield$
@@ -1144,7 +958,7 @@ ThresholdShield = average(TotDefendPoint)/(4/len(AgentAlive))\\
 \If{$thresholdStamina < 1.1 \times thresholdStaminaProposal \land
 thresholdStamina > 0.9 \times thresholdStaminaProposal$}
 \If{$thresholdAttack < 1.1 \times thresholdAttackProposal \land thresholdAttack > 0.9 \times thresholdAttackProposal$}
-\If{$thresholdDefend < 1.1 \times thresholdDefendProposal \land thresholdDefend > 0.9 \times thresholdDefendProposal$}\\
+\If{$thresholdDefend < 1.1 \times thresholdDefendProposal \land thresholdDefend > 0.9 \times thresholdDefendProposal$}
 \Return ACCEPT
 \Else\\
 \Return REJECT
@@ -1155,66 +969,8 @@ thresholdStamina > 0.9 \times thresholdStaminaProposal$}
 \EndIf
 \end{algorithmic}
 \end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textit{DrinkPotion()} is a function that indicates when our agent will take their potions, if possessed. It is done every round by comparing the average HP and Stamina.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 34
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo34.png}
-%     \label{fig:algo34}
-% \end{figure}
-
-\begin{algorithm}
-\caption{Drink Potion}\label{alg:34}
-\begin{algorithmic} 
-\scriptsize
-\Require $HP\_total, HP, Stamina, Stamina\_total$
-%\Ensure $Possible\_to\_vote$
-\If{$ourHP < average(HP\_total)*1.5 \land$ we have potions HP}
-\State drink potion HP
-\EndIf
-\If{$ourStamina < average(Stamina\_total)*1.5 \land$ we have potions Stamina}
-\State drink potion Stamina
-\EndIf
-\end{algorithmic}
-\end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALGO 35
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[scale=0.7]{006_team_3_agent_design/FIGS/Algo35.png}
-%     \label{fig:algo35}
-% \end{figure}
-
-\begin{algorithm}
-\caption{HP Pool}\label{alg:35}
-\begin{algorithmic} 
-\scriptsize
-\Require $HP$
-\If{$ourHP > 0.8*max(HP)$}
-\State donate 0.3 * ourHP
-\Else
-\If{$ourHP > 0.5*max(HP)$} 
-\State donate 0.1 * ourHP
-\Else 
-\If{$ourHP > 0.4*max(HP)$}
-\State donate 0.05 * ourHP
-\Else
-\State Don't donate
-\EndIf
-\EndIf
-\EndIf
-
-\end{algorithmic}
-\end{algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Experimental Design}
@@ -1230,7 +986,7 @@ A particular example that we noticed during the experiments within a homogenous 
 % Exper
 In order to provide some fair resutls, for all the experiments we've considered the total number of agents playing the game to be the same (100) as well as all the other game attributes (60 levels).
 \begin{itemize}
-    \item Environment with only our Agents (100), Mean Level: 18.4 (after 20 runs)
+    \item Environment with only our Agents (100), Mean Level: 22.3 (after 20 runs)
     \item Environment with Team 3 Agents (50) and Random Agents (50), Mean Level: 28.8 (after 20 runs)
 \end{itemize}
 
