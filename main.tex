@@ -30,22 +30,24 @@
 \usepackage{bm}
 \usepackage{amsfonts} 
 \usepackage{booktabs}
-\usepackage{multirow}
 \usepackage{listings}
 \usepackage{listings-golang}
 \usepackage{adjustbox}
 \usepackage{multicol}
 \usepackage{multirow}
-\usepackage{graphicx}
 \usepackage[normalem]{ulem}
 \useunder{\uline}{\ul}{}
 \usepackage[rightcaption]{sidecap}
-\usepackage{graphicx} %package to manage images
 \setlength\parindent{24pt}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage{lipsum}
+\usepackage{placeins}
+\usepackage{enumitem} % for enumerated lists other than 1. 2. 3. 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{animate}
 
 \lstset{
   language=golang,
@@ -61,11 +63,6 @@
   tabsize=4
 }
 
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
-
-\usepackage{placeins}
-\usepackage{enumitem} % for enumerated lists other than 1. 2. 3. 
-\usepackage{algpseudocode}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                          Commands                             %
@@ -146,7 +143,7 @@
 \pagenumbering{roman}
 
 \begin{abstract}
-Co-operative survival games refer to a subset of political choice games wherein `players' must work together to overcome disaster, else suffer the consequences through both personal and communal damage. Furthermore, without the ability to monitor a system and in the absence of a centralised authority, it becomes impossible to form enduring self-governing institutions, resulting in the proposed self-organising mechanisms for `solving' such games potentially functioning in harmful ways. This project utilises a self-organising, multi-agent system to simulate an iterated collective action, co-operative survival game comprising a resource management problem, the `solution' to which involves a system of localised governance. Through a series of experiments where the behaviour of the players in the system is increasingly randomised and the presence of self-organising mechanisms is toggled, we investigate the causes of instability. Ultimately, we conclude that through the integration of governance using treaties, it is possible for such a system to effectively self-organise to minimise the total deaths of the players involved.
+The economic climate of the world today has demonstrated our reliance on sparse resources. However, given society's increasing use of automation, there may be methods to combat this issue of sparsity by helping people and artificial systems work together to distribute these resources in a just manner. Notably, informed decision-making through social interaction and collective risk analysis increases the chance of satisficing most individuals. To demonstrate the viability of this hypothesis, a project was designed that simplified the issues of today into a cooperative survival game, namely, the "Escape The Pitt" game. Agents programmed with different strategies must act as a collective to defeat monsters level by level. At each level, these agents must communicate to decide collective actions and the distribution of sparse resources, aiding them in their tasks. These decision are aided by the election of a chair to help formalize the views of the collective and implement the social contracts of a Norm-governed society. Ultimately, while the game was not won by most agent teams, the utilization of communication and an elected chair aided agents in progressing further in the game than when performing using random actions. Given this result, we believe that improvements and additions in the communication systems in the game would yield even greater progress.
 \end{abstract}
 
 \newpage
@@ -215,6 +212,7 @@ Co-operative survival games refer to a subset of political choice games wherein 
 \input{000_introduction/000_introduction}
 \input{001_game_design/001_game_design.tex}
 \input{002_devops_project_management/002_devops_project_management.tex}
+\input{003_infrastructure/003_infrastructure.tex}
 \input{004_team_1_agent_design/004_team_1_agent_design}
 \input{005_team_2_agent_design/005_team_2_agent_design}
 \input{006_team_3_agent_design/006_team_3_agent_design}
