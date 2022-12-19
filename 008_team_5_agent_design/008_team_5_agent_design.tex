@@ -3,7 +3,7 @@
 
 \section{Collective Intelligence}
 
-\begin{figure}[h]
+\begin{figure}[h]!h
     \centering
     \includegraphics[width=0.63\textwidth]{008_team_5_agent_design/images/Collective-Intelligence-Branches.jpg}
     \caption{Collective Intelligence Branch}
@@ -140,7 +140,7 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
     \label{fig:Information2Trusts}
 \end{figure}
 
-\begin{table}[h!]
+\begin{table}[htb]
     \centering
     \small
     \begin{tabular}{ |c|p{16em}|p{16em}| }
@@ -290,7 +290,7 @@ The state space is designed based on the health, stamina, attack and defence of 
         \textit{\begin{tabular}[c]{@{}l@{}}High\\ 60\% \textless hp\end{tabular}}               & \textit{\begin{tabular}[c]{@{}l@{}}High\\ 60\% \textless ap\end{tabular}}               & \textit{\begin{tabular}[c]{@{}l@{}}Master\\ 75\% \textless AT\end{tabular}}                & \textit{\begin{tabular}[c]{@{}l@{}}Master\\ 75\% \textless SH\end{tabular}}                \\ \hline
     \end{tabular}
 \end{table}
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=0.6\textwidth]{008_team_5_agent_design/images/state_normal_distro.png}
     \caption{Assumed normal distribution of attack / defence roles.}
@@ -315,7 +315,7 @@ Higher Q value for a state-action pair makes it more favourable for an agent to 
 \subsection{Fight proposal: best self-experience}
 As the exact opposite to making fight decision, which one has to answer the question ``what's the most promising action to do in such situation", making fight proposal to the others would be to answer the question ``what's the most promising situation to be in if one wants to conduct such action". So in our agent's case, it would be finding the state associated with the highest Q value for a given action.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=1\textwidth]{008_team_5_agent_design/images/proposal_from_qtable.png}
     \caption{Proposing the most promising state for an action from the Q table}
@@ -350,7 +350,7 @@ So in fact each agent need to keep two trust record for other agents, $T_{normal
 \noindent On the contrary, other agents may value their weapon and shield equipped at the end of the game. In other words, trading will benefit other agents as weapon and shield statistics are valued, so the subtractability of weapons and shields would greatly increase in their perspective.
 Considering agent’s fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=0.60\textwidth]{008_team_5_agent_design/images/13.png}
     \caption{Our agent vs other agent's perspective on trading [1]}
