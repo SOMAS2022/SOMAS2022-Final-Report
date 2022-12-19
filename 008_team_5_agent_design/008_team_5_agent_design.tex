@@ -1,14 +1,7 @@
 \useunder{\uline}{\ul}{}
 \chapter{Team 5 Agent Design}\label{team_5_agent_design}
-\section{Introduction}
-\subsection{Leadership Personality}
 
-% FIXME - Fix reference labels
-When voted leader with fight power our agent practices utilitarianism [1] and promotes actions that maximizes utility and wellbeing of all agents. For Escape the Dark Pitt, the collective aim is to defeat monsters and clear all levels with remaining population above 60 percent. Hence, we can derive utility being inversely related to damage received by agents and deaths. By prioritizing decisions which will bring upon the greatest utility overall even at his own risk and having a selfless concern for other agents, our agent can also be deemed altruistic. But as completing the game is in our agent's self-interest, it is not pure altruism.
-
-After each monster is defeated, a loot pool is dropped. We believe the loot pool is similar to a Common Pool Resource. All agents have equal opportunities to request for items, deeming the loot pool non-excludable. After an item has been allocated, it is unavailable to other agents, hence the loot pool is also rivalrous in consumption in line with Common Pool Resources. The main difference between the two is the loot pool can be fully depleted each round and fully replenished at the next, while common pool resources generally won't replenish if it is fully depleted. During loot allocation our agent utilizes theory from equity and desert [1] to aim for fairness and distributive justice by having each agent's allocation affected by their contribution. Unlike the health points pool, another common pool resource, agents cannot directly contribute to it. We can determine an agent's contribution by their fight decision as defeating the monster will drop loot, and in turn contribute to the loot pool. Fight decision along with other factors are used to calculate a social network score which will directly impact an agent's ability to be allocated resources per our algorithm.
-
-\subsection{Collective Intelligence}
+\section{Collective Intelligence}
 
 \begin{figure}[h]
     \centering
@@ -59,22 +52,6 @@ As an altruistic agent practicing utilitarianism, our agent aims to improve coll
                 \end{flushleft}
     \end{itemize}
 \end{itemize}
-
-
-
-\subsection{Agent Trade Personality}
-
-\noindent Our trade strategy extends the Agent’s utilitarian approach and altruistic personality to achieving the collective aim. With this in mind, there is no significance in the weapon or shield we equip if the game is lost. Hence, no concern is given towards the weapon or shield equipped when finally escaping the pit. As each agent has an equal opportunity of receiving loot if they chose to fight, the exclusivity of shields and weapons are low. As we have no concern of our final equipped shield or weapon, the allocation of loot (consumption) to other agents will not subtract from our utility, deeming subtractability to be low. This in turn means that trading is not seen as a common pool resource problem.
-\noindent On the contrary, other agents may value their weapon and shield equipped at the end of the game. In other words, trading will benefit other agents as weapon and shield statistics are valued, so the subtractability of weapons and shields would greatly increase in their perspective.
-Considering agent’s fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.60\textwidth]{008_team_5_agent_design/images/13.png}
-    \caption{Our agent vs other agent's perspective on trading [1]}
-    \label{13}
-\end{figure}
-
 
 \section{Social Network}
 
@@ -140,15 +117,6 @@ The agent's strategy trust score and goodwill trust score are both in the range 
 
 \end{itemize}
 
-
-
-
-
-
-
-
-
-
 We don't want to exclude one's excellence in one field due to short comes in an irrelevant fields.
 
 Here we have agents' algorithm for their fight strategy and the algorithm for their leader duties' functionality potentially written differently.
@@ -165,15 +133,12 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
     \item The accumulated trust addition in a level is less than $0.2$ for each of the scores, therefore it will take at least 2 levels for an agent to gain a personality with priority, which ensures enough interaction has happened or enough information is gained for the agent that we can make a new judgment to its personality. When updating the trust, if there is a trust score exceeding the region of 0-1, the max-min scale is applied to all agents. Under this circumstance, there will be at least one min-scored agent and one max-scored agent that has two different personalities that are not neutral.
 \end{enumerate}
 
-\newpage
-%\includegraphics[scale=1]{008_team_5_agent_design/images/Information2Trusts.png}
-
 \begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.95\textwidth]{008_team_5_agent_design/images/Information2Trusts-sideway.png}
     \caption{Details of updating trusts regarding different information that can be collected.}
-    \includegraphics[width=0.60\textwidth]{008_team_5_agent_design/images/Information2Trusts.png}
     \label{fig:Information2Trusts}
 \end{figure}
-\clearpage
 
 \begin{table}[h!]
     \centering
@@ -211,22 +176,17 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
     \label{table:personality_impact}
 \end{table}
 
-
-
 \subsection{Manifesto}
 \begin{itemize}
-\begin{itemize}
-    \item Loot Power – Yes​
-    \item Fight Power – Yes​
-    \item Term Length –  1 level if haven't been elected before​
+    \item Loot Power - Yes
+    \item Fight Power - Yes
+    \item Term Length -  1 level if haven't been elected before
         \begin{itemize}
-                \item –  2 levels if running the 2nd leader term​
-                \item –  3 levels if running the 3rd leader term​
-                \item –  \…​
-                \item –  back to 1 level if overthrow happens in its last leader term, but wait until recency bias\^time is low ​
+            \item 2 levels if running the 2nd leader term
+            \item 3 levels if running the 3rd leader term
+            \item back to 1 level if overthrow happens in its last leader term, but wait until recency bias\^time is low 
         \end{itemize}
-    \item Overthrow Threshold – 50\%
-\end{itemize}
+    \item Overthrow Threshold - 50\%
 \end{itemize}
 
 \begin{itemize}
@@ -248,11 +208,13 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
             \end{flushleft}
 \end{itemize}
 
+\section{Leadership}
+\subsection{Leadership Personality}
+When voted leader with fight power our agent practices utilitarianism [1] and promotes actions that maximizes utility and wellbeing of all agents. For Escape the Dark Pitt, the collective aim is to defeat monsters and clear all levels with remaining population above 60 percent. Hence, we can derive utility being inversely related to damage received by agents and deaths. By prioritizing decisions which will bring upon the greatest utility overall even at his own risk and having a selfless concern for other agents, our agent can also be deemed altruistic. But as completing the game is in our agent's self-interest, it is not pure altruism.
 
-\section{Election}
+After each monster is defeated, a loot pool is dropped. We believe the loot pool is similar to a Common Pool Resource. All agents have equal opportunities to request for items, deeming the loot pool non-excludable. After an item has been allocated, it is unavailable to other agents, hence the loot pool is also rivalrous in consumption in line with Common Pool Resources. The main difference between the two is the loot pool can be fully depleted each round and fully replenished at the next, while common pool resources generally won't replenish if it is fully depleted. During loot allocation our agent utilizes theory from equity and desert [1] to aim for fairness and distributive justice by having each agent's allocation affected by their contribution. Unlike the health points pool, another common pool resource, agents cannot directly contribute to it. We can determine an agent's contribution by their fight decision as defeating the monster will drop loot, and in turn contribute to the loot pool. Fight decision along with other factors are used to calculate a social network score which will directly impact an agent's ability to be allocated resources per our algorithm.
 
-\section{Leadership Logic}
-\subsection{Fight Logic}
+\subsection{Leader Fight Logic}
 As mentioned in leadership personality, our agent aims to maximize utility by prioritizing taking the least total damage and deaths when making fight decisions. There are 2 fighting conditions where the level can be passed without taking any damage or deaths. The leader fight algorithm will first check for the following two criterions:
 
 \begin{enumerate}
@@ -280,11 +242,10 @@ Once priority is decided, all agents are ranked with respect to health points fr
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=1\textwidth]{008_team_5_agent_design/images/Rank-all-Agents-by-hp.png}
+    \includegraphics[width=0.8\textwidth]{008_team_5_agent_design/images/Rank-all-Agents-by-hp.png}
     \caption{Agents are ranked based on thier health points}
     \label{rankagents}
 \end{figure}
-
 
 Using number of fighting agents, total attack and total shield, the algorithm will determine the estimated damage taken by all agents and expected number of agent deaths. Dividing monster resilience by total attack, we can solve for the number of fighting rounds required to defeat the monster.
 \[\text{Fighting Rounds to Kill Monster} \approx \frac{\text{Monster Resilience}}{\text{Total Attack}}=R\]
@@ -299,7 +260,7 @@ And agent deaths are determined by the number of agents with health points lower
 To ensure total attack and total shield values are not skewed, each agent's attack values were scaled 5 times with factors between 0.5 and 2 when determining their fight decision. Continuing our figure example, we can see below in figure how individual agent fight decisions can change.
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=1\textwidth]{008_team_5_agent_design/images/scaled-attack.PNG}
+    \includegraphics[width=0.6\textwidth]{008_team_5_agent_design/images/scaled-attack.PNG}
     \caption{Agent attack values are scaled by 50\%}
     \label{scaledattack}
 \end{figure}
@@ -308,13 +269,10 @@ The scaling factors will give a more comprehensive view for different agent figh
 
 If the number of fighting agents exceeds the calculated number of deaths for the iteration, the level is passed. From the iterations that meet this criterion, the one which optimizes for least damage or least deaths are chosen with regards to our predetermined priority. The algorithm will finally return a fight decision map reflecting our best fight solution for the current level.
 
-\subsection{allocation logic}
+\subsection{Leader Allocation Logic}
 By reasonably allocating loot pool resources the leader agent can benefit more agents without making any agent worse. In order to avoid Pareto inefficient, our agent will let anyone who requests the loot take their requested item, unless there is a clash. Our agent's duty is to solve the clash by iterating the fighting logic with the agents in the highest personality category, which also meet some extra conditions to enter iteration. This iteration is used to find where is the Pareto optimal that can utilise this item the most. The category of personalities and the rank of it, and extra conditions can be found in \ref{table:personality_impact}
 
-
-
-
-\section{Fight Logic}
+\section{Fighting}
 To pass the fighting game as an individual, we want our agent to have the ability to learn within a dynamic environment, where consequences could be introduced via an agent itself or other agents' actions. Learning in this case means to acquire a bank of knowledge and update them throughout time, in order to help fighting the monsters.
 
 \subsection{Fight decision: Q learning}
@@ -367,7 +325,7 @@ As the exact opposite to making fight decision, which one has to answer the ques
 While every agent proposes the best strategy according to their self-experience, and all those proposals go to the leader, then depends on how the leader decided to board-cast the appropriate proposal(s) for the group, this could be seen as a process of trying to achieve knowledge aggregation.
 
 \section{Election}
-The election stage is setup so that, each of the $N$ agents need to vote for one or more of the other $N-1$ agents. Our agent is designed to produce a trust value $T_{lead}$ for every other agents, it aims to use this social capital to simplify the process of choosing the leader, without explicitly examining other's leader functions.
+The election stage is setup so that, each of the $N$ agents need to vote for one or more of the other $N-1$ agents. Our agent is designed to produce a leading trust value $T_{lead}$ for every other agents, it aims to use this social capital to simplify the process of choosing the leader, without explicitly examining other's leader functions.
 
 \subsection{Event-Recency dependent trust}
 The trust is designed to be event and recency dependent, which means the recent event of an agent have more importance than those which are long time ago. More precisely defined as:
@@ -385,76 +343,28 @@ $T_{lead}^{t+1} = \alpha \cdot T_{lead}^t + \beta \cdot T_{normal}^t$
 \end{center}
 So in fact each agent need to keep two trust record for other agents, $T_{normal}$ for whether an agent is doing well on an individual level, and $T_{lead}$ for whether an agent is doing well on a group level. They are then combined to produce a estimation on how trust worthy an agent is to become the new leader, typically in a ratio of $\alpha=0.9, \beta=0.1$ for making past leading experience more significant.
 
-\section{Trading Logic}
+\section{Trading}
+\subsection{Trade Personality}
 
-\noindent Since each trading round is limited to five messages, choosing which agents to trade with is vital. The leader fight logic is used in our agent’s trade strategy for every decision made. We use the outputted optimal fight decision map to filter out agents that will not likely fight in the following round. Agents predicted to either attack or defend will be prioritised as potential trade candidates. If our own agent is cowering for the following round, agents fighting will be offered our best weapon or shield. This is to ensure the best equipment are always utilized to maximise our chance to escape the pit and achieve the collective goal.
+\noindent Our trade strategy extends the Agent’s utilitarian approach and altruistic personality to achieving the collective aim. With this in mind, there is no significance in the weapon or shield we equip if the game is lost. Hence, no concern is given towards the weapon or shield equipped when finally escaping the pit. As each agent has an equal opportunity of receiving loot if they chose to fight, the exclusivity of shields and weapons are low. As we have no concern of our final equipped shield or weapon, the allocation of loot (consumption) to other agents will not subtract from our utility, deeming subtractability to be low. This in turn means that trading is not seen as a common pool resource problem.
+\noindent On the contrary, other agents may value their weapon and shield equipped at the end of the game. In other words, trading will benefit other agents as weapon and shield statistics are valued, so the subtractability of weapons and shields would greatly increase in their perspective.
+Considering agent’s fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
 
-\noindent Our trading strategy will also prioritise agents having a positive or neutral strategy trust over agents with lower trust scores to penalise agents that either defected from their fight decision or are selfish in trades. The combination of agent trust and agent fight actions will reward and encourage agents to contribute towards the common pool resource.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.60\textwidth]{008_team_5_agent_design/images/13.png}
+    \caption{Our agent vs other agent's perspective on trading [1]}
+    \label{13}
+\end{figure}
 
-\noindent An issue considered when choosing trade partners was if our policy was deterministic, such that our agent always requested from cowering agents with the best shield or weapon, all team 5 agents initialized within the game would have clashing trade requests. To resolve this issue, our agent searches for trade partners through random starting positions within the agent map and checks iteratively if agents meet our trade criteria of cowering and having a better weapon or shield. A trade request will sent to the first agent that meets our criteria.
+\subsection{Trade strategy}
+Since each trading round is limited to five messages, choosing which agents to trade with is vital. The leader fight logic is used in our agent’s trade strategy for every decision made. We use the outputted optimal fight decision map to filter out agents that will not likely fight in the following round. Agents predicted to either attack or defend will be prioritised as potential trade candidates. If our own agent is cowering for the following round, agents fighting will be offered our best weapon or shield. This is to ensure the best equipment are always utilized to maximise our chance to escape the pit and achieve the collective goal.
 
-\pagebreak{}
+Our trading strategy will also prioritise agents having a positive or neutral strategy trust over agents with lower trust scores to penalise agents that either defected from their fight decision or are selfish in trades. The combination of agent trust and agent fight actions will reward and encourage agents to contribute towards the common pool resource.
+
+An issue considered when choosing trade partners was if our policy was deterministic, such that our agent always requested from cowering agents with the best shield or weapon, all team 5 agents initialized within the game would have clashing trade requests. To resolve this issue, our agent searches for trade partners through random starting positions within the agent map and checks iteratively if agents meet our trade criteria of cowering and having a better weapon or shield. A trade request will sent to the first agent that meets our criteria.
+
 \section{Experiment}
-
-\subsection{Social Network}
-
-As the \ref{fig:snRresults} show, it appears that in a team5 agent's perspective, the system diverges and cliques up at around level 20. And then two due to the system being connected, the two cliques impact each other (level 25) and the two cliques dissolve into diverse places(level 33). The self-agent in an earlier stage of the game does not gain enough information to identify other agents' profiles. With more and more interactions and observations, the agent is able to identify smaller differences in other agents and separate them, which also involves scaling the scores in some of the updates.
-
-
-
-    \begin{figure*}[t!]
-        \subfloat[]{%
-            \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level2.png}%
-            \label{subfig:a}%
-        }\hfill
-        \subfloat[]{%
-            \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level20.png}%
-            \label{subfig:b}%
-        }\\
-        \subfloat[]{%
-            \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level25.png}%
-            \label{subfig:c}%
-        }\hfill
-        \subfloat[]{%
-            \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level33.png}%
-            \label{subfig:d}%
-        }
-  \caption{Agents' trust score at different levels, with strategy and goodwill personality boundaries both at 0.2 and 0.8, 30 of each type of agents are instantiate}
-        \label{fig:snRresults}
-    \end{figure*}
-
-
-
-
-
-
-\subsection{Leader Fight Logic}
-The leader fight logic's execution time was tested to ensure it is within the time limit of 0.5 seconds.
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.7\textwidth]{008_team_5_agent_design/images/10.png}
-    \caption{Measuring execution time}
-    \label{testingexecutiontime}
-\end{figure}
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.7\textwidth]{008_team_5_agent_design/images/11.png}
-    \caption{Initialising Agent and Monster}
-    \label{initialisingagentandmonster}
-\end{figure}
-
-Some results are shown below, execution time is labelled with consumer in units of nano seconds.
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.7\textwidth]{008_team_5_agent_design/images/12.png}
-    \caption{Execution time test results}
-    \label{executiontimetestresults}
-\end{figure}
-
-All trials had execution time under 0.01 seconds and well below the time limit.
 
 \subsection{Team 5 vs. Random}
 Figure \ref{fig:Team5vsRandom} is a comparison between our team's agent vs. the random agent. With two small tweaks are done to the game engine in order to make the comparison under the same controls.
@@ -484,7 +394,60 @@ It will be interesting to investigate the effect of allowing agents to propose w
     \caption{Comparisons of allowing agent proposal or not. Top: agent's trust to the current leader through levels; Bottom: ratio of population knowledge to individual knowledge through levels.}
     \label{fig:knowledgeAgg}
 \end{figure}
-
+\pagebreak
 For the top part of figure \ref{fig:knowledgeAgg}, we compared how proposal affects leading. Notice that without self-experience proposal, an agent's trust toward the current leader oscillates much frequently. This could infer more repeat leader change, also could be seen as an evidence for higher dependency on the leader.
 
 For the bottom part of figure \ref{fig:knowledgeAgg}, we compared how proposal affects change of the population to individual knowledge ratio. In both cases, the ratio generally increases through the early part of the game, indicating the population knowledge base is growing in a much faster rate than each individual's, but start to drop at mid-game and finally converges. The one with proposal has more variations on how the ratio changes, resulting in more dense spaces between curves. This could reflect that the agents are trying to gain extract knowledge by accepting proposals from others.
+
+\subsection{Leader Fight Logic}
+The leader fight logic's execution time was tested to ensure it is within the time limit of 0.5 seconds.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.7\textwidth]{008_team_5_agent_design/images/10.png}
+    \caption{Measuring execution time}
+    \label{testingexecutiontime}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{008_team_5_agent_design/images/11.png}
+    \caption{Initialising Agent and Monster}
+    \label{initialisingagentandmonster}
+\end{figure}
+
+Some results are shown below, execution time is labelled with consumer in units of nano seconds.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{008_team_5_agent_design/images/12.png}
+    \caption{Execution time test results}
+    \label{executiontimetestresults}
+\end{figure}
+
+All trials had execution time under 0.01 seconds and well below the time limit.
+
+\subsection{Social Network}
+
+As the \ref{fig:snRresults} show, it appears that in a team5 agent's perspective, the system diverges and cliques up at around level 20. And then two due to the system being connected, the two cliques impact each other (level 25) and the two cliques dissolve into diverse places(level 33). The self-agent in an earlier stage of the game does not gain enough information to identify other agents' profiles. With more and more interactions and observations, the agent is able to identify smaller differences in other agents and separate them, which also involves scaling the scores in some of the updates.
+
+    \begin{figure*}[!ht]
+        \subfloat[]{%
+            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level2.png}%
+            \label{subfig:a}%
+        }\hfill
+        \subfloat[]{%
+            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level20.png}%
+            \label{subfig:b}%
+        }\\
+        \subfloat[]{%
+            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level25.png}%
+            \label{subfig:c}%
+        }\hfill
+        \subfloat[]{%
+            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level33.png}%
+            \label{subfig:d}%
+        }
+  \caption{Agents' trust score at different levels, with strategy and goodwill personality boundaries both at 0.2 and 0.8, 30 of each type of agents are instantiate}
+        \label{fig:snRresults}
+    \end{figure*}
