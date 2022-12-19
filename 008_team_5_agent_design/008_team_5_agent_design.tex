@@ -1,4 +1,3 @@
-\useunder{\uline}{\ul}{}
 \chapter{Team 5 Agent Design}\label{team_5_agent_design}
 \section{Introduction}
 \subsection{Leadership Personality}
@@ -16,57 +15,44 @@ After each monster is defeated, a loot pool is dropped. We believe the loot pool
     \caption{Collective Intelligence Branch}
     \label{fig:CQ}
 \end{figure}
-\begin{flushleft}
-\setlength{\parindent}{2em}
 As an altruistic agent practicing utilitarianism, our agent aims to improve collective benefit through our own judgement. One way of doing so is to encourage the growth of collective intelligence. Where collective intelligence can be obtained from and have an impact on the following three fields: cognition, corporation, and coordination. We adapt \ref{fig:CQ} \cite{rescher1966} to this game scenario as follows:
-\end{flushleft}
 \begin{itemize}
-  \item Cognition
-    \begin{itemize}
-        \item Perspectives
-            \begin{itemize}
-            \item Every agent's perspective on their own status and overall situation - whether they know if they are a popular leader, a helpful peer to the situation, etc. It can be observed from leader status (winning leader election, finishing the leader's term without being overthrown, overthrown). How the majority of other agents are in the social network map, i.e. if only a few agents have a low social network profile, we can deduce that those agents are not welcomed; but if the majority of agents are in a low social network profile, it may be the case that our agent is actually the one that is not welcomed.
+    \item Cognition
+          \begin{itemize}
+              \item Perspectives
+                    \begin{itemize}
+                        \item Every agent's perspective on their own status and overall situation - whether they know if they are a popular leader, a helpful peer to the situation, etc. It can be observed from leader status (winning leader election, finishing the leader's term without being overthrown, overthrown). How the majority of other agents are in the social network map, i.e. if only a few agents have a low social network profile, we can deduce that those agents are not welcomed; but if the majority of agents are in a low social network profile, it may be the case that our agent is actually the one that is not welcomed.
+                        \item Every agent's perspective on other agents can be observed from interaction and information, for example, fight decision (fight intention, defect), proposals,
+                        \item Perspective to the environment - agents may over-estimate or under-estimate the monster and the loot market.
+                    \end{itemize}
+              \item Interpretation of the common goal
 
-            \item Every agent's perspective on other agents can be observed from interaction and information, for example, fight decision (fight intention, defect), proposals, 
-            \item Perspective to the environment - agents may over-estimate or under-estimate the monster and the loot market.
-            \end{itemize}
-        \item Interpretation of the common goal
-            \begin{flushleft}
-            \setlength{\parindent}{2em}
-            Agents can interpret the common goal and make up their own beliefs in different ways. For example, agents may determine the spectrum between altruism and selfishness to be the best strategy of achieving the goal with understanding and deduction.
-            \end{flushleft}
-            \end{itemize}
-  \item Cooperation
-    \begin{itemize}
-        \item Social Network
-                \begin{flushleft}
-                \setlength{\parindent}{2em}
-                In the cooperation process, every agent can gain knowledge of other agents to form an opinion and decide their future interactions. There exists an underlying social network that connects the agent's communication and interaction in some ways. By discovering this social network our agent can make more effective interactions with other agents.
-                
-                \end{flushleft}
-        \item P2P interactions
-                \begin{flushleft}
-                \setlength{\parindent}{2em}
-                With the existence of the social Network, it can impact the social distance of each P2P interaction, in this case, how likely to send a trading message and how likely to mutually agree on a negotiation. 
-                \end{flushleft}
-    \end{itemize}
-  \item Coordination
-    \begin{itemize}
-        \item Collective action
-                \begin{flushleft}
-                \setlength{\parindent}{2em}
-                With a common goal, agents can self organise to collectively move towards the goal in some way. Each agent's contribution can have an impact on the whole cohort, voting for example. Individual intelligence is the base of collective intelligence as well as how individual intelligence coordinates. With the leader mechanism and communication mechanism in this game, it gives more opportunities to form collective intelligence through coordination interactions.
-                \end{flushleft}
-    \end{itemize}
+                    Agents can interpret the common goal and make up their own beliefs in different ways. For example, agents may determine the spectrum between altruism and selfishness to be the best strategy of achieving the goal with understanding and deduction.
+          \end{itemize}
+    \item Cooperation
+          \begin{itemize}
+              \item Social Network
+
+                    In the cooperation process, every agent can gain knowledge of other agents to form an opinion and decide their future interactions. There exists an underlying social network that connects the agent's communication and interaction in some ways. By discovering this social network our agent can make more effective interactions with other agents.
+              \item P2P interactions
+
+                    With the existence of the social Network, it can impact the social distance of each P2P interaction, in this case, how likely to send a trading message and how likely to mutually agree on a negotiation.
+          \end{itemize}
+    \item Coordination
+          \begin{itemize}
+              \item Collective action
+
+                    With a common goal, agents can self organise to collectively move towards the goal in some way. Each agent's contribution can have an impact on the whole cohort, voting for example. Individual intelligence is the base of collective intelligence as well as how individual intelligence coordinates. With the leader mechanism and communication mechanism in this game, it gives more opportunities to form collective intelligence through coordination interactions.
+          \end{itemize}
 \end{itemize}
-
-
 
 \subsection{Agent Trade Personality}
 
-\noindent Our trade strategy extends the Agent’s utilitarian approach and altruistic personality to achieving the collective aim. With this in mind, there is no significance in the weapon or shield we equip if the game is lost. Hence, no concern is given towards the weapon or shield equipped when finally escaping the pit. As each agent has an equal opportunity of receiving loot if they chose to fight, the exclusivity of shields and weapons are low. As we have no concern of our final equipped shield or weapon, the allocation of loot (consumption) to other agents will not subtract from our utility, deeming subtractability to be low. This in turn means that trading is not seen as a common pool resource problem.
-\noindent On the contrary, other agents may value their weapon and shield equipped at the end of the game. In other words, trading will benefit other agents as weapon and shield statistics are valued, so the subtractability of weapons and shields would greatly increase in their perspective.
-Considering agent’s fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
+Our trade strategy extends the Agent's utilitarian approach and altruistic personality to achieving the collective aim. With this in mind, there is no significance in the weapon or shield we equip if the game is lost. Hence, no concern is given towards the weapon or shield equipped when finally escaping the pit. As each agent has an equal opportunity of receiving loot if they chose to fight, the exclusivity of shields and weapons are low. As we have no concern of our final equipped shield or weapon, the allocation of loot (consumption) to other agents will not subtract from our utility, deeming subtractability to be low. This in turn means that trading is not seen as a common pool resource problem.
+
+On the contrary, other agents may value their weapon and shield equipped at the end of the game. In other words, trading will benefit other agents as weapon and shield statistics are valued, so the subtractability of weapons and shields would greatly increase in their perspective.
+
+Considering agent's fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
 
 \begin{figure}[htb]
     \centering
@@ -79,75 +65,47 @@ Considering agent’s fight decision as their contribution towards loot, and by 
 \section{Social Network}
 
 \begin{itemize}
-\item Social Network Motivation
-    \begin{flushleft}
-    \setlength{\parindent}{2em}
-     Since the agents are connected, interaction and impact can be made to other agents, therefore mapping and recording a social network can help our agent optimise the interaction outcome by going to the right agent. Social networks can also spot conflict in a system and help our agent identify its own position in the system. At last, due to this game's nature, an agent has limited scope to collect information meanwhile needs to make multiple multi-dimensional proposals and decisions as its prediction of optimal, however not long enough game duration is available to collect experience (plus the game can end early if agents fail), due to constraints, for the most of the time, an agent can only be trained with solo-play, duplicates of itself or random agents. Machine learning heavily based model is data-hungry, and risk overfitting to it self's characteristic, making it less robust in heterogeneous environments. We can make a trust system in the social network to estimate the reliability of another agent. Therefore utilising other agents' experience(that is visible to our agent) as a source of information for our soft-coded rule-based agent is effective for individual intelligence growth. A vivid example of connection and social networks that improve efficiency is that knowing the previous SOMAS class work out that GoLang is a suitable language for this coursework and has gone down with GoLang for two years in a row, our cohort has decided to rely on intuitively trust the previous SOMAS classes and save effort by relying on their experience, even though by the course no one had experience in GoLang before.
+    \item Social Network Motivation
 
-    \end{flushleft}
-\item Social Network Construction
-    \begin{itemize}
-        \item 	Our Scope - where social network trust scores can update upon
-            \begin{flushleft}
-            \setlength{\parindent}{2em}
-            There are two main fields that our agents can scope into to make and record their observations, interaction, and information, interaction is where arbitrary messages and decisions flow between two agents, while information is the one-way observation of our agents to other agents' visible states or their other behaviors. Interaction scope includes their trading process with us and their communication with us. Information scope includes their agent states, their votes, proposals, and defect status. 
-            \end{flushleft}
-        \item Our Perspective           
-            \begin{itemize}
-                \item Forming perspective
-                    \begin{flushleft}
-                    \setlength{\parindent}{2em}
-                    Once our agent has the observations, it uses its belief to form its perspective based on its observations. It parses the observations into two trust scores, strategy score and goodwill score, reference to our agent of how much can it trust another agent's strategy-related interaction and goodwill-related interaction. the history of another agent's past social network profiles is also one of the parameters to form new perspective.
+          Since the agents are connected, interaction and impact can be made to other agents, therefore mapping and recording a social network can help our agent optimise the interaction outcome by going to the right agent. Social networks can also spot conflict in a system and help our agent identify its own position in the system. At last, due to this game's nature, an agent has limited scope to collect information meanwhile needs to make multiple multi-dimensional proposals and decisions as its prediction of optimal, however not long enough game duration is available to collect experience (plus the game can end early if agents fail), due to constraints, for the most of the time, an agent can only be trained with solo-play, duplicates of itself or random agents. Machine learning heavily based model is data-hungry, and risk overfitting to it self's characteristic, making it less robust in heterogeneous environments. We can make a trust system in the social network to estimate the reliability of another agent. Therefore utilising other agents' experience(that is visible to our agent) as a source of information for our soft-coded rule-based agent is effective for individual intelligence growth. A vivid example of connection and social networks that improve efficiency is that knowing the previous SOMAS class work out that GoLang is a suitable language for this coursework and has gone down with GoLang for two years in a row, our cohort has decided to rely on intuitively trust the previous SOMAS classes and save effort by relying on their experience, even though by the course no one had experience in GoLang before.
 
-                    \end{flushleft}
-                \item Soft-coded boundary rules
-                    \begin{flushleft}
-                    \setlength{\parindent}{2em}
-                    Our agent reflex on itself based on the agent system's performance, then decides whether there is a need to modify its rules to be more helpful to the system. The personality classification boundaries are constant, but by applying scaling to agents' trust scores, the boundaries can also be viewed as a varying factor on a reverse to the scaling. 
-                    \end{flushleft}                
-                \item Forgiveness
-                    \begin{flushleft}
-                    \setlength{\parindent}{2em}
-                    "In social systems, forgiveness allows the truster (victim of the violation) to distinguish between intentional and unintentional violations (and a range of infractions in between)" \cite{pitt}. Forgiveness also helps the system restore stability. We chose very simple forgiveness by simply adding a recency bias to past history profile, time soothes the scar.
+    \item Social Network Construction
+          \begin{itemize}
+              \item Our Scope - where social network trust scores can update upon
 
-                    \end{flushleft}                
-            \end{itemize}
-        \item Our intelligence 
-            \begin{flushleft}
-            \setlength{\parindent}{2em}
-            By collecting and digesting as much information from inside and outside of our agent, and with experience increase, our agent grows the intelligence that allows it to act more effectively to help the collective reaching the goal. It converts its obtained knowledge into intelligence. The knowledge can be distinguished as Knowledge of the environment, i.e. how much damage we receive and how much loot we gain, how many agents, and our estimation of their resources lost when agents interact with the environment. Knowledge of other agents, which is the perspective of them that our agent formed.  The advantage of this process is that our agent becomes giving more and more reliable predictions of optimal next-move decisions.
+                    There are two main fields that our agents can scope into to make and record their observations, interaction, and information, interaction is where arbitrary messages and decisions flow between two agents, while information is the one-way observation of our agents to other agents' visible states or their other behaviors. Interaction scope includes their trading process with us and their communication with us. Information scope includes their agent states, their votes, proposals, and defect status.
+              \item Our Perspective
+                    \begin{itemize}
+                        \item Forming perspective
 
-            \end{flushleft}        
-    \end{itemize}
+                              Once our agent has the observations, it uses its belief to form its perspective based on its observations. It parses the observations into two trust scores, strategy score and goodwill score, reference to our agent of how much can it trust another agent's strategy-related interaction and goodwill-related interaction. the history of another agent's past social network profiles is also one of the parameters to form new perspective.
 
-\item Social Network Function
-            \begin{flushleft}
-            \setlength{\parindent}{2em}
-            The implementation and exploitation of personalities and trust scores can be found in \ref{fig:Information2Trusts} and \ref{table:personality_impact}
-            \end{flushleft}
+                        \item Soft-coded boundary rules
 
-\item Social Network - Information - our scope and observation
-            \begin{flushleft}
-            \setlength{\parindent}{2em}
+                              Our agent reflex on itself based on the agent system's performance, then decides whether there is a need to modify its rules to be more helpful to the system. The personality classification boundaries are constant, but by applying scaling to agents' trust scores, the boundaries can also be viewed as a varying factor on a reverse to the scaling.
+                        \item Forgiveness
 
-The agent's strategy trust score and goodwill trust score are both in the range of [0,1], and both are initialised at 0.5. If during an update of trusts, their maximum variation in a trust exceeds 1, that trust score will be scaled by the max-min method.
-            \end{flushleft}
-\item Social Network - Interaction - our exploitation of the trusts
-        \begin{flushleft}
-        \setlength{\parindent}{2em}
-        In order to save computational complexity, a personality perspective is formed by parsing trust scores. with both the upper boundary at 0.8 and the lower boundary at 0.2, the trusts are quantised and categorised into 3 goodwill personalities of {good, goodwill\_neutral, evil} and 3 strategy personalities of {lawful, strategy\_neutral, chaotic}. The two sets of personalities can be combined to map a 2-D in total 9 personalities. 
-        \end{flushleft}
+                              "In social systems, forgiveness allows the truster (victim of the violation) to distinguish between intentional and unintentional violations (and a range of infractions in between)" \cite{pitt}. Forgiveness also helps the system restore stability. We chose very simple forgiveness by simply adding a recency bias to past history profile, time soothes the scar.
+
+                    \end{itemize}
+              \item Our intelligence
+
+                    By collecting and digesting as much information from inside and outside of our agent, and with experience increase, our agent grows the intelligence that allows it to act more effectively to help the collective reaching the goal. It converts its obtained knowledge into intelligence. The knowledge can be distinguished as Knowledge of the environment, i.e. how much damage we receive and how much loot we gain, how many agents, and our estimation of their resources lost when agents interact with the environment. Knowledge of other agents, which is the perspective of them that our agent formed.  The advantage of this process is that our agent becomes giving more and more reliable predictions of optimal next-move decisions.
+
+          \end{itemize}
+
+    \item Social Network Function
+
+          The implementation and exploitation of personalities and trust scores can be found in \ref{fig:Information2Trusts} and \ref{table:personality_impact}
+
+    \item Social Network - Information - our scope and observation
+
+          The agent's strategy trust score and goodwill trust score are both in the range of [0,1], and both are initialised at 0.5. If during an update of trusts, their maximum variation in a trust exceeds 1, that trust score will be scaled by the max-min method.
+    \item Social Network - Interaction - our exploitation of the trusts
+
+          In order to save computational complexity, a personality perspective is formed by parsing trust scores. with both the upper boundary at 0.8 and the lower boundary at 0.2, the trusts are quantised and categorised into 3 goodwill personalities of {good, goodwill\_neutral, evil} and 3 strategy personalities of {lawful, strategy\_neutral, chaotic}. The two sets of personalities can be combined to map a 2-D in total 9 personalities.
 
 \end{itemize}
-
-
-
-
-
-
-
-
-
 
 We don't want to exclude one's excellence in one field due to short comes in an irrelevant fields.
 
@@ -160,6 +118,7 @@ The agent uses these trusts to summaries features from the left-hand side and co
 Due to the limited size of the game and size of the features, it is sensible to summaries this 2-D personality based on two trust scores
 
 The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scores at $0.5$, all of the agents will be True Neutral agents at the beginning and will be the majority for most of the game time. When developing the logic, True Neutral agents are included in all of the interactions, although priority will be given to some other personalities, but,
+
 \begin{enumerate}
     \item The prioritised agents are small amount due to a high standards therefore to make sure there is still the majority of the resource that is left with the bigger amount of agents
     \item The accumulated trust addition in a level is less than $0.2$ for each of the scores, therefore it will take at least 2 levels for an agent to gain a personality with priority, which ensures enough interaction has happened or enough information is gained for the agent that we can make a new judgment to its personality. When updating the trust, if there is a trust score exceeding the region of 0-1, the max-min scale is applied to all agents. Under this circumstance, there will be at least one min-scored agent and one max-scored agent that has two different personalities that are not neutral.
@@ -211,41 +170,31 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
     \label{table:personality_impact}
 \end{table}
 
-
-
 \subsection{Manifesto}
 \begin{itemize}
-\begin{itemize}
-    \item Loot Power – Yes​
-    \item Fight Power – Yes​
-    \item Term Length –  1 level if haven't been elected before​
-        \begin{itemize}
-                \item –  2 levels if running the 2nd leader term​
-                \item –  3 levels if running the 3rd leader term​
-                \item –  \…​
-                \item –  back to 1 level if overthrow happens in its last leader term, but wait until recency bias\^time is low ​
-        \end{itemize}
-    \item Overthrow Threshold – 50\%
-\end{itemize}
+    \item Loot Power - Yes
+    \item Fight Power - Yes
+    \item Term Length
+          \begin{itemize}
+              \item 1 level if haven't been elected before
+              \item $N$ levels if running the $N$th leader term
+              \item back to 1 level if overthrow happens in its last leader term, but wait until recency bias\^time is low
+          \end{itemize}
+    \item Overthrow Threshold - 50\%
 \end{itemize}
 
 \begin{itemize}
     \item Reflexive governance
 
-            \begin{flushleft}
-            \setlength{\parindent}{2em}
-        The agent reflex on its leadership quality and extend to all related algorithm and then can modify its coordinating strategy and corresponding cognition, based on knowing how well it has been as a leader. If the agent has made a leader, it can deduce that itself has a high reputation in other agents' inner states. If a leader has made to the whole term length, then it can gain confidence in its leadership ability, hence has the confidence to run for a longer term in the next time, which is more difficult because we presume it is less appealing than a shorter term manifesto to and need to have a even higher hidden reputation among other agents in order to win. If a leader has been overthrown, depending on its overthrown threshold, it loses its confidence of leadership possibly as well as some reputation, the way our agent reflex on being overthrown is to be humble of their leadership logic and start with running for 1 level of term length. Furthermore, this agent may want to rest for some time until the situation changed, its reputation is restored and it reflexively learned to refine its belief and rules, that it wants to rerun for leader again.
-            \end{flushleft}
+          The agent reflex on its leadership quality and extend to all related algorithm and then can modify its coordinating strategy and corresponding cognition, based on knowing how well it has been as a leader. If the agent has made a leader, it can deduce that itself has a high reputation in other agents' inner states. If a leader has made to the whole term length, then it can gain confidence in its leadership ability, hence has the confidence to run for a longer term in the next time, which is more difficult because we presume it is less appealing than a shorter term manifesto to and need to have a even higher hidden reputation among other agents in order to win. If a leader has been overthrown, depending on its overthrown threshold, it loses its confidence of leadership possibly as well as some reputation, the way our agent reflex on being overthrown is to be humble of their leadership logic and start with running for 1 level of term length. Furthermore, this agent may want to rest for some time until the situation changed, its reputation is restored and it reflexively learned to refine its belief and rules, that it wants to rerun for leader again.
+
     \item Individual intelligence and Collective Intelligence via Education
-            \begin{flushleft}
-            \setlength{\parindent}{2em}
-    		Being  a leader is not only empowered with extra impact to contribute to the system, but also enlarges the agent's scope. In this game, by being a leader can count the votes and has the ability to see every loot request message, which is not visible to a normal agent. By being a leader, if the agent opens entry to collect these information it can gain knowledge hence intelligence  faster. The reason of our agent's manifesto start with only 1 term length is for that the manifesto becomes more appealing to other candidates and hence more likely to become a leader to learn. By incrementing the term length once this agent has been raised to see further, it also want to leave more opportunity for agents that requesting less term length to also go to the leader position to be educated with the same vision our agent once had. Also by encouraging agents to run for leadership with shorter term length can increase the leader liquidity, hence more agents can become leaders once and have this "eye open" information collection opportunity. And the aim in the last is to increase collective intelligence.
-            \end{flushleft}
+
+          Being  a leader is not only empowered with extra impact to contribute to the system, but also enlarges the agent's scope. In this game, by being a leader can count the votes and has the ability to see every loot request message, which is not visible to a normal agent. By being a leader, if the agent opens entry to collect these information it can gain knowledge hence intelligence  faster. The reason of our agent's manifesto start with only 1 term length is for that the manifesto becomes more appealing to other candidates and hence more likely to become a leader to learn. By incrementing the term length once this agent has been raised to see further, it also want to leave more opportunity for agents that requesting less term length to also go to the leader position to be educated with the same vision our agent once had. Also by encouraging agents to run for leadership with shorter term length can increase the leader liquidity, hence more agents can become leaders once and have this "eye open" information collection opportunity. And the aim in the last is to increase collective intelligence.
+
     \item Individual Knowledge Diversity
-            \begin{flushleft}
-            \setlength{\parindent}{2em}
-            Continue to that we encourage leader liquidity, so that more agent can expose their coordinate logic as a leader. As a normal agent, experiencing more leaders in the same amount of time can let it know what coordinating logic are existing in the system, and diversify the choice of coordinating methods, which was originally each leader's own individual knowledge.
-            \end{flushleft}
+
+          Continue to that we encourage leader liquidity, so that more agent can expose their coordinate logic as a leader. As a normal agent, experiencing more leaders in the same amount of time can let it know what coordinating logic are existing in the system, and diversify the choice of coordinating methods, which was originally each leader's own individual knowledge.
 \end{itemize}
 
 
@@ -297,6 +246,7 @@ Using $D_R$ we can obtain the damage received by an individual agent to pass the
 And agent deaths are determined by the number of agents with health points lower than $D_P$.
 
 To ensure total attack and total shield values are not skewed, each agent's attack values were scaled 5 times with factors between 0.5 and 2 when determining their fight decision. Continuing our figure example, we can see below in figure how individual agent fight decisions can change.
+
 \begin{figure}[htb]
     \centering
     \includegraphics[width=1\textwidth]{008_team_5_agent_design/images/scaled-attack.PNG}
@@ -308,16 +258,16 @@ The scaling factors will give a more comprehensive view for different agent figh
 
 If the number of fighting agents exceeds the calculated number of deaths for the iteration, the level is passed. From the iterations that meet this criterion, the one which optimizes for least damage or least deaths are chosen with regards to our predetermined priority. The algorithm will finally return a fight decision map reflecting our best fight solution for the current level.
 
-\subsection{allocation logic}
+\subsection{Allocation Logic}
+
 By reasonably allocating loot pool resources the leader agent can benefit more agents without making any agent worse. In order to avoid Pareto inefficient, our agent will let anyone who requests the loot take their requested item, unless there is a clash. Our agent's duty is to solve the clash by iterating the fighting logic with the agents in the highest personality category, which also meet some extra conditions to enter iteration. This iteration is used to find where is the Pareto optimal that can utilise this item the most. The category of personalities and the rank of it, and extra conditions can be found in \ref{table:personality_impact}
 
-
-
-
 \section{Fight Logic}
+
 To pass the fighting game as an individual, we want our agent to have the ability to learn within a dynamic environment, where consequences could be introduced via an agent itself or other agents' actions. Learning in this case means to acquire a bank of knowledge and update them throughout time, in order to help fighting the monsters.
 
 \subsection{Fight decision: Q learning}
+
 The fighting stage from an individual agent's point could be viewed as a Markov Decision Process, where from the current state, an agent could have certain probability to transit into another state (new or same), by performing one of the three fighting actions, Attack / Defend / Cower. Depends on whether the agent end up in a better or worse state, it receive some corresponding reward which will cause it to like or dislike the action just being performed.
 
 The state space is designed based on the health, stamina, attack and defence of an agent. Health and stamina are categorised relative to their initial value, so for agent with initial health of 1000, the \textit{Low} category is always $\leq 300$. However, the attack and defence are categorised relative to all other observable agents, for representing potential roles in a population. An agent could be a master fighter (\textit{Master}) when it's attack value is greater than most of the population, or it could be an elder or child (\textit{Weakee}) who's not that good at fighting.
@@ -332,22 +282,24 @@ The state space is designed based on the health, stamina, attack and defence of 
         \textit{\begin{tabular}[c]{@{}l@{}}High\\ 60\% \textless hp\end{tabular}}               & \textit{\begin{tabular}[c]{@{}l@{}}High\\ 60\% \textless ap\end{tabular}}               & \textit{\begin{tabular}[c]{@{}l@{}}Master\\ 75\% \textless AT\end{tabular}}                & \textit{\begin{tabular}[c]{@{}l@{}}Master\\ 75\% \textless SH\end{tabular}}                \\ \hline
     \end{tabular}
 \end{table}
+
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.6\textwidth]{008_team_5_agent_design/images/state_normal_distro.png}
     \caption{Assumed normal distribution of attack / defence roles.}
     \label{fig:state_normal_distro}
 \end{figure}
-\noindent
+
 So in total there's 81 different states, where the health / stamina categories are equally separated; the attack / defence categories are separated assuming normal distribution, so extremes are less common and are valuable to treat differently.
 
 In terms of decision, our agent utilise the Q learning algorithm, where each agent keeps a table of Q values as their utilities toward the fighting actions at a given state (a state-action pair), these Q values are updated throughout the game according to feedback (rewards) after each fighting round.
 
 Updates rule:
-\begin{center}
-$Q(S,A) \leftarrow Q(S,A) + \alpha(R(S^+) + \gamma \max\limits_{A^+} Q(S^+,A^+) - Q(S,A))$
-\end{center}
-\noindent
+
+$$
+    Q(S,A) \leftarrow Q(S,A) + \alpha(R(S^+) + \gamma \max\limits_{A^+} Q(S^+,A^+) - Q(S,A))
+$$
+
 Where $Q(S,A)$ is the $Q$ value for a state($S$)-action($A$) pair; $R(S^+)$ is the reward received at the arrived new state, right now it's simply based on the percentage health loss / gain of an agent; $\gamma \max\limits_{A^+} Q(S^+,A^+)$ tries to reflect the potential future reward (in long term), propagate out with a decay rate $\gamma$; $\alpha$ is a learning rate determine how significant each update could be.
 
 The key characteristics of Q learning is that it doesn't really need the state transition probabilities to solve a MDP; also it take in account of the long term effect of an action from a state by the $\gamma \max\limits_{A^+} Q(S^+,A^+)$ term.
@@ -355,6 +307,7 @@ The key characteristics of Q learning is that it doesn't really need the state t
 Higher Q value for a state-action pair makes it more favourable for an agent to follow. So the strategy for an agent is to go for an action with the highest Q value at the current state, for exploiting its knowledge, but at the same time also allow some random deviation from that to explore the unknowns.
 
 \subsection{Fight proposal: best self-experience}
+
 As the exact opposite to making fight decision, which one has to answer the question ``what's the most promising action to do in such situation", making fight proposal to the others would be to answer the question ``what's the most promising situation to be in if one wants to conduct such action". So in our agent's case, it would be finding the state associated with the highest Q value for a given action.
 
 \begin{figure}[!h]
@@ -366,32 +319,37 @@ As the exact opposite to making fight decision, which one has to answer the ques
 
 While every agent proposes the best strategy according to their self-experience, and all those proposals go to the leader, then depends on how the leader decided to board-cast the appropriate proposal(s) for the group, this could be seen as a process of trying to achieve knowledge aggregation.
 
-\section{Election}
 The election stage is setup so that, each of the $N$ agents need to vote for one or more of the other $N-1$ agents. Our agent is designed to produce a trust value $T_{lead}$ for every other agents, it aims to use this social capital to simplify the process of choosing the leader, without explicitly examining other's leader functions.
 
 \subsection{Event-Recency dependent trust}
+
 The trust is designed to be event and recency dependent, which means the recent event of an agent have more importance than those which are long time ago. More precisely defined as:
-\begin{center}
-$\qquad T(a,b) \leftarrow \gamma \cdot T(a,b) + v(r)$   
-\end{center}
+
+$$
+    \qquad T(a,b) \leftarrow \gamma \cdot T(a,b) + v(r)
+$$
+
 Where $T(a,b)$ is the trust of agent $a$ toward agent $b$; $gamma$ is a decay factor to reduce the effect of past memory; $v(r)$ is the rating for an specific event $r$ that happened, typically related to health loss / gain of $a$ and death among the population.
 
 The reason for making past memory become less important throughout time, is to avoid forming stereotype on leading strategies and to preserve diversity, accounting the possibility where one particular leading strategy might not be suitable at one time, but might be suitable for another time.
 
 \subsection{Leader trust estimation}
+
 Since it's not possible to get event feedback for how an agent is going to lead unless this agent is elected to be the leader, which tend to be infrequent, so we designed an estimation for the leader trust combining an agent's normal performance and it's performance when it did act as the leader.
-\begin{center}
-$T_{lead}^{t+1} = \alpha \cdot T_{lead}^t + \beta \cdot T_{normal}^t$    
-\end{center}
+
+$$
+    T_{lead}^{t+1} = \alpha \cdot T_{lead}^t + \beta \cdot T_{normal}^t
+$$
+
 So in fact each agent need to keep two trust record for other agents, $T_{normal}$ for whether an agent is doing well on an individual level, and $T_{lead}$ for whether an agent is doing well on a group level. They are then combined to produce a estimation on how trust worthy an agent is to become the new leader, typically in a ratio of $\alpha=0.9, \beta=0.1$ for making past leading experience more significant.
 
 \section{Trading Logic}
 
-\noindent Since each trading round is limited to five messages, choosing which agents to trade with is vital. The leader fight logic is used in our agent’s trade strategy for every decision made. We use the outputted optimal fight decision map to filter out agents that will not likely fight in the following round. Agents predicted to either attack or defend will be prioritised as potential trade candidates. If our own agent is cowering for the following round, agents fighting will be offered our best weapon or shield. This is to ensure the best equipment are always utilized to maximise our chance to escape the pit and achieve the collective goal.
+Since each trading round is limited to five messages, choosing which agents to trade with is vital. The leader fight logic is used in our agent's trade strategy for every decision made. We use the outputted optimal fight decision map to filter out agents that will not likely fight in the following round. Agents predicted to either attack or defend will be prioritised as potential trade candidates. If our own agent is cowering for the following round, agents fighting will be offered our best weapon or shield. This is to ensure the best equipment are always utilized to maximise our chance to escape the pit and achieve the collective goal.
 
-\noindent Our trading strategy will also prioritise agents having a positive or neutral strategy trust over agents with lower trust scores to penalise agents that either defected from their fight decision or are selfish in trades. The combination of agent trust and agent fight actions will reward and encourage agents to contribute towards the common pool resource.
+Our trading strategy will also prioritise agents having a positive or neutral strategy trust over agents with lower trust scores to penalise agents that either defected from their fight decision or are selfish in trades. The combination of agent trust and agent fight actions will reward and encourage agents to contribute towards the common pool resource.
 
-\noindent An issue considered when choosing trade partners was if our policy was deterministic, such that our agent always requested from cowering agents with the best shield or weapon, all team 5 agents initialized within the game would have clashing trade requests. To resolve this issue, our agent searches for trade partners through random starting positions within the agent map and checks iteratively if agents meet our trade criteria of cowering and having a better weapon or shield. A trade request will sent to the first agent that meets our criteria.
+An issue considered when choosing trade partners was if our policy was deterministic, such that our agent always requested from cowering agents with the best shield or weapon, all team 5 agents initialized within the game would have clashing trade requests. To resolve this issue, our agent searches for trade partners through random starting positions within the agent map and checks iteratively if agents meet our trade criteria of cowering and having a better weapon or shield. A trade request will sent to the first agent that meets our criteria.
 
 \pagebreak{}
 \section{Experiment}
@@ -400,33 +358,26 @@ So in fact each agent need to keep two trust record for other agents, $T_{normal
 
 As the \ref{fig:snRresults} show, it appears that in a team5 agent's perspective, the system diverges and cliques up at around level 20. And then two due to the system being connected, the two cliques impact each other (level 25) and the two cliques dissolve into diverse places(level 33). The self-agent in an earlier stage of the game does not gain enough information to identify other agents' profiles. With more and more interactions and observations, the agent is able to identify smaller differences in other agents and separate them, which also involves scaling the scores in some of the updates.
 
-
-
-    \begin{figure*}[t!]
-        \subfloat[]{%
-            \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level2.png}%
-            \label{subfig:a}%
-        }\hfill
-        \subfloat[]{%
-            \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level20.png}%
-            \label{subfig:b}%
-        }\\
-        \subfloat[]{%
-            \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level25.png}%
-            \label{subfig:c}%
-        }\hfill
-        \subfloat[]{%
-            \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level33.png}%
-            \label{subfig:d}%
-        }
-  \caption{Agents' trust score at different levels, with strategy and goodwill personality boundaries both at 0.2 and 0.8, 30 of each type of agents are instantiate}
-        \label{fig:snRresults}
-    \end{figure*}
-
-
-
-
-
+\begin{figure*}[t!]
+    \subfloat[]{%
+        \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level2.png}%
+        \label{subfig:a}%
+    }\hfill
+    \subfloat[]{%
+        \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level20.png}%
+        \label{subfig:b}%
+    }\\
+    \subfloat[]{%
+        \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level25.png}%
+        \label{subfig:c}%
+    }\hfill
+    \subfloat[]{%
+        \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level33.png}%
+        \label{subfig:d}%
+    }
+    \caption{Agents' trust score at different levels, with strategy and goodwill personality boundaries both at 0.2 and 0.8, 30 of each type of agents are instantiate}
+    \label{fig:snRresults}
+\end{figure*}
 
 \subsection{Leader Fight Logic}
 The leader fight logic's execution time was tested to ensure it is within the time limit of 0.5 seconds.
@@ -460,10 +411,13 @@ All trials had execution time under 0.01 seconds and well below the time limit.
 Figure \ref{fig:Team5vsRandom} is a comparison between our team's agent vs. the random agent. With two small tweaks are done to the game engine in order to make the comparison under the same controls.
 
 \begin{enumerate}
-    \item Turned off HP pool donation: \\
-    The current HP pool donation mechanism is way unbalanced and will become a dominated strategy if used, which causes agents to be able to skip all levels until they can't donate health anymore, this prevents all designs on fighting decision or leader function to be relevant.
-    \item Stamina regeneration increased: \\
-    As on the demo section, the unbalance stamina regeneration is mentioned, where after examining, the original game only regenerate 1 stamina ($0.05\%$ to initial health) per time, so for a more sensible game run, the stamina regeneration is changed to 100 ($5\%$ to initial health) per time.
+    \item Turned off HP pool donation
+
+          The current HP pool donation mechanism is way unbalanced and will become a dominated strategy if used, which causes agents to be able to skip all levels until they can't donate health anymore, this prevents all designs on fighting decision or leader function to be relevant.
+
+    \item Stamina regeneration increased
+
+          As on the demo section, the unbalance stamina regeneration is mentioned, where after examining, the original game only regenerate 1 stamina ($0.05\%$ to initial health) per time, so for a more sensible game run, the stamina regeneration is changed to 100 ($5\%$ to initial health) per time.
 \end{enumerate}
 
 \begin{figure}[!ht]
