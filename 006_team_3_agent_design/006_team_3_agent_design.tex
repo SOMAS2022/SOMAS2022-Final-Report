@@ -4,7 +4,7 @@
     
     \subsection{The Ideology}
 
-        At the heart of our agent design is a computational implementation of \textit{preference utilitarianism}. This form of contempary philosophy is characterised by the maximisation of actions that forfil the interests of those bodies involed \ref{hare1981moral}. It includes a basic assumption that these interests are, at least in part, influenced by some future projections based on the combination of ones; current state, history and social interactions. If we define the `bodies involved' as all agents within the environment, we can split them into two weighted catagories. The first (weighted high) being a Trusted Social Network (TSN) and the second (weighted low) being the remaining agents. With this network defined, we can summerise this ideology with respect to the cooperative survial game as; the choice of actions that maximise the interests of the self and the TSN whilst endevouring to satifice all other agents involved. By definition, a reduction in TSN entails an increase in self-interest. 
+        At the heart of our agent design is a computational implementation of \textit{preference utilitarianism}. This form of contempary philosophy is characterised by the maximisation of actions that forfil the interests of those bodies involed \cite{hare1981moral}. It includes a basic assumption that these interests are, at least in part, influenced by some future projections based on the combination of ones; current state, history and social interactions. If we define the `bodies involved' as all agents within the environment, we can split them into two weighted catagories. The first (weighted high) being a Trusted Social Network (TSN) and the second (weighted low) being the remaining agents. With this network defined, we can summerise this ideology with respect to the cooperative survial game as; the choice of actions that maximise the interests of the self and the TSN whilst endevouring to satifice all other agents involved. By definition, a reduction in TSN entails an increase in self-interest. 
         
         A key part of Preference Utilitarianism is that interests are based upon future projections. In the contet of this game, these projections can be heavily influenced by collective risk analysis and social interactions, infering that a `selfish action' may not be in an agents best interst in the long term. Therefore, the idea of maximising self-interest does not always entail acting selfishly, as the abjective of the game is to win via collaberation. This phanomenon will be addressed later in this section when the ideas of utility and social captial are introduced. A perticularly interesting aspect of this direction is the assumption that every agents definition of satifaction and preference is unique, which could be consiered true in this game.  
         
@@ -19,7 +19,7 @@
             \label{fig:mapek_framework}
         \end{figure}
 
-        The ideological architecture presented in Figure \ref{fig:mapek_framework} falls within the assumption of the self-organising MAPE-K interaction framework \cite{mapek}. In this framework, an agent monitors the environment in order to make the most balanced decision, with a strong personal bias as a general preference. By performing some form of analysis, anomalous decisions that result in un-favourable outcomes within an event horizon can be detected. With these actions discarded, a sequence of actions can be devised with the aim to improve the agents state within this event horizon. This all fits into Ostron's perspective on the benefits of non-centralised governance, which in the context of multi-agent systems, may only function in the presence of ubiquitous common knowledge \ref{pitt}. 
+        The ideological architecture presented in Figure \ref{fig:mapek_framework} falls within the assumption of the self-organising MAPE-K interaction framework \cite{mapek}. In this framework, an agent monitors the environment in order to make the most balanced decision, with a strong personal bias as a general preference. By performing some form of analysis, anomalous decisions that result in un-favourable outcomes within an event horizon can be detected. With these actions discarded, a sequence of actions can be devised with the aim to improve the agents state within this event horizon. This all fits into Ostron's perspective on the benefits of non-centralised governance, which in the context of multi-agent systems, may only function in the presence of ubiquitous common knowledge \cite{pitt}. 
         
 
 
@@ -68,7 +68,7 @@ One of the greatest challenges when working on the agent design was an algorithm
 
 
 
-\texit{Proposal performance}: If our agent was asked about their fight decision preference, and the resulting proposal confirmed this action, a reward is given to the agent responsible. In the opposite case, where our preference was denied after consultation, a punishment would be applied. To once again introduce possitive reinforcement, a punishment will not be applied until the condition is met multiple times. Again, these rewards and proposals are applied as increasing or decreasing the agents proposal utility, as shown in Algorithm \ref{alg:2}. Intuitively, this score could never update for a given agent, as it requires both contact to be made and their proposal to be granted access to the floor. 
+\textit{Proposal performance}: If our agent was asked about their fight decision preference, and the resulting proposal confirmed this action, a reward is given to the agent responsible. In the opposite case, where our preference was denied after consultation, a punishment would be applied. To once again introduce possitive reinforcement, a punishment will not be applied until the condition is met multiple times. Again, these rewards and proposals are applied as increasing or decreasing the agents proposal utility, as shown in Algorithm \ref{alg:2}. Intuitively, this score could never update for a given agent, as it requires both contact to be made and their proposal to be granted access to the floor. 
 
 \begin{algorithm}
 \caption{Proposal Utility}\label{alg:2}
@@ -125,7 +125,7 @@ To obtain an overall utility score, shown in Algorithm \ref{alg:4}, both chair a
 \Require $agent\_id, chair\_utility, resource\_utility, proposal\_utility$
 \Ensure $utility\_score[0-15]$
 \If{End of Round}
-\State $total\_utility \leftarrow average\{chair\_utility \times w_1, resource\_utility \times w_1, proposal\_utility \times w_2}$
+\State $total\_utility \leftarrow average\{chair\_utility \times w_1, resource\_utility \times w_1, proposal\_utility \times w_2\}$
 \EndIf
 \end{algorithmic}
 \end{algorithm}
