@@ -351,14 +351,13 @@ Our trading strategy will also prioritise agents having a positive or neutral st
 
 An issue considered when choosing trade partners was if our policy was deterministic, such that our agent always requested from cowering agents with the best shield or weapon, all team 5 agents initialized within the game would have clashing trade requests. To resolve this issue, our agent searches for trade partners through random starting positions within the agent map and checks iteratively if agents meet our trade criteria of cowering and having a better weapon or shield. A trade request will sent to the first agent that meets our criteria.
 
-\pagebreak{}
 \section{Experiment}
 
 \subsection{Social Network}
 
 As the \ref{fig:snRresults} show, it appears that in a team5 agent's perspective, the system diverges and cliques up at around level 20. And then two due to the system being connected, the two cliques impact each other (level 25) and the two cliques dissolve into diverse places(level 33). The self-agent in an earlier stage of the game does not gain enough information to identify other agents' profiles. With more and more interactions and observations, the agent is able to identify smaller differences in other agents and separate them, which also involves scaling the scores in some of the updates.
 
-\begin{figure*}[t!]
+\begin{figure*}[h]
     \subfloat[]{%
         \includegraphics[width=.5\linewidth]{008_team_5_agent_design/images/level2.png}%
         \label{subfig:a}%
