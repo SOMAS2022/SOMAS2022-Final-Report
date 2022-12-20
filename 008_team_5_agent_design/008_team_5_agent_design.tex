@@ -62,7 +62,7 @@ As an altruistic agent practicing utilitarianism, our agent aims to improve coll
 
 \subsection{Trade}
 
-\noindent Our trade strategy extends the Agent’s utilitarian approach and altruistic personality to achieving the collective aim. With this in mind, there is no significance in the weapon or shield we equip if the game is lost. Hence, no concern is given towards the weapon or shield equipped when finally escaping the pit. As each agent has an equal opportunity of receiving loot if they chose to fight, the exclusivity of shields and weapons are low. As we have no concern of our final equipped shield or weapon, the allocation of loot (consumption) to other agents will not subtract from our utility, deeming subtractability to be low. This in turn means that trading is not seen as a common pool resource problem.
+\noindent Our trade strategy extends the Agent’s utilitarian approach and altruistic personality to achieving the collective aim. With this in mind, there is no significance in the weapon or shield we equip if the game is lost. Hence, no concern is given towards the weapon or shield equipped when finally escaping the pit. As each agent has an equal opportunity of receiving loot if they chose to fight, the exclusivity of shields and weapons are low. As we have no concern of our final equipped shield or weapon, the allocation of loot (consumption) to other agents will not subtract from our utility, deeming subtractability to be low. This in turn means that trading is not seen as a common pool resource problem. \\
 \noindent On the contrary, other agents may value their weapon and shield equipped at the end of the game. In other words, trading will benefit other agents as weapon and shield statistics are valued, so the subtractability of weapons and shields would greatly increase in their perspective.
 Considering agent’s fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
 
@@ -161,7 +161,7 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
         \hline
         Interaction                       & Loot Resolution                                                                                            & Loot Allocation Proposal                                                                                                 \\
         \hline
-        Explaination                      & Extract agents in a conflict with the highest ranked personality as follows and exclude the rest from this & Allocate the loot item with the highest value to the agents with highest ranked personality. Once these gent each got an \\
+        Explanation                      & Extract agents in a conflict with the highest ranked personality as follows and exclude the rest from this conflict. & Allocate the loot item with the highest value to the agents with the highest ranked personality. Once these gents each got an item, apply the same method to the rest of the loot and the rest of the agents.\\
         \hline
         \multirow{2}{*}{Other Conditions} & Fighting Item                                                                                              & Recovery Item                                                                                                            \\
         \cline{2-3}
@@ -189,6 +189,8 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
     \caption{Other agents' personality impact on our agent's interaction behaviour.}
     \label{table:personality_impact}
 \end{table}
+
+\pagebreak
 
 \section{Manifesto}
 \begin{itemize}
@@ -420,7 +422,7 @@ As the \ref{fig:snRresults} show, it appears that in a team5 agent's perspective
             \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level33.png}%
             \label{subfig:d}%
         }
-  \caption{Agents' trust score at different levels, with strategy and goodwill personality boundaries both at 0.2 and 0.8, 30 of each type of agents are instantiate}
+  \caption{Agents' trust score at different levels, with strategy and goodwill personality boundaries both at 0.2 and 0.8, 30 of each type of agent are instantiated.}
         \label{fig:snRresults}
     \end{figure*}
 
