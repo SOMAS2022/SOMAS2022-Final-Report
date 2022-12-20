@@ -1,9 +1,16 @@
 \useunder{\uline}{\ul}{}
 \chapter{Team 5 Agent Design}\label{team_5_agent_design}
 
-\section{Collective Intelligence}
+\subsection{\section[Section Title. Section Subtitle]{Overview.\\ {\Our Actions and Goals towards the Common Goal}}}
 
-\begin{figure}[h]!h
+\subsection{Leadership}
+When voted leader with fight power our agent practices utilitarianism [1] and promotes actions that maximizes utility and wellbeing of all agents. For Escape the Dark Pitt, the collective aim is to defeat monsters and clear all levels with remaining population above 60 percent. Hence, we can derive utility being inversely related to damage received by agents and deaths. By prioritizing decisions which will bring upon the greatest utility overall even at his own risk and having a selfless concern for other agents, our agent can also be deemed altruistic. But as completing the game is in our agent's self-interest, it is not pure altruism.
+
+After each monster is defeated, a loot pool is dropped. We believe the loot pool is similar to a Common Pool Resource. All agents have equal opportunities to request for items, deeming the loot pool non-excludable. After an item has been allocated, it is unavailable to other agents, hence the loot pool is also rivalrous in consumption in line with Common Pool Resources. The main difference between the two is the loot pool can be fully depleted each round and fully replenished at the next, while common pool resources generally won't replenish if it is fully depleted. During loot allocation our agent utilizes theory from equity and desert [1] to aim for fairness and distributive justice by having each agent's allocation affected by their contribution. Unlike the health points pool, another common pool resource, agents cannot directly contribute to it. We can determine an agent's contribution by their fight decision as defeating the monster will drop loot, and in turn contribute to the loot pool. Fight decision along with other factors are used to calculate a social network score which will directly impact an agent's ability to be allocated resources per our algorithm.
+
+\subsection{Collective Intelligence}
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.63\textwidth]{008_team_5_agent_design/images/Collective-Intelligence-Branches.jpg}
     \caption{Collective Intelligence Branch}
@@ -52,6 +59,13 @@ As an altruistic agent practicing utilitarianism, our agent aims to improve coll
                 \end{flushleft}
     \end{itemize}
 \end{itemize}
+
+\subsection{Trade}
+
+\noindent Our trade strategy extends the Agent’s utilitarian approach and altruistic personality to achieving the collective aim. With this in mind, there is no significance in the weapon or shield we equip if the game is lost. Hence, no concern is given towards the weapon or shield equipped when finally escaping the pit. As each agent has an equal opportunity of receiving loot if they chose to fight, the exclusivity of shields and weapons are low. As we have no concern of our final equipped shield or weapon, the allocation of loot (consumption) to other agents will not subtract from our utility, deeming subtractability to be low. This in turn means that trading is not seen as a common pool resource problem.
+\noindent On the contrary, other agents may value their weapon and shield equipped at the end of the game. In other words, trading will benefit other agents as weapon and shield statistics are valued, so the subtractability of weapons and shields would greatly increase in their perspective.
+Considering agent’s fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
+
 
 \section{Social Network}
 
@@ -176,7 +190,7 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
     \label{table:personality_impact}
 \end{table}
 
-\subsection{Manifesto}
+\section{Manifesto}
 \begin{itemize}
     \item Loot Power - Yes
     \item Fight Power - Yes
@@ -385,19 +399,30 @@ Figure \ref{fig:Team5vsRandom} is a comparison between our team's agent vs. the 
 
 In average our agent could survive 5 more levels then the random agent, with it's own kind. But when playing with half of the population being another kind, the levels survived will only be marginally better than the random agents. This might because the random agents do not keep trust record (no social capital), so the advantage of using social capital to effectively elect leader or appropriating loot is broken.
 
-\subsection{Proposal, trust and knowledge aggregation}
-It will be interesting to investigate the effect of allowing agents to propose what they think is the best, also how that might effect leading and whether it helps to do knowledge aggregation.
+\subsection{Social Network}
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{008_team_5_agent_design/images/knowledgeAgg.png}
-    \caption{Comparisons of allowing agent proposal or not. Top: agent's trust to the current leader through levels; Bottom: ratio of population knowledge to individual knowledge through levels.}
-    \label{fig:knowledgeAgg}
-\end{figure}
-\pagebreak
-For the top part of figure \ref{fig:knowledgeAgg}, we compared how proposal affects leading. Notice that without self-experience proposal, an agent's trust toward the current leader oscillates much frequently. This could infer more repeat leader change, also could be seen as an evidence for higher dependency on the leader.
+As the \ref{fig:snRresults} show, it appears that in a team5 agent's perspective, the system diverges and cliques up at around level 20. And then two due to the system being connected, the two cliques impact each other (level 25) and the two cliques dissolve into diverse places(level 33). The self-agent in an earlier stage of the game does not gain enough information to identify other agents' profiles. With more and more interactions and observations, the agent is able to identify smaller differences in other agents and separate them, which also involves scaling the scores in some of the updates.
 
-For the bottom part of figure \ref{fig:knowledgeAgg}, we compared how proposal affects change of the population to individual knowledge ratio. In both cases, the ratio generally increases through the early part of the game, indicating the population knowledge base is growing in a much faster rate than each individual's, but start to drop at mid-game and finally converges. The one with proposal has more variations on how the ratio changes, resulting in more dense spaces between curves. This could reflect that the agents are trying to gain extract knowledge by accepting proposals from others.
+    \begin{figure*}[!ht]
+        \subfloat[]{%
+            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level2.png}%
+            \label{subfig:a}%
+        }\hfill
+        \subfloat[]{%
+            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level20.png}%
+            \label{subfig:b}%
+        }\\
+        \subfloat[]{%
+            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level25.png}%
+            \label{subfig:c}%
+        }\hfill
+        \subfloat[]{%
+            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level33.png}%
+            \label{subfig:d}%
+        }
+  \caption{Agents' trust score at different levels, with strategy and goodwill personality boundaries both at 0.2 and 0.8, 30 of each type of agents are instantiate}
+        \label{fig:snRresults}
+    \end{figure*}
 
 \subsection{Leader Fight Logic}
 The leader fight logic's execution time was tested to ensure it is within the time limit of 0.5 seconds.
@@ -427,27 +452,20 @@ Some results are shown below, execution time is labelled with consumer in units 
 
 All trials had execution time under 0.01 seconds and well below the time limit.
 
-\subsection{Social Network}
+\subsection{Proposal, trust and knowledge aggregation}
+It will be interesting to investigate the effect of allowing agents to propose what they think is the best, also how that might effect leading and whether it helps to do knowledge aggregation.
 
-As the \ref{fig:snRresults} show, it appears that in a team5 agent's perspective, the system diverges and cliques up at around level 20. And then two due to the system being connected, the two cliques impact each other (level 25) and the two cliques dissolve into diverse places(level 33). The self-agent in an earlier stage of the game does not gain enough information to identify other agents' profiles. With more and more interactions and observations, the agent is able to identify smaller differences in other agents and separate them, which also involves scaling the scores in some of the updates.
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{008_team_5_agent_design/images/knowledgeAgg.png}
+    \caption{Comparisons of allowing agent proposal or not. Top: agent's trust to the current leader through levels; Bottom: ratio of population knowledge to individual knowledge through levels.}
+    \label{fig:knowledgeAgg}
+\end{figure}
+\pagebreak
+For the top part of figure \ref{fig:knowledgeAgg}, we compared how proposal affects leading. Notice that without self-experience proposal, an agent's trust toward the current leader oscillates much frequently. This could infer more repeat leader change, also could be seen as an evidence for higher dependency on the leader.
 
-    \begin{figure*}[!ht]
-        \subfloat[]{%
-            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level2.png}%
-            \label{subfig:a}%
-        }\hfill
-        \subfloat[]{%
-            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level20.png}%
-            \label{subfig:b}%
-        }\\
-        \subfloat[]{%
-            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level25.png}%
-            \label{subfig:c}%
-        }\hfill
-        \subfloat[]{%
-            \includegraphics[width=.4\linewidth]{008_team_5_agent_design/images/level33.png}%
-            \label{subfig:d}%
-        }
-  \caption{Agents' trust score at different levels, with strategy and goodwill personality boundaries both at 0.2 and 0.8, 30 of each type of agents are instantiate}
-        \label{fig:snRresults}
-    \end{figure*}
+For the bottom part of figure \ref{fig:knowledgeAgg}, we compared how proposal affects change of the population to individual knowledge ratio. In both cases, the ratio generally increases through the early part of the game, indicating the population knowledge base is growing in a much faster rate than each individual's, but start to drop at mid-game and finally converges. The one with proposal has more variations on how the ratio changes, resulting in more dense spaces between curves. This could reflect that the agents are trying to gain extract knowledge by accepting proposals from others.
+
+
+
+
