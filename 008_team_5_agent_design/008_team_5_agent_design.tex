@@ -57,6 +57,12 @@ On the contrary, other agents may value their weapon and shield equipped at the 
 
 Considering agent's fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.60\textwidth]{008_team_5_agent_design/images/13.png}
+    \caption{Our agent vs other agent's perspective on trading \cite{pitt}}
+    \label{13}
+\end{figure}
 
 \section{Social Network}
 
@@ -190,10 +196,6 @@ The boundaries for the trust scores are both at $0.2$ and $0.8$ and initial scor
 \end{itemize}
 
 \section{Leadership}
-\subsection{Leadership Personality}
-When voted leader with fight power our agent practices utilitarianism \cite{pitt} and promotes actions that maximises utility and wellbeing of all agents. For Escape the Dark Pitt, the collective aim is to defeat monsters and clear all levels with remaining population above 60 percent. Hence, we can derive utility being inversely related to damage received by agents and deaths. By prioritising decisions which will bring upon the greatest utility overall even at his own risk and having a selfless concern for other agents, our agent can also be deemed altruistic. But as completing the game is in our agent's self-interest, it is not pure altruism.
-
-After each monster is defeated, a loot pool is dropped. We believe the loot pool is similar to a Common Pool Resource. All agents have equal opportunities to request for items, deeming the loot pool non-excludable. After an item has been allocated, it is unavailable to other agents, hence the loot pool is also rivalrous in consumption in line with Common Pool Resources. The main difference between the two is the loot pool can be fully depleted each round and fully replenished at the next, while common pool resources generally won't replenish if it is fully depleted. During loot allocation our agent utilises theory from equity and desert \cite{pitt} to aim for fairness and distributive justice by having each agent's allocation affected by their contribution. Unlike the health points pool, another common pool resource, agents cannot directly contribute to it. We can determine an agent's contribution by their fight decision as defeating the monster will drop loot, and in turn contribute to the loot pool. Fight decision along with other factors are used to calculate a social network score which will directly impact an agent's ability to be allocated resources per our algorithm.
 
 \subsection{Leader Fight Logic}
 As mentioned in leadership personality, our agent aims to maximise utility by prioritising taking the least total damage and deaths when making fight decisions. There are 2 fighting conditions where the level can be passed without taking any damage or deaths. The leader fight algorithm will first check for the following two criterions:
@@ -329,20 +331,6 @@ $$
 So in fact each agent need to keep two trust record for other agents, $T_{normal}$ for whether an agent is doing well on an individual level, and $T_{lead}$ for whether an agent is doing well on a group level. They are then combined to produce a estimation on how trust worthy an agent is to become the new leader, typically in a ratio of $\alpha=0.9, \beta=0.1$ for making past leading experience more significant.
 
 \section{Trading}
-\subsection{Trade Personality}
-
-Our trade strategy extends the Agent's utilitarian approach and altruistic personality to achieving the collective aim. With this in mind, there is no significance in the weapon or shield we equip if the game is lost. Hence, no concern is given towards the weapon or shield equipped when finally escaping the pit. As each agent has an equal opportunity of receiving loot if they chose to fight, the exclusivity of shields and weapons are low. As we have no concern of our final equipped shield or weapon, the allocation of loot (consumption) to other agents will not subtract from our utility, deeming subtractability to be low. This in turn means that trading is not seen as a common pool resource problem.
-
-On the contrary, other agents may value their weapon and shield equipped at the end of the game. In other words, trading will benefit other agents as weapon and shield statistics are valued, so the subtractability of weapons and shields would greatly increase in their perspective.
-
-Considering agent's fight decision as their contribution towards loot, and by coupling trading with fight decision, we can frame this as a common pool resource problem. The common pool resource is sustained through defeating monsters with increasing difficulty to drop new and better items. Our agent takes advantage of this observation and rewards agents with regards to their contribution.
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.60\textwidth]{008_team_5_agent_design/images/13.png}
-    \caption{Our agent vs other agent's perspective on trading \cite{pitt}}
-    \label{13}
-\end{figure}
 
 \subsection{Trade strategy}
 Since each trading round is limited to five messages, choosing which agents to trade with is vital. The leader fight logic is used in our agent's trade strategy for every decision made. We use the outputted optimal fight decision map to filter out agents that will not likely fight in the following round. Agents predicted to either attack or defend will be prioritised as potential trade candidates. If our own agent is cowering for the following round, agents fighting will be offered our best weapon or shield. This is to ensure the best equipment are always utilised to maximise our chance to escape the pit and achieve the collective goal.
@@ -360,7 +348,7 @@ Figure \ref{fig:Team5vsRandom} is a comparison between our team's agent vs. the 
     \item Turned off HP pool donation: \\
           The current HP pool donation mechanism is way unbalanced and will become a dominated strategy if used, which causes agents to be able to skip all levels until they can't donate health anymore, this prevents all designs on fighting decision or leader function to be relevant.
     \item Stamina regeneration increased: \\
-          As on the demo section, the unbalance stamina regeneration is mentioned, where after examining, the original game only regenerate 1 stamina ($0.05\%$ to initial health) per time, so for a more sensible game run, the stamina regeneration is changed to 100 ($5\%$ to initial health) per time.
+          As on the demo section, the unbalance stamina regeneration is mentioned, where after examining, the original game only regenerate 1 stamina ($0.05\%$ to initial stamina) per time, so for a more sensible game run, the stamina regeneration is changed to 100 ($5\%$ to initial stamina) per time.
 \end{enumerate}
 
 \begin{figure}[!ht]
